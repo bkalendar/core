@@ -30,12 +30,3 @@ export function parseTimetables(raw: string): TimetableRaw[] {
 export function parseAndResolveTimetables(raw: string): Timetable[] {
     return resolveTimetables(parseTimetables(raw));
 }
-
-export function saveTimetable(timetable: Timetable) {
-    localStorage.setItem("bkalendar-timetable", JSON.stringify(timetable));
-}
-
-export function loadTimetable(): Timetable | null {
-    const raw: string | null = localStorage.getItem("bkalendar-timetable");
-    return raw && JSON.parse(raw);
-}
