@@ -1,7 +1,7 @@
 import { assert, describe, expect, it } from "vitest";
 import fs from "fs";
-import { parseAndResolveTimetables } from "../src/lib/timetable";
-import { toVCalendar } from "../src/lib/ical";
+import { parseAndResolveTimetables } from "../src/timetable";
+import { toVCalendar } from "../src/ical";
 
 describe("merge entries", () => {
     const raw = `Học kỳ 1 Năm học 2021 - 2022

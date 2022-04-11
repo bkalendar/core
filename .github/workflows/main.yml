@@ -33,11 +33,3 @@ jobs:
             - name: Run tests
               run: pnpm run test
 
-            - name: Build with adapter static
-              run: pnpm run build
-
-            - name: Deploy 🚀
-              uses: JamesIves/github-pages-deploy-action@4.1.4
-              with:
-                  branch: gh-pages
-                  folder: ./build

@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { parseEntry } from "../src/lib/entry";
-import { parseTimetables } from "../src/lib/timetable";
+import { parseEntry } from "../src/entry";
+import { parseTimetables } from "../src/timetable";
 import * as fs from "fs";
 
 describe("Entry", () => {

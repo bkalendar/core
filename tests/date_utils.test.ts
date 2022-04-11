@@ -1,5 +1,5 @@
 import { it, expect } from "vitest";
-import { SemesterContext, resolveFirstDate } from "../src/lib/date_utils";
+import { SemesterContext, resolveFirstDate } from "../src/date_utils";
 import { getISOWeek } from "date-fns";
 
 it("work normally", () => {
