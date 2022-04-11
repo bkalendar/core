@@ -1,7 +1,16 @@
 import { resolveFirstDate } from './date_utils';
 import type { EntryRaw, Entry } from './entry';
-import type { TimetableRaw, Timetable } from './timetable';
+import type { TimetableRaw, Timetable, parseTimetables } from './timetable';
+import type { SemesterContext } from './date_utils';
 
+/**
+ * Resolve raw timetables into resolved timetables.
+ *
+ * This takes care of "orphans" and merges entries.
+ *
+ * @param timetableRaws list of raw timetables,
+ * preferably from {@link parseTimetables}
+ */
 export function resolveTimetables(
     timetableRaws: TimetableRaw[]
 ): Timetable[] {
@@ -59,6 +68,16 @@ function commonFirstDate(timetable: TimetableRaw): Date {
     return new Date(Number(maxKey));
 }
 
+
+/**
+ * Resolve raw entries using a start date.
+ *
+ * Rule out orphans (start at a different week than others)
+ *
+ * @param timetable raw timetable
+ * @param start start date, from {@link SemesterContext}
+ * @returns entries of that timetable and found orphans
+ */
 function resolveEntries(
     timetable: TimetableRaw,
     start: Date
