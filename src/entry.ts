@@ -1,25 +1,39 @@
 import hash from "object-hash";
+import type { SemesterContext } from "./date_utils";
 
 interface Common {
     /** hash id from (id, room, wday, start, end) */
     readonly hash: string;
     readonly id: string;
     readonly room: string;
+    /** day of the week */
     readonly wday: number;
     readonly start: number;
     readonly end: number;
+    /** e.g. L05, L11, ... */
     group: string;
     name: string;
 }
 
+/**
+ * An entry, as in a timetable.
+ *
+ * Uses ISO weeks, needs processing to know exact date.
+ */
 export interface EntryRaw extends Common {
     weeks: number[];
 }
 
+/**
+ * An entry, as in a timetable.
+ *
+ * Uses offset weeks from the first week of the semester
+ * in {@link SemesterContext}.
+ */
 export interface Entry extends Common {
     /** offset of week (inclusive) from the first week of semester */
     firstWeek: number;
-    /** offset of week (inclusive) fom the first week of semester */
+    /** offset of week (inclusive) from the first week of semester */
     lastWeek: number;
     /** offset of weeks from the first week of semester */
     excludeWeeks: number[];
