@@ -7,6 +7,7 @@
     ],
     "main": "./dist/bkalendar.umd.js",
     "module": "./dist/bkalendar.es.js",
+    "types": "./dist/src/index.d.ts",
     "scripts": {
         "build": "vite build",
         "prettier": "prettier --write --ignore-path .gitignore .",
