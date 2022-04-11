@@ -1,5 +1,5 @@
 import type { SemesterContext } from "./date_utils";
-import type { EntryRaw, EntryResolved } from "./entry";
+import type { EntryRaw, Entry } from "./entry";
 import { parseEntry } from "./entry";
 import { resolveTimetables } from './resolver';
 
@@ -7,8 +7,8 @@ export interface TimetableRaw extends SemesterContext {
     entries: EntryRaw[];
 }
 
-export interface TimetableResolved extends SemesterContext {
-    entries: EntryResolved[];
+export interface Timetable extends SemesterContext {
+    entries: Entry[];
     /** 00:00 UTC Monday of the first week */
     start: Date;
 }
@@ -27,15 +27,15 @@ export function parseTimetables(raw: string): TimetableRaw[] {
     }));
 }
 
-export function parseAndResolveTimetables(raw: string): TimetableResolved[] {
+export function parseAndResolveTimetables(raw: string): Timetable[] {
     return resolveTimetables(parseTimetables(raw));
 }
 
-export function saveTimetable(timetable: TimetableResolved) {
+export function saveTimetable(timetable: Timetable) {
     localStorage.setItem("bkalendar-timetable", JSON.stringify(timetable));
 }
 
-export function loadTimetable(): TimetableResolved | null {
+export function loadTimetable(): Timetable | null {
     const raw: string | null = localStorage.getItem("bkalendar-timetable");
     return raw && JSON.parse(raw);
 }

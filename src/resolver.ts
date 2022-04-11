@@ -1,11 +1,11 @@
 import { resolveFirstDate } from './date_utils';
-import type { EntryRaw, EntryResolved } from './entry';
-import type { TimetableRaw, TimetableResolved } from './timetable';
+import type { EntryRaw, Entry } from './entry';
+import type { TimetableRaw, Timetable } from './timetable';
 
 export function resolveTimetables(
     timetableRaws: TimetableRaw[]
-): TimetableResolved[] {
-    const newTimetables: TimetableResolved[] = [];
+): Timetable[] {
+    const newTimetables: Timetable[] = [];
     let allOrphans: EntryRaw[] = [];
 
     for (const timetable of timetableRaws) {
@@ -63,10 +63,10 @@ function resolveEntries(
     timetable: TimetableRaw,
     start: Date
 ): {
-    resolved: EntryResolved[];
+    resolved: Entry[];
     orphans: EntryRaw[];
 } {
-    const resolved: EntryResolved[] = [];
+    const resolved: Entry[] = [];
     const orphans: EntryRaw[] = [];
     for (const entry of timetable.entries) {
         // empty weeks, huh?
@@ -103,9 +103,9 @@ function resolveEntries(
  * @returns Merged entry
  */
 function mergeEntryResolved(
-    entry1: EntryResolved,
-    entry2: EntryResolved
-): EntryResolved {
+    entry1: Entry,
+    entry2: Entry
+): Entry {
     if (entry1.hash != entry2.hash)
         throw new Error("Cannot merge two different entries");
 
@@ -136,7 +136,7 @@ function mergeEntryResolved(
     };
 }
 
-function mergeEntriesResolved(entries: EntryResolved[]) {
+function mergeEntriesResolved(entries: Entry[]) {
     for (let i = 0; i < entries.length; i += 1) {
         if (entries[i].hash == entries[i + 1]?.hash) {
             entries[i] = mergeEntryResolved(entries[i], entries[i + 1]);

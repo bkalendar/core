@@ -16,7 +16,7 @@ export interface EntryRaw extends Common {
     weeks: number[];
 }
 
-export interface EntryResolved extends Common {
+export interface Entry extends Common {
     /** offset of week (inclusive) from the first week of semester */
     firstWeek: number;
     /** offset of week (inclusive) fom the first week of semester */

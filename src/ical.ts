@@ -1,11 +1,11 @@
-import type { EntryResolved } from "./entry";
-import type { TimetableResolved } from "./timetable";
+import type { Entry } from "./entry";
+import type { Timetable } from "./timetable";
 import { resolveDate } from "./date_utils";
 import * as ics from "ics";
 import { addHours } from "date-fns";
 import * as rrule from "rrule";
 
-export function toVCalendar(timetable: TimetableResolved): string {
+export function toVCalendar(timetable: Timetable): string {
     let calendar = ics.createEvents(
         timetable.entries.map((entry) => entryToEvent(entry, timetable.start))
     );
@@ -28,7 +28,7 @@ export function decomposeDate(
     ];
 }
 
-function entryToEvent(entry: EntryResolved, start: Date): ics.EventAttributes {
+function entryToEvent(entry: Entry, start: Date): ics.EventAttributes {
     const rruleSet = new rrule.RRuleSet();
     rruleSet.rrule(
         new rrule.RRule({
