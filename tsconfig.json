@@ -2,7 +2,10 @@
     "compilerOptions": {
         "moduleResolution": "node",
         "module": "es2020",
-        "lib": ["es2021", "DOM"],
+        "lib": [
+            "es2021",
+            "DOM"
+        ],
         "target": "es2020",
         "importsNotUsedAsValues": "error",
         "preserveValueImports": true,
@@ -13,11 +16,14 @@
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
         "baseUrl": ".",
-        "allowJs": true,
-        "checkJs": true,
+        "strict": true,
         "paths": {
-            "$lib": ["src/lib"],
-            "$lib/*": ["src/lib/*"]
+            "$lib": [
+                "src/lib"
+            ],
+            "$lib/*": [
+                "src/lib/*"
+            ]
         }
     },
     "include": [
