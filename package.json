@@ -1,28 +1,28 @@
 {
-    "name": "@bkalendar/core",
-    "version": "0.1.0",
-    "repository": "git://github.com/bkalendar/core.git",
-    "files": [
-        "dist"
-    ],
-    "main": "./dist/bkalendar.umd.js",
-    "module": "./dist/bkalendar.es.js",
-    "types": "./dist/src/index.d.ts",
-    "scripts": {
-        "test": "uvu -r tsm tests"
-    },
-    "exports": {
-        ".": {
-            "import": "./dist/bkalendar.es.js",
-            "require": "./dist/bkalendar.umd.js"
-        }
-    },
-    "devDependencies": {
-        "prettier": "^2.7.1",
-        "tsm": "^2.2.1",
-        "uvu": "^0.5.6"
-    },
-    "dependencies": {
-        "zod": "^3.17.3"
-    }
+	"name": "@bkalendar/core",
+	"version": "0.1.0",
+	"repository": "git://github.com/bkalendar/core.git",
+	"files": [
+		"dist"
+	],
+	"main": "./dist/bkalendar.umd.js",
+	"module": "./dist/bkalendar.es.js",
+	"types": "./dist/src/index.d.ts",
+	"scripts": {
+		"test": "uvu -r tsm tests"
+	},
+	"exports": {
+		".": {
+			"import": "./dist/bkalendar.es.js",
+			"require": "./dist/bkalendar.umd.js"
+		}
+	},
+	"devDependencies": {
+		"prettier": "^2.7.1",
+		"tsm": "^2.2.1",
+		"uvu": "^0.5.6"
+	},
+	"dependencies": {
+		"zod": "^3.17.3"
+	}
 }

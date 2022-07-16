@@ -1,4 +1,5 @@
-import type { Simplify } from "src/utils";
+import { groupKeys } from "../utils/groupKeys";
+import { renameKeys } from "../utils/renameKeys";
 import { z } from "zod";
 import { timeSchema } from "./time";
 import { weekSchema } from "./week";
@@ -11,75 +12,59 @@ export type TimerowTime = Timerow["time"];
 export type TimerowLocation = Timerow["location"];
 
 function makeSchema() {
-	const schema = z.object({
-		ma_mh: z.string(),
-		ten_mh: z.string(),
-		nhomto: z.string(),
-		tuan_hoc: weekSchema,
-		macoso: z.string(),
-		thu1: z.number(),
-		giobd: timeSchema,
-		giokt: timeSchema,
-		phong1: z.string(),
-		tc_hp: z.number(),
-		so_tin_chi: z.number(),
-	});
+	const schema = z
+		.object({
+			ma_mh: z.string(),
+			ten_mh: z.string(),
+			nhomto: z.string(),
+			tuan_hoc: weekSchema,
+			macoso: z.string(),
+			thu1: z.number(),
+			giobd: timeSchema,
+			giokt: timeSchema,
+			phong1: z.string(),
+			tc_hp: z.number(),
+			so_tin_chi: z.number(),
+		})
+		.transform((timerow) =>
+			renameKeys(
+				{
+					ma_mh: "course" as const,
+					ten_mh: "name" as const,
+					nhomto: "group" as const,
+					tc_hp: "tuition" as const,
+					so_tin_chi: "credits" as const,
+					thu1: "weekday" as const,
+					giobd: "startAt" as const,
+					giokt: "endAt" as const,
+					phong1: "room" as const,
+					macoso: "branch" as const,
+					tuan_hoc: "weeks" as const,
+				},
+				timerow
+			)
+		)
+		.transform((timeRow) =>
+			groupKeys(
+				{
+					info: [
+						"course" as const,
+						"name" as const,
+						"group" as const,
+						"tuition" as const,
+						"credits" as const,
+					],
+					time: [
+						"weekday" as const,
+						"startAt" as const,
+						"endAt" as const,
+						"weeks" as const,
+					],
+					location: ["room" as const, "branch" as const],
+				},
+				timeRow
+			)
+		);
 
-	const translatedSchema = schema.transform(translate);
-	const groupedSchema = translatedSchema.transform(group);
-	return groupedSchema;
-
-	type RawTimerow = z.infer<typeof schema>;
-	function translate(timerow: RawTimerow) {
-		const translated: Record<string, unknown> = {};
-		let key: keyof typeof dictionary;
-		for (key in dictionary) {
-			translated[dictionary[key]] = timerow[key];
-		}
-		return translated as {
-			-readonly [K in keyof typeof dictionary as typeof dictionary[K]]: RawTimerow[K];
-		};
-	}
-
-	type TranslatedTimerow = z.infer<typeof translatedSchema>;
-	function group(timerow: TranslatedTimerow) {
-		const grouped: Record<string, Record<string, unknown>> = {};
-		for (const [groupKey, props] of Object.entries(groups)) {
-			let key: typeof props[number];
-			for (key of props) {
-				const group = grouped[groupKey];
-				if (group === undefined) {
-					grouped[groupKey] = { [key]: timerow[key] };
-				} else {
-					group[key] = timerow[key];
-				}
-			}
-		}
-
-		return grouped as {
-			[K in keyof typeof groups]: {
-				[U in typeof groups[K][number]]: TranslatedTimerow[U];
-			};
-		};
-	}
+	return schema;
 }
-
-const dictionary = {
-	ma_mh: "course",
-	ten_mh: "name",
-	nhomto: "group",
-	tc_hp: "tuition",
-	so_tin_chi: "credits",
-	thu1: "weekday",
-	giobd: "startAt",
-	giokt: "endAt",
-	phong1: "room",
-	macoso: "branch",
-	tuan_hoc: "weeks",
-} as const;
-
-const groups = {
-	info: ["course", "name", "group", "tuition", "credits"] as const,
-	time: ["weekday", "startAt", "endAt", "weeks"] as const,
-	location: ["room", "branch"] as const,
-};
