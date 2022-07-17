@@ -2,7 +2,7 @@ import { groupKeys } from "../utils/groupKeys";
 import { renameKeys } from "../utils/renameKeys";
 import { z } from "zod";
 import { timeSchema } from "./time";
-import { weekSchema } from "./week";
+import { weeksSchema } from "./weeks";
 
 export const timerowSchema = makeSchema();
 
@@ -17,7 +17,7 @@ function makeSchema() {
 			ma_mh: z.string(),
 			ten_mh: z.string(),
 			nhomto: z.string(),
-			tuan_hoc: weekSchema,
+			tuan_hoc: weeksSchema,
 			macoso: z.string(),
 			thu1: z.number(),
 			giobd: timeSchema,

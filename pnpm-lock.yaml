@@ -1,12 +1,14 @@
 lockfileVersion: 5.4
 
 specifiers:
+  date-fns: ^2.28.0
   prettier: ^2.7.1
   tsm: ^2.2.1
   uvu: ^0.5.6
   zod: ^3.17.3
 
 dependencies:
+  date-fns: 2.28.0
   zod: 3.17.3
 
 devDependencies:
@@ -15,6 +17,11 @@ devDependencies:
   uvu: 0.5.6
 
 packages:
+
+  /date-fns/2.28.0:
+    resolution: {integrity: sha512-8d35hViGYx/QH0icHYCeLmsLmMUheMmTyV9Fcm6gvNwdw31yXXH+O85sOBJ+OLnLQMKZowvpKb6FgMIQjcpvQw==}
+    engines: {node: '>=0.11'}
+    dev: false
 
   /dequal/2.0.3:
     resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
