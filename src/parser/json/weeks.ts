@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const weeksSchema = makeSchema();
 
-export type Weeks = z.infer<typeof weeksSchema>;
+export type Weeks = NonNullable<z.infer<typeof weeksSchema>>;
 
 function makeSchema() {
 	const schema = z.preprocess(

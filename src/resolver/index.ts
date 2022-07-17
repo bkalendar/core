@@ -1,8 +1,6 @@
-import type { Timetable } from "../parser";
-import type { Timerow } from "../parser/timerow";
-import { bestEntry } from "../utils/bestEntry";
-import { calcBase } from "../utils/calcBase";
-import { groupBy } from "../utils/groupBy";
+import type { Timerow, Timetable } from "../parser/json";
+import { calcBase } from "../transformer/calcBase";
+import { bestEntry, groupBy } from "../utils";
 
 export function resolve(timetables: Timetable[]) {
 	// sort timetables by ascending semester.

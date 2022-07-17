@@ -1,6 +1,6 @@
-import { add, format, formatISO } from "date-fns";
-import type { Timetable } from "../../parser";
-import { calcBase } from "../../utils/calcBase";
+import { format, formatISO } from "date-fns";
+import type { Timetable } from "../../parser/json";
+import { transformTime } from "../time";
 
 type EventInput = gapi.client.calendar.EventInput;
 
@@ -9,37 +9,10 @@ export const TIME_ZONE = "Asia/Ho_Chi_Minh";
 export function transform({ timerows, semester }: Timetable): EventInput[] {
 	const events = [];
 	for (const timerow of timerows) {
-		if (timerow.time.weeks === null || timerow.time.weekday === 0) continue;
+		const transformed = transformTime(timerow.time, semester);
+		if (transformed === null) continue;
 
-		const base = calcBase(timerow.time.weeks, semester);
-
-		// pls don't judge me
-		const start = add(base, {
-			weeks: timerow.time.weeks.from,
-			days: timerow.time.weekday - 2,
-			hours: timerow.time.startAt.hour,
-			minutes: timerow.time.startAt.minute,
-		});
-		const end = add(base, {
-			weeks: timerow.time.weeks.from,
-			days: timerow.time.weekday - 2,
-			hours: timerow.time.endAt.hour,
-			minutes: timerow.time.endAt.minute,
-		});
-		const until = add(base, {
-			weeks: timerow.time.weeks.until,
-			days: timerow.time.weekday - 2,
-			hours: timerow.time.startAt.hour,
-			minutes: timerow.time.startAt.minute,
-		});
-		const exceptions = timerow.time.weeks.exceptions.map((exception) =>
-			add(base, {
-				weeks: exception,
-				days: timerow.time.weekday - 2,
-				hours: timerow.time.startAt.hour,
-				minutes: timerow.time.startAt.minute,
-			})
-		);
+		const { start, end, until, exceptions } = transformed;
 
 		const event: EventInput = {
 			summary: `${timerow.info.course} - ${timerow.info.name}`,

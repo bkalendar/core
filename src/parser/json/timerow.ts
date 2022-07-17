@@ -1,15 +1,11 @@
-import { groupKeys } from "../utils/groupKeys";
-import { renameKeys } from "../utils/renameKeys";
 import { z } from "zod";
+import { groupKeys, renameKeys } from "../../utils";
 import { timeSchema } from "./time";
 import { weeksSchema } from "./weeks";
 
 export const timerowSchema = makeSchema();
 
 export type Timerow = z.infer<typeof timerowSchema>;
-export type TimerowInfo = Timerow["info"];
-export type TimerowTime = Timerow["time"];
-export type TimerowLocation = Timerow["location"];
 
 function makeSchema() {
 	const schema = z

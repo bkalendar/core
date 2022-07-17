@@ -1,8 +1,8 @@
-import type { Semester } from "../parser/semester";
-import type { Weeks } from "../parser/weeks";
 import { addWeeks, startOfWeek, subWeeks } from "date-fns";
+import type { Semester } from "../parser/json/semester";
+import type { Weeks } from "../parser/json/weeks";
 
-export function calcBase(weeks: NonNullable<Weeks>, semester: Semester): Date {
+export function calcBase(weeks: Weeks, semester: Semester): Date {
 	// case 1: has a new year break, hence it span 2 years
 	if (weeks.newYear !== null) {
 		// is there a better way to handle timezone??? *wink wink Temporal*
