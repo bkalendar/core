@@ -6,3 +6,4 @@ node_modules
 elm-stuff
 *.log
 /dist
+/tests/fixture.json
