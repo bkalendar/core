@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@types/gapi.calendar': ^3.0.6
   date-fns: ^2.28.0
   prettier: ^2.7.1
   tsm: ^2.2.1
@@ -8,6 +9,7 @@ specifiers:
   zod: ^3.17.3
 
 dependencies:
+  '@types/gapi.calendar': 3.0.6
   date-fns: 2.28.0
   zod: 3.17.3
 
@@ -17,6 +19,16 @@ devDependencies:
   uvu: 0.5.6
 
 packages:
+
+  /@types/gapi.calendar/3.0.6:
+    resolution: {integrity: sha512-5POp+QFcJh7yHHOaOc3pkvEZq99u8EzaHuAL+0XcrNKQpN6EM9T6guQ2Q2O39KWkxGvAKdshDv2ZwB7I+v+t3A==}
+    dependencies:
+      '@types/gapi': 0.0.42
+    dev: false
+
+  /@types/gapi/0.0.42:
+    resolution: {integrity: sha512-kskWpouTGqutaIVRo/swiGnMVoRxOYdRwvaDrh0yavfR9vQoHvJJ7Enp4KE9MEGS8qF7F5KiP6bRNOYcCgRXCA==}
+    dev: false
 
   /date-fns/2.28.0:
     resolution: {integrity: sha512-8d35hViGYx/QH0icHYCeLmsLmMUheMmTyV9Fcm6gvNwdw31yXXH+O85sOBJ+OLnLQMKZowvpKb6FgMIQjcpvQw==}

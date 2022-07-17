@@ -2,7 +2,10 @@
 	"compilerOptions": {
 		"moduleResolution": "node",
 		"module": "es2020",
-		"lib": ["es2021", "DOM"],
+		"lib": [
+			"es2021",
+			"DOM"
+		],
 		"target": "es2020",
 		"importsNotUsedAsValues": "error",
 		"exactOptionalPropertyTypes": true,
@@ -15,5 +18,10 @@
 		"forceConsistentCasingInFileNames": true,
 		"strict": true
 	},
-	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"]
+	"include": [
+		"src/**/*.d.ts",
+		"src/**/*.js",
+		"src/**/*.ts",
+		"src/**/*.svelte"
+	]
 }
