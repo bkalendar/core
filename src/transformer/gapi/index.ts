@@ -1,5 +1,6 @@
-import { format, formatISO } from "date-fns";
+import { formatISO } from "date-fns";
 import type { Timetable } from "../../parser/json";
+import { rrule } from "../ical";
 import { transformTime } from "../time";
 
 type EventInput = gapi.client.calendar.EventInput;
@@ -13,6 +14,7 @@ export function transform({ timerows, semester }: Timetable): EventInput[] {
 		if (transformed === null) continue;
 
 		const { start, end, until, exceptions } = transformed;
+		const recurrence = rrule(until, exceptions);
 
 		const event: EventInput = {
 			summary: `${timerow.info.course} - ${timerow.info.name}`,
@@ -26,18 +28,9 @@ export function transform({ timerows, semester }: Timetable): EventInput[] {
 				dateTime: formatISO(end),
 				timeZone: TIME_ZONE,
 			},
-			recurrence: [
-				exceptions.length !== 0
-					? `EXDATE;VALUE=DATETIME:${exceptions.map(icalDate).join(",")}`
-					: "",
-				`RRULE:FREQ=WEEKLY;UNTIL=${icalDate(until)}`,
-			].filter(Boolean),
+			recurrence,
 		};
 		events.push(event);
 	}
 	return events;
-}
-
-function icalDate(date: Date) {
-	return `TZID=${TIME_ZONE}:${format(date, "yyyyMMdd'T'HHmmss")}`;
 }
