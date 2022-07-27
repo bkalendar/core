@@ -1,8 +1,19 @@
 import { add } from "date-fns";
-import type { Semester, Timerow } from "../parser/json";
+import type { Semester, Timerow } from "../parser";
 import { calcBase } from "./calcBase";
 
-export function transformTime(time: Timerow["time"], semester: Semester) {
+/**
+ * transform human readable datetime into machine readable datetime
+ * @param time human hours, minutes, weeks, ...
+ * @param semester e.g HK203
+ * @returns `time` but transformed into `Date`
+ */
+export function transformTime(
+	time: Timerow["time"],
+	semester: Semester
+): { start: Date; end: Date; until: Date; exceptions: Date[] } | null {
+	// some timerow doesn't have weeks or weekday
+	// in this case we can do nothing about it
 	if (time.weeks === null || time.weekday === 0) return null;
 
 	const base = calcBase(time.weeks, semester);

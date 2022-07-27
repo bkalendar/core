@@ -1,10 +1,14 @@
 import { addMinutes, format } from "date-fns";
-import type { Semester, Timerow, Timetable } from "../../parser/json";
+import type { Semester, Timerow, Timetable } from "../../parser";
 import { transformTime } from "../time";
 import { nanoid } from "nanoid";
 
 const TIME_ZONE = "Asia/Ho_Chi_Minh";
 
+/**
+ * transform calendar into ical format
+ * @returns rfc5545 compilant ical calendar
+ */
 export function transform({ timerows, semester }: Timetable): string {
 	let arr = [
 		"BEGIN:VCALENDAR",

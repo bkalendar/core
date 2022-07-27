@@ -18,7 +18,7 @@ function makeSchema() {
 	 * @param raw something like 20213
 	 * @returns something like `{ year: 2021, semester: 3 }`
 	 */
-	function preprocess(raw: unknown) {
+	function preprocess(raw: unknown): { year: number; semester: number } | null {
 		if (typeof raw !== "string") return null;
 
 		const matches = /^(20\d\d)(\d)$/.exec(raw);

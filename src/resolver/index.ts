@@ -1,4 +1,4 @@
-import type { Timerow, Timetable } from "../parser/json";
+import type { Timerow, Timetable } from "../parser";
 import { calcBase } from "../transformer/calcBase";
 import { bestEntry, groupBy } from "../utils";
 

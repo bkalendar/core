@@ -14,11 +14,8 @@ const schema = z.array(
 		)
 );
 
-export function parse(json: unknown) {
+export function parse(json: unknown): Timetable[] {
 	return schema.parse(json);
 }
 
 export type Timetable = z.infer<typeof schema>[number];
-export type { Semester } from "./semester";
-export type { Timerow } from "./timerow";
-export type { Weeks } from "./weeks";
