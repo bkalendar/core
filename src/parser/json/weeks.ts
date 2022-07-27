@@ -20,6 +20,31 @@ function makeSchema() {
 
 	return schema;
 
+	/**
+	 * One interesting thing to note is how we represent the weeks. One naive way to represent is to just
+	 * use an array of numbers:
+	 * ```json
+	 * [49, 50, null, 52, 53, 1, 2, 3]
+	 * ```
+	 *
+	 * This is simple and faithful to the raw data, but later on when you need to combine the semester and
+	 * year to get the `Date`, this will become pure nightmare.
+	 *
+	 * After 4 or 5 times of rewrite, I think I found a good-enough representation:
+	 *
+	 * ```json
+	 * {
+	 * 	"from": 0,
+	 * 	"until": 7,
+	 * 	"base": 49,
+	 * 	"newYear": 5,
+	 * 	"exceptions": [2]
+	 * }
+	 * ```
+	 *
+	 * `from`, `until` and `exceptions` are represented by the indices in the array, not the weeks, and
+	 * must be calculated relative to the `base` or `newYear`.
+	 */
 	function preprocess(raw: unknown) {
 		if (typeof raw !== "string") return null;
 
@@ -58,7 +83,10 @@ function makeSchema() {
 		}
 
 		// STEP 3: find base week (possibly an exception) and year boundary for classification
+
+		// base is the WEEK with INDEX 0
 		let base: number | null = null;
+		// newYear is the INDEX of WEEK 1
 		let newYear: number | null = null;
 
 		for (const [index, week] of weeks.entries()) {
