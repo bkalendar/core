@@ -5,115 +5,98 @@
        alt="npm version">
 </a>
 
-This package seeks to unify data types for writing stuff related to HCMUT timetables.
+In an effort to transform the HCMUT timetable format to other format like iCalendar, I made this
+package.
 
-> ⚠️ Need help with writing tests or double-checking codes. See [#1](https://github.com/bkalendar/core/issues/1).
+Our school timetable page is doing its worst job at representing timetables:
 
+-   From the machine-readable viewpoint: working with weeks with no year attached is pain. This
+    leads to ambiguity documented below in the [resolver](#resolve-the-correct-timetable) section.
+-   From the human-readable viewpoint: I agree that there is `table` inside `timetable`, but it is
+    not a reason to just [use a table to represent something akin to a calendar][steve].
 
-## Problems to address
+    (Well, could be just personal taste though.)
 
--   **Human weeks into machine weeks**: Let's say we're in academic years 2022 - 2023. Week 50 on the timetable surely means year 2022, but what about week 35? Would it be at the start of the first semester, or at the end of the summer semester?
--   **"Orphans" entries**: Overdue entries (which should be finished but somehow made it into another semesters) have a different start week than others. This phenomenon happened when lab classes are delayed indefinitely.
+    [steve]: https://twitter.com/steveschoger/status/997125312411570176
 
+---
 
+Some helpful terminologies that I made up:
 
-## Installation
+-   **timetable**: umm... the timetable?
+-   **timerow**: a row of the timetable.
 
-```bash
-pnpm install @bkalendar/core@latest --save
+## Parser
+
+Parse the timetable into a simple data representation to work with in later pass. It should be
+"lossless" and faithful to the original timetable.
+
+There's two way to get the timetable:
+
+### JSON
+
+A POST request can be sent to `https://mybk.hcmut.edu.vn/stinfo/lichthi/ajax_lichhoc` to fetch the
+timetables in JSON format. You can observe this by open the Network tab on F12 when accessing the
+HCMUT MyBK portal.
+
+The JSON can be then parsed and validated using `zod`.
+
+When working with weeks, I made up some words:
+
+-   **`base`** is the week with index 0. This is used to correctly reorganize the timerow.
+-   **`newYear`** is the index of week 1. This is used to easily determine the correct year.
+
+We always have either of the two to calculate the `Date`. The logic of parsing weeks resides in
+`src/parser/json/weeks.ts`.
+
+### Clipboard
+
+Another way is to copy-and-paste the content of the webpage. The content is then processed using
+RegEx to extract the timetables. The timetables obtained in this way have the format similar to the
+JSON format above, so that we can reuse the JSON validator and parser.
+
+## Resolver
+
+### Resolve the correct timetable
+
+There's a problem with the timetable in the past so I decided to add this resolver: **Timerows is
+organized by semesters, not by real dates.**
+
+Due to the effect of COVID-19, lab classes were pushed back until later semester. The weeks on the
+timetable no longer represented the correct dates. For example:
+
+```
+KY THUAT LAP TRINH (TN):
+--|--|--|11|12|13|14|--|16|--|18|
+DAI SO TUYEN TINH (BT):
+--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|23|
+THI NGHIEM VAT LY:
+--|--|--|--|--|--|--|--|--|--|--|--|--|46|47|
 ```
 
-## Usage
+Those three of my courses were indeed enrolled in the same semester and resides in the same
+timetable, but the weeks wasn't quite correct. The third course was pushed back one semester so we
+can't use the same year to calculate the real date of both.
 
-Parse and resolve paste results from [stinfo](https://mybk.hcmut.edu.vn/stinfo):
+One way to resolve this is to base on the `base` (no puns intended). We can see the top two has
+`base = 8`, while the bottom has `base = 33`. We can then push the bottom course up to other
+timetables, and pick the one with `base = 33`.
 
-```js
-import { parseTimetables, resolveTimetables } from "@bkalendar/core";
+### Other purposes
 
-// should includes first lines metadata (semester, academic years)
-const raw = `Học kỳ 1 Năm học 2021 - 2022
-Ngày cập nhật:2021-12-22 10:41:38.0
-Mã MH	Tên môn học	Tín chỉ	Tc học phí	Nhóm-Tổ	Thứ	Tiết	Giờ học	Phòng	Cơ sở	Tuần học
-CO200B	Cấu trúc dữ liệu và giải thuật (mở rộng) 	--	--	TNMT	--	0-0	0:00 - 0:00	------	BK-CS1	--|
-CO200D	Kiến trúc máy tính (mở rộng) 	--	--	TNMT	--	0-0	0:00 - 0:00	------	BK-CS1	33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|`
+In the future, there may be needs to add another resolver. Just make sure the resolver doesn't
+change the data structure produced by the parser and used by the transformer below.
 
-const rawTimetables = parseTimetables(raw)
-const timetables = resolveTimetables(rawTimetables)
-```
+## Transformer
 
-Or by other different means to create `TimetableRaw`, e.g parse HTML source file, and pass the resulting `TimetableRaw`s to the resolver.
+The last part of the pipeline is to transform the timetable into your favorite format. I currently
+implemented two:
 
-## API docs
+-   `.ical`: Most common format for calendar export.
+-   `gapi.EventInput`: Use this with Google Calendar API.
 
-### `TimetableRaw` and `EntryRaw`
+If you want to implement another format, take a look at:
 
-Raw timetables which uses human dates and knows nothing about machine dates.
-
-```ts
-interface TimetableRaw {
-    semester: number;
-    yearFrom: number;
-    yearTo: number;
-    entries: EntryRaw[];
-}
-interface EntryRaw {
-    /** hash id from (id, room, wday, start, end) */
-    readonly hash: string;
-    readonly id: string;
-    readonly room: string;
-    /** day of the week */
-    readonly wday: number;
-    readonly start: number;
-    readonly end: number;
-    /** e.g. L05, L11, ... */
-    group: string;
-    name: string;
-
-    weeks: number[];
-}
-```
-
-### `Timetable` and `Entry`
-
-Resolved timetables with knowledge about machine dates.
-
-```ts
-interface Timetable {
-    semester: number;
-    yearFrom: number;
-    yearTo: number;
-    entries: Entry[];
-    /** 00:00 UTC Monday of the first week */
-    start: Date;
-}
-interface Entry {
-    /** hash id from (id, room, wday, start, end) */
-    readonly hash: string;
-    readonly id: string;
-    readonly room: string;
-    /** day of the week */
-    readonly wday: number;
-    readonly start: number;
-    readonly end: number;
-    /** e.g. L05, L11, ... */
-    group: string;
-    name: string;
-
-    /** offset of week (inclusive) from the first week of semester */
-    firstWeek: number;
-    /** offset of week (inclusive) from the first week of semester */
-    lastWeek: number;
-    /** offset of weeks from the first week of semester */
-    excludeWeeks: number[];
-}
-```
-
-### `parseTimetables(raw: string): TimetableRaw[]`
-
-Parse the paste result from stinfo.
-
-### `resolveTimetables(timetableRaws: TimetableRaw[]): Timetable[]`
-
-Resolve raw timetables into resolved timetables.
-
-This takes care of orphans and merges entries.
+-   `src/transformer/calcBase.ts` for calculating the real `Date` of the `base`.
+-   `src/transformer/time.ts` for a helper to calculate the real `Date` of `start`, `end`, `until`,
+    `exceptions`.

@@ -30,5 +30,6 @@ jobs:
             - name: Setup pnpm
               run: pnpm install
 
-            - name: Run tests
-              run: pnpm run test
+            # TODO: enable this
+            # - name: Run tests
+            #   run: pnpm run test

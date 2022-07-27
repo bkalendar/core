@@ -1,29 +1,19 @@
 {
-    "compilerOptions": {
-        "moduleResolution": "node",
-        "module": "es2020",
-        "lib": ["es2021", "DOM"],
-        "target": "es2020",
-        "importsNotUsedAsValues": "error",
-        "preserveValueImports": true,
-        "isolatedModules": true,
-        "resolveJsonModule": true,
-        "sourceMap": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true,
-        "baseUrl": ".",
-        "allowJs": true,
-        "checkJs": true,
-        "paths": {
-            "$lib": ["src/lib"],
-            "$lib/*": ["src/lib/*"]
-        }
-    },
-    "include": [
-        "src/**/*.d.ts",
-        "src/**/*.js",
-        "src/**/*.ts",
-        "src/**/*.svelte"
-    ]
+	"compilerOptions": {
+		"outDir": "dist",
+		"declaration": true,
+		"moduleResolution": "node",
+		"module": "es2020",
+		"lib": ["es2021"],
+		"target": "es2020",
+		"importsNotUsedAsValues": "error",
+		"exactOptionalPropertyTypes": true,
+		"isolatedModules": true,
+		"resolveJsonModule": true,
+		"sourceMap": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true
+	},
+	"include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"]
 }
