@@ -1,5 +1,5 @@
 import type { Timerow, Timetable } from "../parser";
-import { calcBase } from "../transformer/calcBase.js";
+import { calcBase } from "./calcBase.js";
 import { bestEntry, groupBy } from "../utils";
 
 export function resolve(timetables: Timetable[]) {

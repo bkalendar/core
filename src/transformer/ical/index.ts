@@ -1,7 +1,7 @@
 import { addMinutes, format } from "date-fns";
-import type { Semester, Timerow, Timetable } from "../../parser";
-import { transformTime } from "../time.js";
 import { nanoid } from "nanoid";
+import type { Timetable } from "../../parser";
+import { transformMachine } from "../index.js";
 
 const TIME_ZONE = "Asia/Ho_Chi_Minh";
 
@@ -9,7 +9,10 @@ const TIME_ZONE = "Asia/Ho_Chi_Minh";
  * transform calendar into ical format
  * @returns rfc5545 compilant ical calendar
  */
-export function transform({ timerows, semester }: Timetable): string {
+export function transform(timetable: Timetable): string {
+	// transform into machine-readable
+	let { timerows } = transformMachine(timetable);
+
 	let arr = [
 		"BEGIN:VCALENDAR",
 		"PRODID:-//bkalendar//BKalendar//VI",
@@ -30,18 +33,16 @@ export function transform({ timerows, semester }: Timetable): string {
 	];
 
 	for (const timerow of timerows) {
-		const transformed = transformTimerow(timerow, semester);
+		const transformed = transformTimerow(timerow);
 		if (transformed) arr.push(transformed);
 	}
 
 	arr.push("END:VCALENDAR");
 	return arr.join("\r\n");
 
-	function transformTimerow(timerow: Timerow, semester: Semester) {
-		const transformed = transformTime(timerow.time, semester);
-		if (transformed === null) return null;
-
-		const { start, end, until, exceptions } = transformed;
+	function transformTimerow(timerow: typeof timerows[number]) {
+		if (!timerow.time) return null;
+		const { start, end, until, exceptions } = timerow.time;
 		// if only one week span, no need for rrule
 		const recurrence = +start == +until ? [] : rrule(until, exceptions);
 

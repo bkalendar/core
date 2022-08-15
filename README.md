@@ -97,6 +97,6 @@ implemented two:
 
 If you want to implement another format, take a look at:
 
--   `src/transformer/calcBase.ts` for calculating the real `Date` of the `base`.
--   `src/transformer/time.ts` for a helper to calculate the real `Date` of `start`, `end`, `until`,
-    `exceptions`.
+-   `src/resolver/calcBase.ts` for calculating the real `Date` of the `base`.
+-   `src/transformer/machine/time.ts` for a helper to calculate the real `Date` of `start`, `end`,
+    `until`, `exceptions`.

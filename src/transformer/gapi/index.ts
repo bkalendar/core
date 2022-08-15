@@ -1,19 +1,18 @@
 import { formatISO } from "date-fns";
 import type { Timetable } from "../../parser";
 import { rrule } from "../ical";
-import { transformTime } from "../time.js";
+import { transformMachine } from "../index.js";
 
 type EventInput = gapi.client.calendar.EventInput;
 
-export const TIME_ZONE = "Asia/Ho_Chi_Minh";
+const TIME_ZONE = "Asia/Ho_Chi_Minh";
 
-export function transform({ timerows, semester }: Timetable): EventInput[] {
+export function transform(timetable: Timetable): EventInput[] {
+	let { timerows } = transformMachine(timetable);
 	const events = [];
 	for (const timerow of timerows) {
-		const transformed = transformTime(timerow.time, semester);
-		if (transformed === null) continue;
-
-		const { start, end, until, exceptions } = transformed;
+		if (!timerow.time) continue;
+		const { start, end, until, exceptions } = timerow.time;
 		const recurrence = rrule(until, exceptions);
 
 		const event: EventInput = {
