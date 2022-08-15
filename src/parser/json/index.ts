@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { renameKeys } from "../../utils";
-import { semesterSchema } from "./semester";
-import { timerowSchema } from "./timerow";
+import { semesterSchema } from "./semester.js";
+import { timerowSchema } from "./timerow.js";
 
 const schema = z.array(
 	z

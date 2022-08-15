@@ -1,7 +1,7 @@
 import { formatISO } from "date-fns";
-import type { Timetable } from "../../parser/json";
+import type { Timetable } from "../../parser";
 import { rrule } from "../ical";
-import { transformTime } from "../time";
+import { transformTime } from "../time.js";
 
 type EventInput = gapi.client.calendar.EventInput;
 

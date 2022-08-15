@@ -1,5 +1,5 @@
 import type { Timetable } from "..";
-import { parseTimerow } from "./timerow";
+import { parseTimerow } from "./timerow.js";
 
 const regex =
 	/Học kỳ (?<semester>\d) Năm học (?<yearFrom>\d+) - (?<yearTo>\d+)\n[^\n]*\n[^\n]*\n(?<entries>(?:[^](?!Tổng số tín chỉ đăng ký))*)/g;

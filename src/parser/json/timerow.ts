@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { groupKeys, renameKeys } from "../../utils";
-import { timeSchema } from "./time";
-import { weeksSchema } from "./weeks";
+import { timeSchema } from "./time.js";
+import { weeksSchema } from "./weeks.js";
 
 export const timerowSchema = makeSchema();
 

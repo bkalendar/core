@@ -1,6 +1,5 @@
 import { addWeeks, startOfWeek, subWeeks } from "date-fns";
-import type { Semester } from "../parser/json/semester";
-import type { Weeks } from "../parser/json/weeks";
+import type { Semester, Weeks } from "../parser";
 
 export function calcBase(weeks: Weeks, semester: Semester): Date {
 	// case 1: has a new year break, hence it span 2 years

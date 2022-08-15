@@ -1,6 +1,6 @@
 import { addMinutes, format } from "date-fns";
 import type { Semester, Timerow, Timetable } from "../../parser";
-import { transformTime } from "../time";
+import { transformTime } from "../time.js";
 import { nanoid } from "nanoid";
 
 const TIME_ZONE = "Asia/Ho_Chi_Minh";
