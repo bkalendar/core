@@ -1,5 +1,5 @@
 import { add } from "date-fns";
-import type { Semester, Timerow } from "../../parser";
+import type { Semester, Timerow } from "../../parser/index.js";
 import { calcBase } from "../../refine/calcBase.js";
 
 /**

@@ -1,3 +1,3 @@
-export { transform as transformGAPI } from "./gapi";
-export { transform as transformICal } from "./ical";
-export { transform as transformMachine } from "./machine";
+export { transform as transformGAPI } from "./gapi/index.js";
+export { transform as transformICal } from "./ical/index.js";
+export { transform as transformMachine } from "./machine/index.js";

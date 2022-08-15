@@ -1,6 +1,6 @@
 import { addMinutes, format } from "date-fns";
 import { nanoid } from "nanoid";
-import type { Timetable } from "../../parser";
+import type { Timetable } from "../../parser/index.js";
 import { transformMachine } from "../index.js";
 
 const TIME_ZONE = "Asia/Ho_Chi_Minh";

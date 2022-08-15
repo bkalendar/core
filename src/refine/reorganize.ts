@@ -1,6 +1,6 @@
-import type { Timerow, Timetable } from "../parser";
+import type { Timerow, Timetable } from "../parser/index.js";
 import { calcBase } from "./calcBase.js";
-import { bestEntry, groupBy } from "../utils";
+import { bestEntry, groupBy } from "../utils/index.js";
 
 /**
  * reorganize pushed back classes into its correct timetables

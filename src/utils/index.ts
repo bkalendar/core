@@ -1,4 +1,4 @@
-export { bestEntry } from "./bestEntry";
-export { groupBy } from "./groupBy";
-export { groupKeys } from "./groupKeys";
-export { renameKeys } from "./renameKeys";
+export { bestEntry } from "./bestEntry.js";
+export { groupBy } from "./groupBy.js";
+export { groupKeys } from "./groupKeys.js";
+export { renameKeys } from "./renameKeys.js";

@@ -1,4 +1,4 @@
-import type { Timetable } from "..";
+import type { Timetable } from "../index.js";
 import { parseTimerow } from "./timerow.js";
 
 const regex =

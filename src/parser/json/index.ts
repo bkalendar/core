@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { renameKeys } from "../../utils";
+import { renameKeys } from "../../utils/index.js";
 import { semesterSchema } from "./semester.js";
 import { timerowSchema } from "./timerow.js";
 

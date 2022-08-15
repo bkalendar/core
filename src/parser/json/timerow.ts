@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { groupKeys, renameKeys } from "../../utils";
+import { groupKeys, renameKeys } from "../../utils/index.js";
 import { timeSchema } from "./time.js";
 import { weeksSchema } from "./weeks.js";
 
