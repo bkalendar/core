@@ -1,6 +1,6 @@
 import { add } from "date-fns";
 import type { Semester, Timerow } from "../../parser";
-import { calcBase } from "../../resolver/calcBase.js";
+import { calcBase } from "../../refine/calcBase.js";
 
 /**
  * transform human readable datetime into machine readable datetime

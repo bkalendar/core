@@ -2,7 +2,12 @@ import type { Timerow, Timetable } from "../parser";
 import { calcBase } from "./calcBase.js";
 import { bestEntry, groupBy } from "../utils";
 
-export function resolve(timetables: Timetable[]) {
+/**
+ * reorganize pushed back classes into its correct timetables
+ *
+ * this function mutates the timetables in place
+ */
+export function reorganize(timetables: Timetable[]) {
 	// sort timetables by ascending semester.
 	// we do this to push all unresolved timerows into newer timetable
 	// because unresolved timerows can't reference old timetable.
@@ -54,4 +59,6 @@ export function resolve(timetables: Timetable[]) {
 	if (leftovers.length != 0) {
 		console.error("unresolved timerows", leftovers);
 	}
+
+	return timetables;
 }
