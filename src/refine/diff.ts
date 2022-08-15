@@ -86,8 +86,8 @@ export function diff<I, L>(
 					if (same(srcRow, dstRow)) {
 						delete srcRows[k];
 						hasSame = true;
-                        // the loop could ended early here, but there might be duplicated srcRows
-                        // so it sets a flag and continues
+						// the loop could ended early here, but there might be duplicated srcRows
+						// so it sets a flag and continues
 					}
 				}
 				if (hasSame) continue outer;

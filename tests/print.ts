@@ -19,7 +19,7 @@ test("smoke", () => {
 	reorganize(timetables);
 	let src = transformMachine(timetables[0]);
 
-	console.log(dst, src)
+	console.log(dst, src);
 
 	console.log(
 		diff(src, dst, (s, d) => {
