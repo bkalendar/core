@@ -5,6 +5,12 @@
 	"files": [
 		"dist"
 	],
+	"type": "module",
+	"exports": [
+		"./dist/parser/index.js",
+		"./dist/refine/index.js",
+		"./dist/transformer/index.js"
+	],
 	"scripts": {
 		"build": "tsc -p .",
 		"test": "uvu -r tsm tests",
