@@ -5,7 +5,17 @@ import { weeksSchema } from "./weeks.js";
 
 export const timerowSchema = makeSchema();
 
-export type Timerow = z.infer<typeof timerowSchema>;
+type RawTimerow = z.infer<typeof timerowSchema>;
+
+export interface Timerow<
+	T = RawTimerow["time"],
+	I = RawTimerow["info"],
+	L = RawTimerow["location"]
+> {
+	time: T;
+	info: I;
+	location: L;
+}
 
 function makeSchema() {
 	const schema = z
