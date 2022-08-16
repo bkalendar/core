@@ -6,11 +6,11 @@
 		"dist"
 	],
 	"type": "module",
-	"exports": [
-		"./dist/parser/index.js",
-		"./dist/refine/index.js",
-		"./dist/transformer/index.js"
-	],
+	"exports": {
+		"./parser": "./dist/parser/index.js",
+		"./refine": "./dist/refine/index.js",
+		"./transformer": "./dist/transformer/index.js"
+	},
 	"scripts": {
 		"build": "tsc -p .",
 		"test": "uvu -r tsm tests",
