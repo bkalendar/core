@@ -7,12 +7,21 @@
 	],
 	"type": "module",
 	"exports": {
-		"./parser": "./dist/parser/index.js",
-		"./refine": "./dist/refine/index.js",
-		"./transformer": "./dist/transformer/index.js"
+		"./parser": {
+			"import": "./dist/parser/index.js",
+			"types": "./dist/parser/index.d.ts"
+		},
+		"./refine": {
+			"import": "./dist/refine/index.js",
+			"types": "./dist/refine/index.d.ts"
+		},
+		"./transformer": {
+			"import": "./dist/transformer/index.js",
+			"types": "./dist/transformer/index.d.ts"
+		}
 	},
 	"scripts": {
-		"build": "tsc -p .",
+		"build": "rm -rf dist && tsc -p .",
 		"test": "uvu -r tsm tests",
 		"format": "prettier . --write"
 	},
