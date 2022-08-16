@@ -6,7 +6,12 @@
 		"dist"
 	],
 	"type": "module",
+	"module": "./dist/index.js",
 	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		},
 		"./parser": {
 			"import": "./dist/parser/index.js",
 			"types": "./dist/parser/index.d.ts"
