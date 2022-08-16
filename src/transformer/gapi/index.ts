@@ -1,14 +1,12 @@
 import { formatISO } from "date-fns";
-import type { Timetable } from "../../parser/index.js";
 import { rrule } from "../ical/index.js";
-import { transformMachine } from "../index.js";
+import type { MachineTimetable } from "../index.js";
 
 type EventInput = gapi.client.calendar.EventInput;
 
 const TIME_ZONE = "Asia/Ho_Chi_Minh";
 
-export function transform(timetable: Timetable): EventInput[] {
-	let { timerows } = transformMachine(timetable);
+export function transform({ timerows }: MachineTimetable): EventInput[] {
 	const events = [];
 	for (const timerow of timerows) {
 		if (!timerow.time) continue;

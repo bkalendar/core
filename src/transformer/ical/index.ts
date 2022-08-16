@@ -1,7 +1,6 @@
 import { addMinutes, format } from "date-fns";
 import { nanoid } from "nanoid";
-import type { Timetable } from "../../parser/index.js";
-import { transformMachine } from "../index.js";
+import type { MachineTimetable } from "../index.js";
 
 const TIME_ZONE = "Asia/Ho_Chi_Minh";
 
@@ -9,10 +8,7 @@ const TIME_ZONE = "Asia/Ho_Chi_Minh";
  * transform calendar into ical format
  * @returns rfc5545 compilant ical calendar
  */
-export function transform(timetable: Timetable): string {
-	// transform into machine-readable
-	let { timerows } = transformMachine(timetable);
-
+export function transform({ timerows }: MachineTimetable): string {
 	let arr = [
 		"BEGIN:VCALENDAR",
 		"PRODID:-//bkalendar//BKalendar//VI",
