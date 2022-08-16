@@ -7,26 +7,23 @@
 		"src"
 	],
 	"type": "module",
-	"main": "./dist/index.js",
-	"module": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"exports": {
-		"./package.json": "./package.json",
 		".": {
-			"import": "./dist/index.js",
-			"types": "./dist/index.d.ts"
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
 		},
 		"./parser": {
-			"import": "./dist/parser/index.js",
-			"types": "./dist/parser/index.d.ts"
+			"types": "./dist/parser/index.d.ts",
+			"import": "./dist/parser/index.js"
 		},
 		"./refine": {
-			"import": "./dist/refine/index.js",
-			"types": "./dist/refine/index.d.ts"
+			"types": "./dist/refine/index.d.ts",
+			"import": "./dist/refine/index.js"
 		},
 		"./transformer": {
-			"import": "./dist/transformer/index.js",
-			"types": "./dist/transformer/index.d.ts"
+			"types": "./dist/transformer/index.d.ts",
+			"import": "./dist/transformer/index.js"
 		}
 	},
 	"scripts": {
