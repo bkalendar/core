@@ -12,18 +12,6 @@
 		".": {
 			"types": "./dist/index.d.ts",
 			"import": "./dist/index.js"
-		},
-		"./parser": {
-			"types": "./dist/parser/index.d.ts",
-			"import": "./dist/parser/index.js"
-		},
-		"./refine": {
-			"types": "./dist/refine/index.d.ts",
-			"import": "./dist/refine/index.js"
-		},
-		"./transformer": {
-			"types": "./dist/transformer/index.d.ts",
-			"import": "./dist/transformer/index.js"
 		}
 	},
 	"scripts": {
