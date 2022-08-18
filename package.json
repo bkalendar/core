@@ -17,7 +17,8 @@
 	"scripts": {
 		"build": "rm -rf dist && tsc -p .",
 		"test": "uvu -r tsm tests",
-		"format": "prettier . --write"
+		"format": "prettier . --write",
+		"prepublish": "pnpm build"
 	},
 	"devDependencies": {
 		"@types/node": "^18.0.6",
