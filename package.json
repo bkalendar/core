@@ -1,6 +1,6 @@
 {
 	"name": "@bkalendar/core",
-	"version": "0.6.4",
+	"version": "0.7.0",
 	"repository": "git://github.com/bkalendar/core.git",
 	"files": [
 		"dist",
