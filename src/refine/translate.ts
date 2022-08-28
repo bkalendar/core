@@ -1,6 +1,5 @@
 import type { Timerow, Timetable } from "../parser/index.js";
 import { z } from "zod";
-import fetch from "node-fetch";
 
 type GenericTimerow<T, L> = Timerow<T, { course: string; name: string }, L>;
 type GenericTimetable<T, L> = Timetable<GenericTimerow<T, L>>;
@@ -24,6 +23,13 @@ const dataSchema = z
 	.transform(({ course, monhoc }) => ({ vi: monhoc, en: course }));
 
 async function getData(course: string): Promise<{ vi: string; en: string }> {
+	// polyfill fetch
+	// @ts-ignore
+	let fetch: typeof import("node-fetch").default = globalThis?.fetch;
+	if (!fetch && process?.versions?.node) {
+		fetch = (await import("node-fetch")).default;
+	}
+
 	const res = await fetch(
 		`https://github.com/bkalendar/courses/blob/master/courses/${course}.json`
 	);
