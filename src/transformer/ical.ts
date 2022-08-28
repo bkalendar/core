@@ -9,12 +9,7 @@ const TIME_ZONE = "Asia/Ho_Chi_Minh";
  * transform calendar into ical format
  * @returns rfc5545 compilant ical calendar
  */
-export function transform(
-	{ timerows }: MachineTimetable,
-	options?: { infoTransformer?: typeof transformInfoBasic }
-): string {
-	let infoTransformer = options?.infoTransformer ?? transformInfoBasic;
-
+export function transform({ timerows }: MachineTimetable): string {
 	let arr = [
 		"BEGIN:VCALENDAR",
 		"PRODID:-//bkalendar//BKalendar//VI",
@@ -48,7 +43,7 @@ export function transform(
 		// if only one week span, no need for rrule
 		const recurrence = +start == +until ? [] : rrule(until, exceptions);
 
-		const { summary, description } = infoTransformer(timerow.info);
+		const { summary, description } = transformInfoBasic(timerow.info);
 
 		return [
 			"BEGIN:VEVENT",

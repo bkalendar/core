@@ -7,19 +7,14 @@ type EventInput = gapi.client.calendar.EventInput;
 
 const TIME_ZONE = "Asia/Ho_Chi_Minh";
 
-export function transform(
-	{ timerows }: MachineTimetable,
-	options?: { infoTransformer?: typeof transformInfoBasic }
-): EventInput[] {
-	let infoTransformer = options?.infoTransformer ?? transformInfoBasic;
-
+export function transform({ timerows }: MachineTimetable): EventInput[] {
 	const events = [];
 	for (const timerow of timerows) {
 		if (!timerow.time) continue;
 		const { start, end, until, exceptions } = timerow.time;
 		const recurrence = rrule(until, exceptions);
 
-		const { summary, description } = infoTransformer(timerow.info);
+		const { summary, description } = transformInfoBasic(timerow.info);
 
 		const event: EventInput = {
 			summary,

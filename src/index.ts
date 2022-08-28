@@ -1,7 +1,6 @@
 import { parseClipboard, parseJson, Timetable } from "./parser/index.js";
 import { reorganize } from "./refine/index.js";
 import { MachineTimetable, transformMachine } from "./transformer/index.js";
-export type { MachineTimetable };
 
 export function parseMachine(raw: string | object): MachineTimetable[] {
 	let timetables: Timetable[];
