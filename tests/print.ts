@@ -14,18 +14,20 @@ test("smoke", () => {
 	reorganize(timetables);
 	let dst = transformMachine(timetables[0]);
 
-	raw = fs.readFileSync("tests/fixture copy.txt", "utf8");
-	timetables = parse(raw);
-	reorganize(timetables);
-	let src = transformMachine(timetables[0]);
+	console.log(transform(dst));
 
-	console.log(dst, src);
+	// raw = fs.readFileSync("tests/fixture copy.txt", "utf8");
+	// timetables = parse(raw);
+	// reorganize(timetables);
+	// let src = transformMachine(timetables[0]);
 
-	console.log(
-		diff(src, dst, (s, d) => {
-			return s.location.room == d.location.room && s.info.course == d.info.course;
-		})
-	);
+	// console.log(dst, src);
+
+	// console.log(
+	// 	diff(src, dst, (s, d) => {
+	// 		return s.location.room == d.location.room && s.info.course == d.info.course;
+	// 	})
+	// );
 });
 
 test.run();

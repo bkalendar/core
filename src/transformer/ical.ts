@@ -1,6 +1,7 @@
 import { addMinutes, format } from "date-fns";
 import { nanoid } from "nanoid";
-import type { MachineTimetable } from "../index.js";
+import type { MachineTimetable } from "./index.js";
+import { transformInfoBasic } from "./info.js";
 
 const TIME_ZONE = "Asia/Ho_Chi_Minh";
 
@@ -8,7 +9,12 @@ const TIME_ZONE = "Asia/Ho_Chi_Minh";
  * transform calendar into ical format
  * @returns rfc5545 compilant ical calendar
  */
-export function transform({ timerows }: MachineTimetable): string {
+export function transform(
+	{ timerows }: MachineTimetable,
+	options?: { infoTransformer?: typeof transformInfoBasic }
+): string {
+	let infoTransformer = options?.infoTransformer ?? transformInfoBasic;
+
 	let arr = [
 		"BEGIN:VCALENDAR",
 		"PRODID:-//bkalendar//BKalendar//VI",
@@ -42,13 +48,15 @@ export function transform({ timerows }: MachineTimetable): string {
 		// if only one week span, no need for rrule
 		const recurrence = +start == +until ? [] : rrule(until, exceptions);
 
+		const { summary, description } = infoTransformer(timerow.info);
+
 		return [
 			"BEGIN:VEVENT",
 			`UID:${nanoid()}@bkalendar`,
 			`DTSTAMP:${icalUTCDate(new Date())}`,
 			// info
-			`SUMMARY:${timerow.info.course} - ${timerow.info.name}`,
-			`DESCRIPTION:${JSON.stringify(timerow.info)}`,
+			`SUMMARY:${summary}`,
+			`DESCRIPTION:${description}`,
 			`LOCATION:${timerow.location.room}`,
 			// time
 			`DTSTART;TZID=${TIME_ZONE}:${icalFloatingDate(start)}`,
