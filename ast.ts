@@ -4,6 +4,7 @@ export type Timetable = {
 };
 
 export type Timerow = {
+	name: string;
 	weekday: number;
 	startHm: [number, number];
 	endHm: [number, number];

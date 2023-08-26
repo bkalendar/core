@@ -53,6 +53,7 @@ function parseFromHeader(lines: string[], i: number): Timetable {
 		const weeks = cols[10].slice(0, -1).split("|").map((s) => s == "--" ? null : Number(s));
 
 		const row = {
+			name: cols[1],
 			weekday,
 			startHm,
 			endHm,
@@ -61,9 +62,8 @@ function parseFromHeader(lines: string[], i: number): Timetable {
 				weeks,
 			},
 			location: cols[8],
-			"extras": {
+			extras: {
 				"mã môn học": cols[0],
-				"tên môn học": cols[1],
 				"tín chỉ": cols[2],
 				"tín chỉ học phí": cols[3],
 				"nhóm tổ": cols[4],
