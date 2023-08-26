@@ -1,5 +1,5 @@
 import { addWeeks, startOfWeek, subWeeks } from "date-fns";
-import type { Semester, Weeks } from "../parser/index.js";
+import type { Semester, Weeks } from "../parser/index.ts";
 
 export function calcBase(weeks: Weeks, { semester, year }: Semester): Date {
 	// case 1: has a new year break, hence it span 2 years
@@ -8,19 +8,13 @@ export function calcBase(weeks: Weeks, { semester, year }: Semester): Date {
 		// offset new year into base date
 		const base = startOfWeek(subWeeks(newYear, weeks.newYear), { weekStartsOn: 1 });
 		return base;
-	}
-
-	// case 2: no new year break, semester 1 always starts early
+	} // case 2: no new year break, semester 1 always starts early
 	else if (semester == 1) {
 		return baseStarts("early");
-	}
-
-	// case 3: no new year break, semester 2 MAY start early
+	} // case 3: no new year break, semester 2 MAY start early
 	else if (semester == 2) {
 		return baseStarts(weeks.base! >= 26 ? "early" : "late");
-	}
-
-	// case 4: no new year break, semester 3 always starts late
+	} // case 4: no new year break, semester 3 always starts late
 	else if (semester == 3) {
 		return baseStarts("late");
 	}

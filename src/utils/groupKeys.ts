@@ -1,9 +1,9 @@
 export function groupKeys<
 	Obj extends { [K: PropertyKey]: unknown },
-	Dict extends { [K: PropertyKey]: (keyof Obj)[] }
+	Dict extends { [K: PropertyKey]: (keyof Obj)[] },
 >(
 	dictionary: Dict,
-	obj: Obj
+	obj: Obj,
 ): {
 	[K in keyof Dict]: {
 		[U in keyof Obj as U extends Dict[K][number] ? U : never]: Obj[U];

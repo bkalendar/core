@@ -9,7 +9,7 @@ function makeSchema() {
 		z.object({
 			year: z.number(),
 			semester: z.number(),
-		})
+		}),
 	);
 	return schema;
 

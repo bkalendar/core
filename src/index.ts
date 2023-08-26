@@ -1,6 +1,6 @@
-import { parseClipboard, parseJson, Timetable } from "./parser/index.js";
-import { reorganize } from "./refine/index.js";
-import { MachineTimetable, transformMachine } from "./transformer/index.js";
+import { parseClipboard, parseJson, Timetable } from "./parser/index.ts";
+import { reorganize } from "./refine/index.ts";
+import { MachineTimetable, transformMachine } from "./transformer/index.ts";
 
 export function parseMachine(raw: string | object): MachineTimetable[] {
 	let timetables: Timetable[];
@@ -17,6 +17,6 @@ export function parseMachine(raw: string | object): MachineTimetable[] {
 	return timetables.map(transformMachine);
 }
 
-export * from "./parser/index.js";
-export * from "./refine/index.js";
-export * from "./transformer/index.js";
+export * from "./parser/index.ts";
+export * from "./refine/index.ts";
+export * from "./transformer/index.ts";

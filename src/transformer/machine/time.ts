@@ -1,6 +1,6 @@
 import { add } from "date-fns";
-import type { Semester, Timerow } from "../../parser/index.js";
-import { calcBase } from "../../refine/calcBase.js";
+import type { Semester, Timerow } from "../../parser/index.ts";
+import { calcBase } from "../../refine/calcBase.ts";
 
 /**
  * transform human readable datetime into machine readable datetime
@@ -10,7 +10,7 @@ import { calcBase } from "../../refine/calcBase.js";
  */
 export function transformTime(
 	time: Timerow["time"],
-	semester: Semester
+	semester: Semester,
 ): { start: Date; end: Date; until: Date; exceptions: Date[] } | null {
 	// some timerow doesn't have weeks or weekday
 	// in this case we can do nothing about it

@@ -1,6 +1,6 @@
 import { addWeeks } from "date-fns";
-import type { Timerow, Timetable } from "../parser/index.js";
-import type { MachineTimerow } from "../transformer/machine/index.js";
+import type { Timerow, Timetable } from "../parser/index.ts";
+import type { MachineTimerow } from "../transformer/machine/index.ts";
 
 type GenericMachineTimerow<I, L> = Timerow<MachineTimerow["time"], I, L>;
 type GenericMachineTimetable<I, L> = Timetable<GenericMachineTimerow<I, L>>;
@@ -15,7 +15,7 @@ interface Criteria<I, L> {
 export function diff<I, L>(
 	src: GenericMachineTimetable<I, L>,
 	dst: GenericMachineTimetable<I, L>,
-	same: (src: Criteria<I, L>, dst: Criteria<I, L>) => boolean
+	same: (src: Criteria<I, L>, dst: Criteria<I, L>) => boolean,
 ): { added: DiffEntry<I, L>[]; removed: DiffEntry<I, L>[] } {
 	let added: DiffEntry<I, L>[] = [];
 	let removed: DiffEntry<I, L>[] = [];
@@ -70,7 +70,8 @@ export function diff<I, L>(
 
 		let duration = +time.end - +time.start;
 		let exCount = 0;
-		outer: for (let date = time.start; +date <= +time.until; date = addWeeks(date, 1)) {
+		outer:
+		for (let date = time.start; +date <= +time.until; date = addWeeks(date, 1)) {
 			if (+date == +time.exceptions[exCount]) {
 				exCount += 1;
 				continue;

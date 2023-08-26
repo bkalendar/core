@@ -1,15 +1,10 @@
-/// <reference types="node" />
+import { parse } from "../src/parser/clipboard/index.ts";
+import { diff, reorganize } from "../src/refine/index.ts";
+import { transform } from "../src/transformer/ical.ts";
+import { transformMachine } from "../src/transformer/index.ts";
 
-import { test } from "uvu";
-import { parse } from "../src/parser/clipboard";
-import fixture from "./fixture.json";
-import { diff, reorganize } from "../src/refine";
-import { transform } from "../src/transformer/ical";
-import fs from "fs";
-import { transformMachine } from "../src/transformer/index.js";
-
-test("smoke", () => {
-	let raw = fs.readFileSync("tests/fixture.txt", "utf8");
+Deno.test("smoke", async () => {
+	let raw = await Deno.readTextFile("tests/fixture.txt");
 	let timetables = parse(raw);
 	reorganize(timetables);
 	let dst = transformMachine(timetables[0]);
@@ -29,5 +24,3 @@ test("smoke", () => {
 	// 	})
 	// );
 });
-
-test.run();

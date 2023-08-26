@@ -1,2 +1,2 @@
-export { reorganize } from "./reorganize.js";
-export { diff } from "./diff.js";
+export { reorganize } from "./reorganize.ts";
+export { diff } from "./diff.ts";

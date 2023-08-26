@@ -15,7 +15,7 @@ export const timeSchema = z.preprocess(
 	z.object({
 		hour: z.number(),
 		minute: z.number(),
-	})
+	}),
 );
 
 export type Time = z.infer<typeof timeSchema>;

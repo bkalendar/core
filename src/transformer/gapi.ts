@@ -1,7 +1,8 @@
 import { formatISO } from "date-fns";
-import { rrule } from "./ical.js";
-import type { MachineTimetable } from "./index.js";
-import { transformInfoBasic } from "./info.js";
+import { rrule } from "./ical.ts";
+import type { MachineTimetable } from "./index.ts";
+import { transformInfoBasic } from "./info.ts";
+import gapi from "gapi.calendar";
 
 type EventInput = gapi.client.calendar.EventInput;
 

@@ -1,6 +1,6 @@
-export function renameKeys<Obj, Dict extends { [K in PropertyKey]: string }>(
+export function renameKeys<Obj extends object, Dict extends { [K in PropertyKey]: string }>(
 	dictionary: Dict,
-	obj: Obj
+	obj: Obj,
 ): { [K in keyof Obj as K extends keyof Dict ? Dict[K] : K]: Obj[K] } {
 	for (const key in dictionary) {
 		const newKey = dictionary[key];

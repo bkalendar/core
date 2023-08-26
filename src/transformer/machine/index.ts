@@ -1,13 +1,15 @@
-import type { Timerow, Timetable } from "../../parser/index.js";
-import { transformTime } from "./time.js";
+import type { Timerow, Timetable } from "../../parser/index.ts";
+import { transformTime } from "./time.ts";
 
-export interface MachineTimerow
-	extends Timerow<{
-		start: Date;
-		end: Date;
-		until: Date;
-		exceptions: Date[];
-	} | null> {}
+export interface MachineTimerow extends
+	Timerow<
+		{
+			start: Date;
+			end: Date;
+			until: Date;
+			exceptions: Date[];
+		} | null
+	> {}
 
 export type MachineTimetable = Timetable<MachineTimerow>;
 

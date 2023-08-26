@@ -15,7 +15,7 @@ function makeSchema() {
 				until: z.number(),
 				exceptions: z.array(z.number()),
 			})
-			.nullable()
+			.nullable(),
 	);
 
 	return schema;

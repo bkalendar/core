@@ -1,4 +1,4 @@
-import { timerowSchema } from "../json/timerow.js";
+import { timerowSchema } from "../json/timerow.ts";
 
 export function parseTimerow(raw: string) {
 	// transform raw text into json object from ajax call

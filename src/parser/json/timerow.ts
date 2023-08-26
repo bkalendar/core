@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { groupKeys, renameKeys } from "../../utils/index.js";
-import { timeSchema } from "./time.js";
-import { weeksSchema } from "./weeks.js";
+import { groupKeys, renameKeys } from "../../utils/index.ts";
+import { timeSchema } from "./time.ts";
+import { weeksSchema } from "./weeks.ts";
 
 export const timerowSchema = makeSchema();
 
@@ -10,7 +10,7 @@ type RawTimerow = z.infer<typeof timerowSchema>;
 export interface Timerow<
 	T = RawTimerow["time"],
 	I = RawTimerow["info"],
-	L = RawTimerow["location"]
+	L = RawTimerow["location"],
 > {
 	time: T;
 	info: I;
@@ -47,7 +47,7 @@ function makeSchema() {
 					macoso: "branch" as const,
 					tuan_hoc: "weeks" as const,
 				},
-				timerow
+				timerow,
 			)
 		)
 		.transform((timeRow) =>
@@ -68,7 +68,7 @@ function makeSchema() {
 					],
 					location: ["room" as const, "branch" as const],
 				},
-				timeRow
+				timeRow,
 			)
 		);
 

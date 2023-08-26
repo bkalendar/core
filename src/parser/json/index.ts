@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { renameKeys } from "../../utils/index.js";
-import { semesterSchema } from "./semester.js";
-import { timerowSchema } from "./timerow.js";
+import { renameKeys } from "../../utils/index.ts";
+import { semesterSchema } from "./semester.ts";
+import { timerowSchema } from "./timerow.ts";
 
 const schema = z.array(
 	z
@@ -11,7 +11,7 @@ const schema = z.array(
 		})
 		.transform((timetable) =>
 			renameKeys({ tkb: "timerows" as const, hk_nh: "semester" as const }, timetable)
-		)
+		),
 );
 
 export function parse(json: unknown): Timetable[] {

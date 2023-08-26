@@ -1,7 +1,7 @@
 import { addMinutes, format } from "date-fns";
 import { nanoid } from "nanoid";
-import type { MachineTimetable } from "./index.js";
-import { transformInfoBasic } from "./info.js";
+import type { MachineTimetable } from "./index.ts";
+import { transformInfoBasic } from "./info.ts";
 
 const TIME_ZONE = "Asia/Ho_Chi_Minh";
 

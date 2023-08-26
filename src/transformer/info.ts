@@ -1,4 +1,4 @@
-import type { Timerow } from "../parser/index.js";
+import type { Timerow } from "../parser/index.ts";
 
 export type InfoTransformer = (info: Timerow["info"]) => { summary: string; description: string };
 

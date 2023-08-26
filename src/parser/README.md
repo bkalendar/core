@@ -23,9 +23,9 @@ format above, so that we can reuse the JSON validator and parser.
 
 When working with weeks, I made up some words:
 
--   **`base`** is the week with index 0. This is used to correctly reorganize the timerow.
--   **`newYear`** is the index of week 1. This is used to easily determine the correct year of the
-    week.
+- **`base`** is the week with index 0. This is used to correctly reorganize the timerow.
+- **`newYear`** is the index of week 1. This is used to easily determine the correct year of the
+  week.
 
 We always have either of the two to calculate the `Date`. The logic of parsing weeks resides in
 [weeks.ts](/src/parser/json/weeks.ts).

@@ -1,0 +1,17 @@
+{
+	"$schema": "https://deno.land/x/deno@v1.36.3/cli/schemas/config-file.v1.json",
+	"tasks": {
+		"test": "deno test -A ./tests"
+	},
+	"imports": {
+		"date-fns": "https://esm.sh/date-fns@2.30.0",
+		"nanoid": "https://esm.sh/nanoid@4.0.2",
+		"zod": "https://esm.sh/zod@3.22.2",
+		"gapi.calendar": "https://esm.sh/@types/gapi.calendar@3.0.6"
+	},
+	"fmt": {
+		"useTabs": true,
+		"lineWidth": 100,
+		"proseWrap": "always"
+	}
+}

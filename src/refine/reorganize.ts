@@ -1,6 +1,6 @@
-import type { Timerow, Timetable } from "../parser/index.js";
-import { calcBase } from "./calcBase.js";
-import { bestEntry, groupBy } from "../utils/index.js";
+import type { Timerow, Timetable } from "../parser/index.ts";
+import { calcBase } from "./calcBase.ts";
+import { bestEntry, groupBy } from "../utils/index.ts";
 
 /**
  * reorganize pushed back classes into its correct timetables
@@ -28,8 +28,7 @@ export function reorganize(timetables: Timetable[]) {
 		// standard groupBy operation
 		const votes = groupBy(
 			timetable.timerows,
-			(timerow) =>
-				timerow.time.weeks && calcBase(timerow.time.weeks, timetable.semester).getTime()
+			(timerow) => timerow.time.weeks && calcBase(timerow.time.weeks, timetable.semester).getTime(),
 		);
 
 		// store nullish entries, i.e, ones without weeks, "--|"
