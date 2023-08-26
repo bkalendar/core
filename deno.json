@@ -5,6 +5,7 @@
 	},
 	"imports": {
 		"@/": "./",
+		"std/": "https://deno.land/std@0.200.0/",
 		"gapi.calendar": "https://esm.sh/@types/gapi.calendar@3.0.6"
 	},
 	"fmt": {

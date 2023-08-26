@@ -11,6 +11,7 @@ const HEADER =
 const COLS = HEADER.split("\t").length;
 
 export function parse(src: string): Timetable {
+	src = src.trim();
 	const lines = src.split("\n");
 	for (let i = 0; i < lines.length; i++) {
 		if (lines[i] == HEADER) {
@@ -22,7 +23,7 @@ export function parse(src: string): Timetable {
 
 function parseFromHeader(lines: string[], i: number): Timetable {
 	// from the header, go back 2 lines and extract the semester
-	const matches = lines[i - 2].match(/^Học kỳ ([123]) Năm học (\d+) - (\d+)$/);
+	const matches = lines[i - 2]?.match(/^Học kỳ ([123]) Năm học (\d+) - (\d+)$/);
 	if (!matches) {
 		throw new SemesterNotFoundError(lines[i - 2]);
 	}
