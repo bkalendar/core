@@ -26,5 +26,9 @@ export type RecurrenceRule =
 	}
 	| {
 		type: "resolved";
-		mondayYmd: [number, number, number];
+		start: YearMonthDay;
+		end: YearMonthDay;
+		excludes: YearMonthDay[];
 	};
+
+export type YearMonthDay = [number, number, number];
