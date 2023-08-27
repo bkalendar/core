@@ -1,0 +1,106 @@
+export const snapshot = {};
+
+snapshot[`smoke 1`] = `
+[
+  {
+    description: "mã môn học: PE1023
+tín chỉ: --
+tín chỉ học phí: 1.5
+nhóm tổ: L262",
+    end: {
+      dateTime: "2020-11-12T10:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "CS2-NHATHIDAU-SAN1",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20210218T080000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20201021T150000,20201028T150000,20201105T150000,20201112T150000,20201119T150000",
+    ],
+    start: {
+      dateTime: "2020-11-12T08:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Võ (Vovinam, Karate, Taewondo) (học phần 1)",
+  },
+  {
+    description: "mã môn học: MT1003
+tín chỉ: 4
+tín chỉ học phí: 4
+nhóm tổ: L25",
+    end: {
+      dateTime: "2020-11-13T02:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H1-304",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20210219T000000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20201022T070000,20201029T070000,20201106T070000,20201113T070000,20201120T070000",
+    ],
+    start: {
+      dateTime: "2020-11-13T00:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Giải tích 1",
+  },
+  {
+    description: "mã môn học: PH1003
+tín chỉ: 4
+tín chỉ học phí: 4
+nhóm tổ: L24",
+    end: {
+      dateTime: "2020-11-14T08:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H1-301",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20210220T060000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20201023T130000,20201030T130000,20201107T130000,20201114T130000,20201121T130000",
+    ],
+    start: {
+      dateTime: "2020-11-14T06:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Vật lý 1",
+  },
+  {
+    description: "mã môn học: MT1004
+tín chỉ: --
+tín chỉ học phí: --
+nhóm tổ: L44",
+    end: {
+      dateTime: "2020-11-15T09:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H1-103",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20210221T080000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20201024T150000,20201101T150000,20201108T150000,20201115T150000,20201122T150000",
+    ],
+    start: {
+      dateTime: "2020-11-15T08:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "GIAI TICH 1 (BT)",
+  },
+  {
+    description: "mã môn học: PE1023
+tín chỉ: --
+tín chỉ học phí: 1.5
+nhóm tổ: L262",
+    end: {
+      dateTime: "2020-11-16T10:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "CS2-NHATHIDAU-SAN1",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20210222T080000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20201025T150000,20201102T150000,20201109T150000,20201116T150000,20201123T150000,20201130T150000",
+    ],
+    start: {
+      dateTime: "2020-11-16T08:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Võ (Vovinam, Karate, Taewondo) (học phần 1)",
+  },
+]
+`;

@@ -1,32 +1,26 @@
-import { formatISO } from "date-fns";
-import { rrule } from "./ical.ts";
-import type { MachineTimetable } from "./index.ts";
-import { transformInfoBasic } from "./info.ts";
+import { icalRrule } from "@/formatter/ical.ts";
 import gapi from "gapi.calendar";
+import { ResolvedTimetable } from "@/ast.ts";
 
 type EventInput = gapi.client.calendar.EventInput;
 
 const TIME_ZONE = "Asia/Ho_Chi_Minh";
 
-export function transform({ timerows }: MachineTimetable): EventInput[] {
+export function formatGapi(timetable: ResolvedTimetable): EventInput[] {
 	const events = [];
-	for (const timerow of timerows) {
-		if (!timerow.time) continue;
-		const { start, end, until, exceptions } = timerow.time;
-		const recurrence = rrule(until, exceptions);
-
-		const { summary, description } = transformInfoBasic(timerow.info);
+	for (const timerow of timetable.rows) {
+		const recurrence = icalRrule(timerow);
 
 		const event: EventInput = {
-			summary,
-			description,
-			location: timerow.location.room,
+			summary: timerow.name,
+			description: Object.entries(timerow.extras).map((e) => e.join(": ")).join("\n"),
+			location: timerow.location,
 			start: {
-				dateTime: formatISO(start),
+				dateTime: new Date(...timerow.recurrenceRule.start, ...timerow.startHm).toISOString(),
 				timeZone: TIME_ZONE,
 			},
 			end: {
-				dateTime: formatISO(end),
+				dateTime: new Date(...timerow.recurrenceRule.start, ...timerow.endHm).toISOString(),
 				timeZone: TIME_ZONE,
 			},
 			recurrence,
