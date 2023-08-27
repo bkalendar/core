@@ -24,5 +24,8 @@ export type RecurrenceRule =
 		end: YearMonthDay;
 		excludes: YearMonthDay[];
 	};
+export type ResolvedRecurrenceRule = RecurrenceRule & { type: "resolved" };
+export type ResolvedTimerow = Timerow & { recurrenceRule: ResolvedRecurrenceRule };
+export type ResolvedTimetable = Timetable & { rows: ResolvedTimerow[] };
 
 export type YearMonthDay = [number, number, number];

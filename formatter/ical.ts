@@ -1,16 +1,16 @@
-import { addMinutes, format } from "date-fns";
-import { nanoid } from "nanoid";
-import type { MachineTimetable } from "./index.ts";
-import { transformInfoBasic } from "./info.ts";
+import { ResolvedTimerow, ResolvedTimetable, Timerow } from "@/ast.ts";
+import { HOUR } from "std/datetime/constants.ts";
+import { format } from "std/datetime/format.ts";
 
 const TIME_ZONE = "Asia/Ho_Chi_Minh";
+const OFFSET = +7;
 
 /**
  * transform calendar into ical format
  * @returns rfc5545 compilant ical calendar
  */
-export function transform({ timerows }: MachineTimetable): string {
-	let arr = [
+export function formatIcal(timetable: ResolvedTimetable): string {
+	const arr = [
 		"BEGIN:VCALENDAR",
 		"PRODID:-//bkalendar//BKalendar//VI",
 		"VERSION:2.0",
@@ -29,37 +29,34 @@ export function transform({ timerows }: MachineTimetable): string {
 		"END:VTIMEZONE",
 	];
 
-	for (const timerow of timerows) {
-		const transformed = transformTimerow(timerow);
-		if (transformed) arr.push(transformed);
+	for (const timerow of timetable.rows) {
+		arr.push(...formatTimerow(timerow));
 	}
 
 	arr.push("END:VCALENDAR");
 	return arr.join("\r\n");
+}
 
-	function transformTimerow(timerow: typeof timerows[number]) {
-		if (!timerow.time) return null;
-		const { start, end, until, exceptions } = timerow.time;
-		// if only one week span, no need for rrule
-		const recurrence = +start == +until ? [] : rrule(until, exceptions);
-
-		const { summary, description } = transformInfoBasic(timerow.info);
-
-		return [
-			"BEGIN:VEVENT",
-			`UID:${nanoid()}@bkalendar`,
-			`DTSTAMP:${icalUTCDate(new Date())}`,
-			// info
-			`SUMMARY:${summary}`,
-			`DESCRIPTION:${description}`,
-			`LOCATION:${timerow.location.room}`,
-			// time
-			`DTSTART;TZID=${TIME_ZONE}:${icalFloatingDate(start)}`,
-			`DTEND;TZID=${TIME_ZONE}:${icalFloatingDate(end)}`,
-			...recurrence,
-			"END:VEVENT",
-		].join("\r\n");
-	}
+function formatTimerow(timerow: ResolvedTimerow) {
+	const recurrence = icalRrule(timerow);
+	return [
+		"BEGIN:VEVENT",
+		`UID:${crypto.randomUUID()}@bkalendar`,
+		`DTSTAMP:${icalUTCDate(new Date())}`,
+		// info
+		`SUMMARY:${timerow.name}`,
+		`DESCRIPTION:${Object.entries(timerow.extras).map((e) => e.join(": ")).join("\n")}`,
+		`LOCATION:${timerow.location}`,
+		// time
+		`DTSTART;TZID=${TIME_ZONE}:${
+			icalFloatingDate(new Date(...timerow.recurrenceRule.start, ...timerow.startHm))
+		}`,
+		`DTEND;TZID=${TIME_ZONE}:${
+			icalFloatingDate(new Date(...timerow.recurrenceRule.start, ...timerow.endHm))
+		}`,
+		...recurrence,
+		"END:VEVENT",
+	];
 }
 
 /**
@@ -75,19 +72,30 @@ export function icalFloatingDate(date: Date) {
  * see: https://datatracker.ietf.org/doc/html/rfc5545#section-3.3.5
  */
 export function icalUTCDate(date: Date) {
-	// see https://github.com/date-fns/date-fns/issues/1401
-	const utc = addMinutes(date, date.getTimezoneOffset());
-	return `${format(utc, "yyyyMMdd'T'HHmmss'Z'")}`;
+	date = new Date(+date - OFFSET * HOUR);
+	return `${format(date, "yyyyMMdd'T'HHmmss'Z'")}`;
 }
 
 /**
  * generate rrule with UNTIL and EXDATE rule
  */
-export function rrule(until: Date, exceptions: Date[]): string[] {
+export function icalRrule(
+	{ startHm, recurrenceRule: { start, end, excludes } }: ResolvedTimerow,
+): string[] {
+	// if only one event, no rrule needed
+	if (start[0] == end[0] && start[1] == end[1] && start[2] == end[2]) {
+		return [];
+	}
 	// UNTIL only accepts utc datetime...
-	const rrules: string[] = [`RRULE:FREQ=WEEKLY;UNTIL=${icalUTCDate(until)}`];
-	if (exceptions.length != 0) {
-		rrules.push(`EXDATE;TZID=${TIME_ZONE}:${exceptions.map(icalFloatingDate).join(",")}`);
+	const rrules: string[] = [
+		`RRULE:FREQ=WEEKLY;UNTIL=${icalUTCDate(new Date(...end, ...startHm))}`,
+	];
+	if (excludes.length != 0) {
+		rrules.push(
+			`EXDATE;TZID=${TIME_ZONE}:${
+				excludes.map((e) => icalFloatingDate(new Date(...e, ...startHm))).join(",")
+			}`,
+		);
 	}
 	return rrules;
 }

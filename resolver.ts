@@ -1,9 +1,9 @@
-import { RecurrenceRule, Timetable, YearMonthDay } from "@/ast.ts";
+import { RecurrenceRule, ResolvedTimetable, Timetable, YearMonthDay } from "@/ast.ts";
 import { DAY } from "std/datetime/constants.ts";
 import { WEEK } from "std/datetime/mod.ts";
 
-export function resolve(timetable: Timetable): Timetable {
-	const newTimetable: Timetable = {
+export function resolve(timetable: Timetable): ResolvedTimetable {
+	const newTimetable: ResolvedTimetable = {
 		semester: timetable.semester,
 		rows: [],
 	};
