@@ -19,12 +19,6 @@ export type RecurrenceRule =
 		weeks: (number | null)[];
 	}
 	| {
-		type: "based";
-		weekOfIndex0?: number;
-		indexOfWeek1?: number;
-		weeks: boolean[];
-	}
-	| {
 		type: "resolved";
 		start: YearMonthDay;
 		end: YearMonthDay;
