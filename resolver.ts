@@ -7,29 +7,45 @@ export function resolve(timetable: Timetable): Timetable {
 		semester: timetable.semester,
 		rows: [],
 	};
+	let commonMondayOfIndex0: Date | undefined;
 	for (const timerow of timetable.rows) {
 		if (timerow.recurrenceRule.type !== "raw") {
 			throw new TypeError(`expected "raw" recurrence rule, got "${timerow.recurrenceRule.type}"`);
 		}
-		if (timerow.weekday == 0 || timerow.recurrenceRule.weeks.length == 0) {
+		if (isNaN(timerow.weekday) || timerow.recurrenceRule.weeks.length == 0) {
 			continue;
 		}
 		const newTimerow = structuredClone(timerow);
 		newTimerow.recurrenceRule = resolveRecurrenceRule(
-			newTimerow.recurrenceRule,
-			newTimerow.weekday,
-			newTimetable.semester,
+			timerow.recurrenceRule,
+			timetable.semester,
+			timerow.weekday,
 		);
+		const mondayOfIndex0 = new Date(
+			+newTimerow.recurrenceRule.dateOfIndex0 - (newTimerow.weekday - 2) * DAY,
+		);
+		commonMondayOfIndex0 ??= mondayOfIndex0;
+		if (+commonMondayOfIndex0 != +mondayOfIndex0) {
+			throw new MixedSemesterError(commonMondayOfIndex0!, mondayOfIndex0);
+		}
 		newTimetable.rows.push(newTimerow);
 	}
 	return newTimetable;
+}
+
+export class MixedSemesterError extends Error {
+	constructor(public doiz1: Date, public doiz2: Date) {
+		super(
+			`Semester ambiguity: Two possible semester start dates: ${doiz1.toISOString()} and ${doiz2.toISOString()}`,
+		);
+	}
 }
 
 function resolveRecurrenceRule(
 	rrule: RecurrenceRule & { type: "raw" },
 	semester: number,
 	weekday: number,
-): RecurrenceRule & { type: "resolved" } {
+): RecurrenceRule & { type: "resolved"; dateOfIndex0: Date } {
 	const { indexOfWeek1, weekOfIndex0 } = findIndex0AndWeek1(rrule.weeks);
 	const dateOfIndex0 = findDateOfIndex0(indexOfWeek1, weekOfIndex0, semester, weekday);
 
@@ -38,6 +54,7 @@ function resolveRecurrenceRule(
 
 	return {
 		type: "resolved",
+		dateOfIndex0,
 		start: indexToDate(startIndex),
 		end: indexToDate(endIndex),
 		excludes: rrule.weeks.slice(startIndex, endIndex + 1)
@@ -107,7 +124,7 @@ function findDateOfIndex0(
 		// offset new year into index 0 week
 		d -= indexOfWeek1 * WEEK;
 		// offset weekday
-		d += (dayOfWeek(d) - weekday) * DAY;
+		d += (weekday - dayOfWeek(d)) * DAY;
 
 		return new Date(d);
 	}
@@ -129,7 +146,7 @@ function findDateOfIndex0(
 		// offset new year into index 0 week
 		d += (weekOfIndex0! - 1) * WEEK;
 		// offset weekday
-		d += (dayOfWeek(d) - weekday) * DAY;
+		d += (weekday - dayOfWeek(d)) * DAY;
 
 		return new Date(d);
 	}
