@@ -1,11 +1,10 @@
+/// <reference types="https://esm.sh/v131/@types/gapi.calendar@3.0.6/index.d.ts" />
+
 import { icalRrule } from "@/formatter/ical.ts";
-import gapi from "gapi.calendar";
 import { Timetable } from "@/timetable.ts";
 import { ASIA_HO_CHI_MINH, dateOfIndex } from "@/formatter/utils.ts";
 
-type EventInput = gapi.client.calendar.EventInput;
-
-export function formatGapi(timetable: Required<Timetable>): EventInput[] {
+export function formatGapi(timetable: Required<Timetable>): gapi.client.calendar.EventInput[] {
 	const events = [];
 	for (const timerow of timetable.rows) {
 		if (isNaN(timerow.weekday) || timerow.weeks.length == 0) {
@@ -14,7 +13,7 @@ export function formatGapi(timetable: Required<Timetable>): EventInput[] {
 
 		const start = timerow.weeks.findIndex(Boolean);
 		const recurrence = icalRrule(timerow, timetable.startMondayUTC);
-		const event: EventInput = {
+		const event: gapi.client.calendar.EventInput = {
 			summary: timerow.name,
 			description: Object.entries(timerow.extras).map((e) => e.join(": ")).join("\n"),
 			location: timerow.location,

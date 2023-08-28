@@ -1,4 +1,4 @@
-import { parse } from "@/parser/student.ts";
+import { parseStudent } from "@/parser/student.ts";
 import { SemesterNotFoundError } from "@/parser/errors.ts";
 import { assertEquals, assertThrows } from "std/assert/mod.ts";
 
@@ -15,7 +15,7 @@ MT1004	GIAI TICH 1 (BT)	--	--	L44	5	10-11	15:00 - 16:50	H1-103	BK-DAn	--|--|--|4
 PE1023	Võ (Vovinam, Karate, Taewondo) (học phần 1)	--	1.5	L262	6	10-12	15:00 - 17:50	CS2-NHATHIDAU-SAN1	BK-DAn	--|--|--|42|43|44|--|--|--|--|49|50|--|52|--|01|02|03|
 Tổng số tín chỉ đăng ký: 8
 	`;
-	const timetable = parse(src);
+	const timetable = parseStudent(src);
 	assertEquals(timetable.semester, 201);
 	assertEquals(timetable.rows.length, 6);
 });
@@ -25,7 +25,7 @@ Deno.test("throws on missing semester", () => {
 MÃ MH	TÊN MÔN HỌC	TÍN CHỈ	TC HỌC PHÍ	NHÓM-TỔ	THỨ	TIẾT	GIỜ HỌC	PHÒNG	CƠ SỞ	TUẦN HỌC
 MI1003	Giáo dục quốc phòng	--	1	L02	--	0-0	0:00 - 0:00	------	BK	--|--|--|--|--|--|45|46|47|48|
 	`;
-	assertThrows(() => parse(src), SemesterNotFoundError);
+	assertThrows(() => parseStudent(src), SemesterNotFoundError);
 });
 
 Deno.test("works without last line", () => {
@@ -35,6 +35,6 @@ Ngày cập nhật:2021-01-14 13:44:46.0
 MÃ MH	TÊN MÔN HỌC	TÍN CHỈ	TC HỌC PHÍ	NHÓM-TỔ	THỨ	TIẾT	GIỜ HỌC	PHÒNG	CƠ SỞ	TUẦN HỌC
 MI1003	Giáo dục quốc phòng	--	1	L02	--	0-0	0:00 - 0:00	------	BK	--|--|--|--|--|--|45|46|47|48|
 	`;
-	const timetable = parse(src);
+	const timetable = parseStudent(src);
 	assertEquals(timetable.rows.length, 1);
 });

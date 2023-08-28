@@ -10,7 +10,7 @@ import { parseTime } from "@/parser/utils.ts";
 const HEADER = "Lớp\tTên MH\tPhòng\tDãy\tThứ\tSố tiết\tTiết\tGiờ\tTuần học\t% ND";
 const COLS = HEADER.split("\t").length;
 
-export function parse(src: string): Timetable {
+export function parseLecturer(src: string): Timetable {
 	src = src.trim();
 
 	let matches = src.match(/Năm học (\d+)/);

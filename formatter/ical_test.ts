@@ -1,8 +1,7 @@
-import { parse } from "@/parser/student.ts";
+import { parseStudent } from "@/parser/student.ts";
 import { resolve } from "@/resolver.ts";
 import { formatIcal } from "@/formatter/ical.ts";
 import { assertSnapshot, SnapshotOptions } from "std/testing/snapshot.ts";
-import { dateOfIndex } from "@/formatter/utils.ts";
 
 const icalSnapshotOptions = {
 	serializer: (s) => {
@@ -26,7 +25,7 @@ MT1004	GIAI TICH 1 (BT)	--	--	L44	5	10-11	15:00 - 16:50	H1-103	BK-DAn	--|--|--|4
 PE1023	Võ (Vovinam, Karate, Taewondo) (học phần 1)	--	1.5	L262	6	10-12	15:00 - 17:50	CS2-NHATHIDAU-SAN1	BK-DAn	--|--|--|42|43|44|--|--|--|--|49|50|--|52|--|01|02|03|
 Tổng số tín chỉ đăng ký: 8
 	`;
-	const timetable = parse(src);
+	const timetable = parseStudent(src);
 	resolve(timetable);
 	const ical = formatIcal(timetable);
 	await assertSnapshot(t, ical, icalSnapshotOptions);

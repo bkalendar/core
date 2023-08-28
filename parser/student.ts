@@ -10,7 +10,7 @@ const HEADER =
 	"MÃ MH\tTÊN MÔN HỌC\tTÍN CHỈ\tTC HỌC PHÍ\tNHÓM-TỔ\tTHỨ\tTIẾT\tGIỜ HỌC\tPHÒNG\tCƠ SỞ\tTUẦN HỌC";
 const COLS = HEADER.split("\t").length;
 
-export function parse(src: string): Timetable {
+export function parseStudent(src: string): Timetable {
 	src = src.trim();
 	const lines = src.split("\n");
 	for (let i = 0; i < lines.length; i++) {
