@@ -1,36 +1,24 @@
-import { RecurrenceRule, ResolvedTimetable, Timetable, YearMonthDay } from "@/ast.ts";
+import { Timetable } from "@/timetable.ts";
 import { DAY } from "std/datetime/constants.ts";
 import { WEEK } from "std/datetime/mod.ts";
 
-export function resolve(timetable: Timetable): ResolvedTimetable {
-	const newTimetable: ResolvedTimetable = {
-		semester: timetable.semester,
-		rows: [],
-	};
-	let commonMondayOfIndex0: Date | undefined;
+export function resolve(timetable: Timetable): asserts timetable is Required<Timetable> {
 	for (const timerow of timetable.rows) {
-		if (timerow.recurrenceRule.type !== "raw") {
-			throw new TypeError(`expected "raw" recurrence rule, got "${timerow.recurrenceRule.type}"`);
-		}
-		if (isNaN(timerow.weekday) || timerow.recurrenceRule.weeks.length == 0) {
+		if (isNaN(timerow.weekday) || timerow.weeks.length == 0) {
 			continue;
 		}
-		const newTimerow = structuredClone(timerow);
-		newTimerow.recurrenceRule = resolveRecurrenceRule(
-			timerow.recurrenceRule,
-			timetable.semester,
-			timerow.weekday,
-		);
-		const mondayOfIndex0 = new Date(
-			+newTimerow.recurrenceRule.dateOfIndex0 - (newTimerow.weekday - 2) * DAY,
-		);
-		commonMondayOfIndex0 ??= mondayOfIndex0;
-		if (+commonMondayOfIndex0 != +mondayOfIndex0) {
-			throw new MixedSemesterError(commonMondayOfIndex0!, mondayOfIndex0);
+		const { indexOfWeek1, weekOfIndex0 } = findIndex0AndWeek1(timerow.weeks);
+		const mondayOfIndex0 = findMondayOfIndex0(indexOfWeek1, weekOfIndex0, timetable.semester);
+		timetable.startMondayUTC ??= mondayOfIndex0;
+		if (+timetable.startMondayUTC != +mondayOfIndex0) {
+			throw new MixedSemesterError(timetable.startMondayUTC, mondayOfIndex0);
 		}
-		newTimetable.rows.push(newTimerow);
 	}
-	return newTimetable;
+
+	// if calendar contains no resolvable timerow
+	if (!timetable.startMondayUTC) {
+		throw new UnresolvedError();
+	}
 }
 
 export class MixedSemesterError extends Error {
@@ -41,31 +29,9 @@ export class MixedSemesterError extends Error {
 	}
 }
 
-function resolveRecurrenceRule(
-	rrule: RecurrenceRule & { type: "raw" },
-	semester: number,
-	weekday: number,
-): RecurrenceRule & { type: "resolved"; dateOfIndex0: Date } {
-	const { indexOfWeek1, weekOfIndex0 } = findIndex0AndWeek1(rrule.weeks);
-	const dateOfIndex0 = findDateOfIndex0(indexOfWeek1, weekOfIndex0, semester, weekday);
-
-	const startIndex: number = rrule.weeks.findIndex(Boolean);
-	const endIndex: number = rrule.weeks.findLastIndex(Boolean);
-
-	return {
-		type: "resolved",
-		dateOfIndex0,
-		start: indexToDate(startIndex),
-		end: indexToDate(endIndex),
-		excludes: rrule.weeks.slice(startIndex, endIndex + 1)
-			.filter((w) => w === null)
-			.map((_, i) => indexToDate(i)),
-	};
-
-	function indexToDate(i: number) {
-		const date = new Date(+dateOfIndex0 + i * WEEK);
-		const ymd = [date.getFullYear(), date.getMonth() + 1, date.getDate()] satisfies YearMonthDay;
-		return ymd;
+export class UnresolvedError extends Error {
+	constructor() {
+		super(`Calendar cannot be resolved`);
 	}
 }
 
@@ -77,11 +43,12 @@ function resolveRecurrenceRule(
  * ```
  * --|--|--|--|02|--|--|--
  *          ^^ we know week 01 should be here, so indexOfWeek1=3
+ * ^^ we don't know the week at index 0
  * ```
  *
  * ```
  * --|33|--|--|--|--|38|--
- * ^^ weekOfIndex0=32
+ * ^^ we know week 32 should be at index 0, so weekOfIndex0=32
  * ```
  *
  * ```
@@ -110,21 +77,20 @@ function findIndex0AndWeek1(weeks: (number | null)[]) {
 	return { weekOfIndex0, indexOfWeek1 };
 }
 
-function findDateOfIndex0(
+function findMondayOfIndex0(
 	indexOfWeek1: number | undefined,
 	weekOfIndex0: number | undefined,
 	semester: number,
-	weekday: number,
 ) {
 	const year = 2000 + Math.trunc(semester / 10);
 
 	if (indexOfWeek1) { // has a new year break, hence it span 2 years
 		// start with new year
-		let d = +new Date(year + 1, 0, 4);
+		let d = +Date.UTC(year + 1, 0, 4);
 		// offset new year into index 0 week
 		d -= indexOfWeek1 * WEEK;
 		// offset weekday
-		d += (weekday - dayOfWeek(d)) * DAY;
+		d -= (dayOfWeek(d) - 2) * DAY;
 
 		return new Date(d);
 	}
@@ -142,11 +108,11 @@ function findDateOfIndex0(
 
 	function index0Starts(type: "early" | "late") {
 		// start with new year
-		let d = +new Date(type == "early" ? year : year + 1, 0, 4);
+		let d = +Date.UTC(type == "early" ? year : year + 1, 0, 4);
 		// offset new year into index 0 week
 		d += (weekOfIndex0! - 1) * WEEK;
 		// offset weekday
-		d += (weekday - dayOfWeek(d)) * DAY;
+		d -= (dayOfWeek(d) - 2) * DAY;
 
 		return new Date(d);
 	}

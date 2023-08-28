@@ -4,7 +4,7 @@ import {
 	SemesterNotFoundError,
 	TableNotFoundError,
 } from "@/parser/errors.ts";
-import { Timerow, Timetable } from "@/ast.ts";
+import { Timerow, Timetable } from "@/timetable.ts";
 
 const HEADER =
 	"MÃ MH\tTÊN MÔN HỌC\tTÍN CHỈ\tTC HỌC PHÍ\tNHÓM-TỔ\tTHỨ\tTIẾT\tGIỜ HỌC\tPHÒNG\tCƠ SỞ\tTUẦN HỌC";
@@ -57,10 +57,7 @@ function parseFromHeader(lines: string[], i: number): Timetable {
 			weekday,
 			startHm,
 			endHm,
-			recurrenceRule: {
-				type: "raw",
-				weeks,
-			},
+			weeks,
 			location: cols[8],
 			extras: {
 				"mã môn học": cols[0],

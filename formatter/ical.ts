@@ -1,15 +1,14 @@
-import { ResolvedTimerow, ResolvedTimetable, Timerow } from "@/ast.ts";
-import { HOUR } from "std/datetime/constants.ts";
-import { format } from "std/datetime/format.ts";
+import { Timerow } from "@/timetable.ts";
+import { ASIA_HO_CHI_MINH, dateOfIndex, formatHCM, formatUTC } from "@/formatter/utils.ts";
+import { Timetable } from "@/timetable.ts";
 
 const TIME_ZONE = "Asia/Ho_Chi_Minh";
-const OFFSET = +7;
 
 /**
  * transform calendar into ical format
  * @returns rfc5545 compilant ical calendar
  */
-export function formatIcal(timetable: ResolvedTimetable): string {
+export function formatIcal(timetable: Required<Timetable>): string {
 	const arr = [
 		"BEGIN:VCALENDAR",
 		"PRODID:-//bkalendar//BKalendar//VI",
@@ -30,29 +29,33 @@ export function formatIcal(timetable: ResolvedTimetable): string {
 	];
 
 	for (const timerow of timetable.rows) {
-		arr.push(...formatTimerow(timerow));
+		if (isNaN(timerow.weekday) || timerow.weeks.length == 0) {
+			continue;
+		}
+		arr.push(...formatTimerow(timerow, timetable.startMondayUTC));
 	}
 
 	arr.push("END:VCALENDAR");
 	return arr.join("\r\n");
 }
 
-function formatTimerow(timerow: ResolvedTimerow) {
-	const recurrence = icalRrule(timerow);
+function formatTimerow(tr: Timerow, startMondayUTC: Date) {
+	const start = tr.weeks.findIndex(Boolean);
+	const recurrence = icalRrule(tr, startMondayUTC);
 	return [
 		"BEGIN:VEVENT",
 		`UID:${crypto.randomUUID()}@bkalendar`,
-		`DTSTAMP:${icalUTCDate(new Date())}`,
+		`DTSTAMP:${formatUTC(new Date())}`,
 		// info
-		`SUMMARY:${timerow.name}`,
-		`DESCRIPTION:${Object.entries(timerow.extras).map((e) => e.join(": ")).join("\n")}`,
-		`LOCATION:${timerow.location}`,
+		`SUMMARY:${tr.name}`,
+		`DESCRIPTION:${Object.entries(tr.extras).map((e) => e.join(": ")).join("\n")}`,
+		`LOCATION:${tr.location}`,
 		// time
 		`DTSTART;TZID=${TIME_ZONE}:${
-			icalFloatingDate(new Date(...timerow.recurrenceRule.start, ...timerow.startHm))
+			formatHCM(dateOfIndex(start, tr.startHm, startMondayUTC, tr.weekday))
 		}`,
 		`DTEND;TZID=${TIME_ZONE}:${
-			icalFloatingDate(new Date(...timerow.recurrenceRule.start, ...timerow.endHm))
+			formatHCM(dateOfIndex(start, tr.endHm, startMondayUTC, tr.weekday))
 		}`,
 		...recurrence,
 		"END:VEVENT",
@@ -60,40 +63,34 @@ function formatTimerow(timerow: ResolvedTimerow) {
 }
 
 /**
- * RFC5545 compiliant floating datetime
- * see: https://datatracker.ietf.org/doc/html/rfc5545#section-3.3.5
- */
-export function icalFloatingDate(date: Date) {
-	return `${format(date, "yyyyMMdd'T'HHmmss")}`;
-}
-
-/**
- * RFC5545 compiliant utc datetime
- * see: https://datatracker.ietf.org/doc/html/rfc5545#section-3.3.5
- */
-export function icalUTCDate(date: Date) {
-	date = new Date(+date - OFFSET * HOUR);
-	return `${format(date, "yyyyMMdd'T'HHmmss'Z'")}`;
-}
-
-/**
  * generate rrule with UNTIL and EXDATE rule
  */
 export function icalRrule(
-	{ startHm, recurrenceRule: { start, end, excludes } }: ResolvedTimerow,
+	{ weekday, startHm, weeks }: Timerow,
+	startMondayUTC: Date,
 ): string[] {
+	const start = weeks.findIndex(Boolean);
+	const end = weeks.findIndex(Boolean);
+
 	// if only one event, no rrule needed
-	if (start[0] == end[0] && start[1] == end[1] && start[2] == end[2]) {
+	if (start == end) {
 		return [];
 	}
 	// UNTIL only accepts utc datetime...
 	const rrules: string[] = [
-		`RRULE:FREQ=WEEKLY;UNTIL=${icalUTCDate(new Date(...end, ...startHm))}`,
+		`RRULE:FREQ=WEEKLY;UNTIL=${formatUTC(dateOfIndex(end, startHm, startMondayUTC, weekday))}`,
 	];
+
+	const excludes = [];
+	for (let i = start; i <= end; i++) {
+		if (!weeks[i]) {
+			excludes.push(i);
+		}
+	}
 	if (excludes.length != 0) {
 		rrules.push(
-			`EXDATE;TZID=${TIME_ZONE}:${
-				excludes.map((e) => icalFloatingDate(new Date(...e, ...startHm))).join(",")
+			`EXDATE;TZID=${ASIA_HO_CHI_MINH}:${
+				excludes.map((ex) => formatHCM(dateOfIndex(ex, startHm, startMondayUTC, weekday))).join(",")
 			}`,
 		);
 	}
