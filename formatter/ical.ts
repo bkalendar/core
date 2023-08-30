@@ -70,7 +70,7 @@ export function icalRrule(
 	startMondayUTC: Date,
 ): string[] {
 	const start = weeks.findIndex(Boolean);
-	const end = weeks.findIndex(Boolean);
+	const end = weeks.findLastIndex(Boolean);
 
 	// if only one event, no rrule needed
 	if (start == end) {
