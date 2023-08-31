@@ -41,7 +41,7 @@ export function formatIcal(timetable: Required<Timetable>): string {
 
 function formatTimerow(tr: Timerow, startMondayUTC: Date) {
 	const start = tr.weeks.findIndex(Boolean);
-	const recurrence = icalRrule(tr, startMondayUTC);
+	const recurrence = icalRrule(tr, startMondayUTC, true);
 	return [
 		"BEGIN:VEVENT",
 		`UID:${crypto.randomUUID()}@bkalendar`,
@@ -68,6 +68,7 @@ function formatTimerow(tr: Timerow, startMondayUTC: Date) {
 export function icalRrule(
 	{ weekday, startHm, weeks }: Timerow,
 	startMondayUTC: Date,
+	multiline = false,
 ): string[] {
 	const start = weeks.findIndex(Boolean);
 	const end = weeks.findLastIndex(Boolean);
@@ -88,11 +89,21 @@ export function icalRrule(
 		}
 	}
 	if (excludes.length != 0) {
-		rrules.push(
-			`EXDATE;TZID=${ASIA_HO_CHI_MINH}:${
-				excludes.map((ex) => formatHCM(dateOfIndex(ex, startHm, startMondayUTC, weekday))).join(",")
-			}`,
-		);
+		if (!multiline) {
+			rrules.push(
+				`EXDATE;TZID=${ASIA_HO_CHI_MINH}:${
+					excludes.map((ex) => formatHCM(dateOfIndex(ex, startHm, startMondayUTC, weekday))).join(
+						",",
+					)
+				}`,
+			);
+		} else {
+			rrules.push(`EXDATE;TZID=${ASIA_HO_CHI_MINH}`);
+			rrules.push(` :${formatHCM(dateOfIndex(excludes[0], startHm, startMondayUTC, weekday))}`);
+			for (let i = 1; i < excludes.length; i++) {
+				rrules.push(` ,${formatHCM(dateOfIndex(excludes[i], startHm, startMondayUTC, weekday))}`);
+			}
+		}
 	}
 	return rrules;
 }
