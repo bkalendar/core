@@ -1,0 +1,15 @@
+[[language]]
+name = "typescript"
+scope = "source.ts"
+injection-regex = "^(ts|typescript)$"
+file-types = ["ts"]
+roots = ["deno.json"]
+language-servers = ["deno-lsp"]
+formatter = { command = "deno", args = ["fmt", "-"] }
+auto-format = true
+indent = { tab-width = 8, unit = "\t" }
+
+[language-server.deno-lsp]
+command = "deno"
+args = ["lsp"]
+config = { enable = true, lint = true, unstable = true, maxTsServerMemory = 1024 }
