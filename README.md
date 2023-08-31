@@ -5,21 +5,11 @@
        alt="npm version">
 </a>
 
-In an effort to transform HCMUT timetables to other formats like iCalendar, I made this package.
+In an effort to transform HCMUT-VNU timetables to other formats, I made this package.
 
-Our school timetable site is doing its worst job at representing timetables:
+## Contributions
 
-- From the machine-readable viewpoint: working with weeks with no year attached is painful. This
-  leads to ambiguities documented in the [Reorganize the timetables](/src/refine/README.md) section.
-- From the human-readable viewpoint: I agree that there is `table` inside `timetable`, but it is not
-  a reason to just [use a table to represent something akin to a calendar][steve].
+Pull requests are welcome! You can try add more tests, upgrade dependencies, find bugs,
+add new input, output format, ...
 
-  (Well, could just be a personal taste though.)
-
-  [steve]: https://twitter.com/steveschoger/status/997125312411570176
-
-Further information can be found in the respective READMEs:
-
-- [parser](/src/parser/README.md): parse the timetables.
-- [transformer](/src/transformer/README.md): transform the timetables into formats.
-- [refine](/src/refine/README.md): do stuff with the parsed timetables.
+Whatever you do, please do try to keep the [changelog](./CHANGELOG.md) up-to-date.
