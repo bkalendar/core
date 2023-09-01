@@ -2,10 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Calendar Versioning](https://calver.org/),
-using the scheme `YY.MINOR.PATCH`. The `YY` part should correspond to
-the current academic year of HCMUT-VNU.
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project
+adheres to [Calendar Versioning](https://calver.org/), using the scheme `YY.MINOR.PATCH`. The `YY`
+part should correspond to the current academic year of HCMUT-VNU.
 
 ## [Unreleased]
 
