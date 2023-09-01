@@ -8,6 +8,10 @@ part should correspond to the current academic year of HCMUT-VNU.
 
 ## [Unreleased]
 
+### Fixed
+
+- Add snapshot tests for lecturer timetables.
+
 ## [23.0.0] - 2023-08-31
 
 ### Added
