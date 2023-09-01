@@ -8,7 +8,7 @@ on:
     - master
 
 jobs:
-  tests-and-maybe-publish:
+  tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -18,6 +18,14 @@ jobs:
 
       - name: Run tests
         run: deno test -A
+
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1.1.2
 
       - name: Check format
         run: deno fmt --check
