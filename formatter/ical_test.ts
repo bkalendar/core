@@ -3,6 +3,7 @@ import { resolve } from "@/resolver.ts";
 import { formatIcal } from "@/formatter/ical.ts";
 import { assertSnapshot, SnapshotOptions } from "std/testing/snapshot.ts";
 import { parseLecturer } from "@/mod.ts";
+import { parsePostgrad } from "@/parser/postgrad.ts";
 
 const icalSnapshotOptions = {
 	serializer: (s) => {
@@ -47,6 +48,24 @@ Lớp	Tên MH	Phòng	Dãy	Thứ	Số tiết	Tiết	Giờ	Tuần học	% ND
 20221_CO1006_L11	NHAP MON DIEN TOAN (TH)	HANGOUT_TUONGTAC	LIVE_HOME	5			12:00 - 16:50	--|--|--|--|--|--|--|--|--|--|--|--|--|--|49|	
 Đang xem 1 đến 5 trong tổng số 5 mục	`;
 	const timetable = parseLecturer(src);
+	resolve(timetable);
+	const ical = formatIcal(timetable);
+	await assertSnapshot(t, ical, icalSnapshotOptions);
+});
+
+Deno.test("snapshot postgrad", async (t) => {
+	const src = `
+Học kỳ 1/2023-2024: 04/09/2023 (Tuần 1)
+Ngành: Khoa Học Máy Tính
+
+Mã : 2010206Du Thành ĐạtKhóa: 2022
+Cán bộ giảng dạy	Môn học	Lớp/DS lớp	Thứ	Tiết bắt đầu	Tiết kết thúc	Phòng	Tuần	Ghi chú
+GS.TS Phan Thị Tươi	(CO5143) - Xử lý ngôn ngữ tự nhiên	1 / 	CN	4	6	Trực tuyến	|1|2|3|4|5|	
+GS.TS Phan Thị Tươi	(CO5143) - Xử lý ngôn ngữ tự nhiên	1 / 	CN	4	6	601B4	|--|--|--|--|--|6|7|8|9|10|	
+TS. Phan Trọng Nhân	(CO5240) - Kỹ thuật dữ liệu	1 / 	Sáu	13	15	305B4	|1|2|3|4|5|6|7|8|9|10|11|12|13|	
+Tối
+	`;
+	const timetable = parsePostgrad(src);
 	resolve(timetable);
 	const ical = formatIcal(timetable);
 	await assertSnapshot(t, ical, icalSnapshotOptions);
