@@ -8,8 +8,8 @@ jobs:
   publish:
     runs-on: ubuntu-latest
   permissions:
-      packages: write
-      contents: read
+    packages: write
+    contents: read
   steps:
       - uses: actions/checkout@v3
 
