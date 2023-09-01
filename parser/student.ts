@@ -5,6 +5,7 @@ import {
 	TableNotFoundError,
 } from "@/parser/errors.ts";
 import { Timerow, Timetable } from "@/timetable.ts";
+import { parseTime } from "@/parser/utils.ts";
 
 const HEADER =
 	"MÃ MH\tTÊN MÔN HỌC\tTÍN CHỈ\tTC HỌC PHÍ\tNHÓM-TỔ\tTHỨ\tTIẾT\tGIỜ HỌC\tPHÒNG\tCƠ SỞ\tTUẦN HỌC";
@@ -71,12 +72,4 @@ function parseFromHeader(lines: string[], i: number): Timetable {
 	}
 
 	return { semester, rows };
-}
-
-function parseTime(src: string): [number, number] {
-	const nums = src.split(":");
-	if (nums.length != 2) {
-		throw new ParseError(src, `Time component is not separated by ":"`);
-	}
-	return [Number(nums[0]), Number(nums[1])];
 }
