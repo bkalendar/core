@@ -8,6 +8,8 @@ part should correspond to the current academic year of HCMUT-VNU.
 
 ## [Unreleased]
 
+## [23.1.0] - 2023-09-01
+
 ### Added
 
 - Parser for postgrads' timetable.
