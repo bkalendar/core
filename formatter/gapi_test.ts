@@ -2,8 +2,9 @@ import { parseStudent } from "@/parser/student.ts";
 import { resolve } from "@/resolver.ts";
 import { formatGapi } from "@/formatter/gapi.ts";
 import { assertSnapshot } from "std/testing/snapshot.ts";
+import { parseLecturer } from "@/parser/lecturer.ts";
 
-Deno.test("smoke", async (t) => {
+Deno.test("snapshot student", async (t) => {
 	const src = `
 Học kỳ 1 Năm học 2020 - 2021
 Ngày cập nhật:2021-01-14 13:44:46.0
@@ -17,6 +18,26 @@ PE1023	Võ (Vovinam, Karate, Taewondo) (học phần 1)	--	1.5	L262	6	10-12	15:0
 Tổng số tín chỉ đăng ký: 8
 	`;
 	const timetable = parseStudent(src);
+	resolve(timetable);
+	const gapi = formatGapi(timetable);
+	await assertSnapshot(t, gapi);
+});
+
+Deno.test("snapshot lecturer", async (t) => {
+	const src = `
+Năm học 2022
+
+Học kỳ 1
+   
+Tìm:
+Lớp	Tên MH	Phòng	Dãy	Thứ	Số tiết	Tiết	Giờ	Tuần học	% ND
+20221_CO1006_L11	NHAP MON DIEN TOAN (TH)	H6-707	H6	5			12:00 - 16:50	--|--|--|--|--|--|--|--|43|	0%
+20221_CO1006_L11	NHAP MON DIEN TOAN (TH)	HANGOUT_TUONGTAC	LIVE_HOME	5			12:00 - 16:50	--|--|--|--|--|--|--|--|--|--|--|46|47|	
+20221_CO1006_L23	NHAP MON DIEN TOAN (TH)	H6-707	H6	5			12:00 - 16:50	--|--|--|--|--|--|--|--|--|--|45|--|--|--|--|--|51|	0%
+20221_CO1006_L23	NHAP MON DIEN TOAN (TH)	HANGOUT_TUONGTAC	LIVE_HOME	5			12:00 - 16:50	--|--|--|--|--|--|--|--|--|--|--|46|47|	
+20221_CO1006_L11	NHAP MON DIEN TOAN (TH)	HANGOUT_TUONGTAC	LIVE_HOME	5			12:00 - 16:50	--|--|--|--|--|--|--|--|--|--|--|--|--|--|49|	
+Đang xem 1 đến 5 trong tổng số 5 mục	`;
+	const timetable = parseLecturer(src);
 	resolve(timetable);
 	const gapi = formatGapi(timetable);
 	await assertSnapshot(t, gapi);

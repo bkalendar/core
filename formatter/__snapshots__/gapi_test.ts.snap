@@ -1,6 +1,6 @@
 export const snapshot = {};
 
-snapshot[`smoke 1`] = `
+snapshot[`snapshot student 1`] = `
 [
   {
     description: "mã môn học: PE1023
@@ -101,6 +101,88 @@ nhóm tổ: L262",
       timeZone: "Asia/Ho_Chi_Minh",
     },
     summary: "Võ (Vovinam, Karate, Taewondo) (học phần 1)",
+  },
+]
+`;
+
+snapshot[`snapshot lecturer 1`] = `
+[
+  {
+    description: "lớp: 20221_CO1006_L11",
+    end: {
+      dateTime: "2022-10-27T09:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H6-707",
+    recurrence: [],
+    start: {
+      dateTime: "2022-10-27T05:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "NHAP MON DIEN TOAN (TH)",
+  },
+  {
+    description: "lớp: 20221_CO1006_L11",
+    end: {
+      dateTime: "2022-11-17T09:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "HANGOUT_TUONGTAC",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20221124T050000Z",
+    ],
+    start: {
+      dateTime: "2022-11-17T05:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "NHAP MON DIEN TOAN (TH)",
+  },
+  {
+    description: "lớp: 20221_CO1006_L23",
+    end: {
+      dateTime: "2022-11-10T09:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H6-707",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20221222T050000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20221117T120000,20221124T120000,20221201T120000,20221208T120000,20221215T120000",
+    ],
+    start: {
+      dateTime: "2022-11-10T05:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "NHAP MON DIEN TOAN (TH)",
+  },
+  {
+    description: "lớp: 20221_CO1006_L23",
+    end: {
+      dateTime: "2022-11-17T09:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "HANGOUT_TUONGTAC",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20221124T050000Z",
+    ],
+    start: {
+      dateTime: "2022-11-17T05:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "NHAP MON DIEN TOAN (TH)",
+  },
+  {
+    description: "lớp: 20221_CO1006_L11",
+    end: {
+      dateTime: "2022-12-08T09:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "HANGOUT_TUONGTAC",
+    recurrence: [],
+    start: {
+      dateTime: "2022-12-08T05:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "NHAP MON DIEN TOAN (TH)",
   },
 ]
 `;
