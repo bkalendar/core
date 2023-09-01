@@ -2,6 +2,8 @@ import { Timetable } from "@/timetable.ts";
 import { DAY, WEEK } from "std/datetime/constants.ts";
 
 export function resolve(timetable: Timetable): asserts timetable is Required<Timetable> {
+	if (timetable.startMondayUTC) return;
+
 	for (const timerow of timetable.rows) {
 		if (isNaN(timerow.weekday) || timerow.weeks.length == 0) {
 			continue;
