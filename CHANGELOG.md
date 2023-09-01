@@ -8,6 +8,10 @@ part should correspond to the current academic year of HCMUT-VNU.
 
 ## [Unreleased]
 
+### Added
+
+- Parser for postgrads' timetable.
+
 ### Fixed
 
 - Add snapshot tests for lecturer timetables.
