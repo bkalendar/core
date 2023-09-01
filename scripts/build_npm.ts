@@ -23,6 +23,9 @@ await build({
 		bugs: {
 			url: "https://github.com/bkalendar/core/issues",
 		},
+		publishConfig: {
+			registry: "https://npm.pkg.github.com",
+		},
 	},
 	postBuild() {
 		Deno.copyFileSync("LICENSE", "npm/LICENSE");
