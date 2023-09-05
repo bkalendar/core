@@ -1,18 +1,9 @@
 import { parseStudent } from "@/parser/student.ts";
 import { resolve } from "@/resolver.ts";
-import { formatIcal } from "@/formatter/ical.ts";
-import { assertSnapshot, SnapshotOptions } from "std/testing/snapshot.ts";
-import { parseLecturer } from "@/mod.ts";
+import { formatGapi } from "@/formatter/gapi.ts";
+import { assertSnapshot } from "std/testing/snapshot.ts";
+import { parseLecturer } from "@/parser/lecturer.ts";
 import { parsePostgrad } from "@/parser/postgrad.ts";
-
-const icalSnapshotOptions = {
-	serializer: (s) => {
-		s = s.replaceAll("\r\n", "\n");
-		s = s.replaceAll(/(?=^UID:).*$/gm, "");
-		s = s.replaceAll(/(?=^DTSTAMP:).*$/gm, "");
-		return s;
-	},
-} satisfies SnapshotOptions<string>;
 
 Deno.test("snapshot student", async (t) => {
 	const src = `
@@ -29,8 +20,16 @@ Tổng số tín chỉ đăng ký: 8
 	`;
 	const timetable = parseStudent(src);
 	resolve(timetable);
-	const ical = formatIcal(timetable);
-	await assertSnapshot(t, ical, icalSnapshotOptions);
+
+	await t.step("format gapi", async (t) => {
+		const gapi = formatGapi(timetable);
+		await assertSnapshot(t, gapi);
+	});
+
+	await t.step("format ical", async (t) => {
+		const gapi = formatGapi(timetable);
+		await assertSnapshot(t, gapi);
+	});
 });
 
 Deno.test("snapshot lecturer", async (t) => {
@@ -49,8 +48,16 @@ Lớp	Tên MH	Phòng	Dãy	Thứ	Số tiết	Tiết	Giờ	Tuần học	% ND
 Đang xem 1 đến 5 trong tổng số 5 mục	`;
 	const timetable = parseLecturer(src);
 	resolve(timetable);
-	const ical = formatIcal(timetable);
-	await assertSnapshot(t, ical, icalSnapshotOptions);
+
+	await t.step("format gapi", async (t) => {
+		const gapi = formatGapi(timetable);
+		await assertSnapshot(t, gapi);
+	});
+
+	await t.step("format ical", async (t) => {
+		const gapi = formatGapi(timetable);
+		await assertSnapshot(t, gapi);
+	});
 });
 
 Deno.test("snapshot postgrad", async (t) => {
@@ -67,6 +74,38 @@ Tối
 	`;
 	const timetable = parsePostgrad(src);
 	resolve(timetable);
-	const ical = formatIcal(timetable);
-	await assertSnapshot(t, ical, icalSnapshotOptions);
+
+	await t.step("format gapi", async (t) => {
+		const gapi = formatGapi(timetable);
+		await assertSnapshot(t, gapi);
+	});
+
+	await t.step("format ical", async (t) => {
+		const gapi = formatGapi(timetable);
+		await assertSnapshot(t, gapi);
+	});
+});
+
+Deno.test("timetable with no weeks", async (t) => {
+	// Thanks bạn DQL for this testcase
+	const src = `
+Học kỳ 1 Năm học 2023 - 2024
+Ngày cập nhật:2023-09-04 20:25:44.0
+MÃ MH	TÊN MÔN HỌC	TÍN CHỈ	TC HỌC PHÍ	NHÓM-TỔ	THỨ	TIẾT	GIỜ HỌC	PHÒNG	CƠ SỞ	TUẦN HỌC
+ME3009	Các quá trình chế tạo	3	3	L01	6	2-3	7:00 - 8:50	H1-102	BK-DAn	--|
+ME3009	Các quá trình chế tạo	3	3	L01	6	2-3	7:00 - 8:50	H1-102	BK-DAn	--|--|--|--|--|--|--|--|--|--|--|46|47|48|49|50|
+Tổng số tín chỉ đăng ký: 17
+	`;
+	const timetable = parseStudent(src);
+	resolve(timetable);
+
+	await t.step("format gapi", async (t) => {
+		const gapi = formatGapi(timetable);
+		await assertSnapshot(t, gapi);
+	});
+
+	await t.step("format ical", async (t) => {
+		const gapi = formatGapi(timetable);
+		await assertSnapshot(t, gapi);
+	});
 });
