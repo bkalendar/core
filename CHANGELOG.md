@@ -8,6 +8,8 @@ part should correspond to the current academic year of HCMUT-VNU.
 
 ## [Unreleased]
 
+## [23.1.1] - 2023-09-05
+
 ### Fixed
 
 - Handle `--|` weeks.
