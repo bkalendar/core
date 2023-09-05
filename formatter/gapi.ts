@@ -3,11 +3,12 @@
 import { icalRrule } from "@/formatter/ical.ts";
 import { Timetable } from "@/timetable.ts";
 import { ASIA_HO_CHI_MINH, dateOfIndex } from "@/formatter/utils.ts";
+import { isUnresolvable } from "@/resolver.ts";
 
 export function formatGapi(timetable: Required<Timetable>): gapi.client.calendar.EventInput[] {
 	const events = [];
 	for (const timerow of timetable.rows) {
-		if (isNaN(timerow.weekday) || timerow.weeks.length == 0) {
+		if (isUnresolvable(timerow)) {
 			continue;
 		}
 

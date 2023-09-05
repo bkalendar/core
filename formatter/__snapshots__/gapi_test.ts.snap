@@ -245,3 +245,27 @@ ghi chú: ",
   },
 ]
 `;
+
+snapshot[`format with no weeks 1`] = `
+[
+  {
+    description: "mã môn học: ME3009
+tín chỉ: 3
+tín chỉ học phí: 3
+nhóm tổ: L01",
+    end: {
+      dateTime: "2023-11-17T01:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H1-102",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20231215T000000Z",
+    ],
+    start: {
+      dateTime: "2023-11-17T00:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Các quá trình chế tạo",
+  },
+]
+`;
