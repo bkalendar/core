@@ -1,4 +1,4 @@
-import { Timetable } from "@/timetable.ts";
+import { Timerow, Timetable } from "@/timetable.ts";
 import { DAY, WEEK } from "std/datetime/constants.ts";
 
 export function resolve(timetable: Timetable): asserts timetable is Required<Timetable> {
@@ -6,7 +6,7 @@ export function resolve(timetable: Timetable): asserts timetable is Required<Tim
 	if (timetable.startMondayUTC) return;
 
 	for (const timerow of timetable.rows) {
-		if (isNaN(timerow.weekday) || timerow.weeks.length == 0) {
+		if (isUnresolvable(timerow)) {
 			continue;
 		}
 		const { indexOfWeek1, weekOfIndex0 } = findIndex0AndWeek1(timerow.weeks);
@@ -21,6 +21,11 @@ export function resolve(timetable: Timetable): asserts timetable is Required<Tim
 	if (!timetable.startMondayUTC) {
 		throw new UnresolvedError();
 	}
+}
+
+export function isUnresolvable(timerow: Timerow): boolean {
+	return isNaN(timerow.weekday) || timerow.weeks.length == 0 ||
+		(timerow.weeks.length == 1 && timerow.weeks[0] == null);
 }
 
 export class MixedSemesterError extends Error {

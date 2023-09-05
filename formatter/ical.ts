@@ -1,6 +1,7 @@
 import { Timerow } from "@/timetable.ts";
 import { ASIA_HO_CHI_MINH, dateOfIndex, formatHCM, formatUTC } from "@/formatter/utils.ts";
 import { Timetable } from "@/timetable.ts";
+import { isUnresolvable } from "@/resolver.ts";
 
 const TIME_ZONE = "Asia/Ho_Chi_Minh";
 
@@ -29,7 +30,7 @@ export function formatIcal(timetable: Required<Timetable>): string {
 	];
 
 	for (const timerow of timetable.rows) {
-		if (isNaN(timerow.weekday) || timerow.weeks.length == 0) {
+		if (isUnresolvable(timerow)) {
 			continue;
 		}
 		arr.push(...formatTimerow(timerow, timetable.startMondayUTC));
