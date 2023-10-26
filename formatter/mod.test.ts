@@ -109,3 +109,25 @@ Tổng số tín chỉ đăng ký: 17
 		await assertSnapshot(t, gapi);
 	});
 });
+
+Deno.test("dash for empty time", async (t) => {
+	const src = `
+Học kỳ 1 Năm học 2020 - 2021
+Ngày cập nhật:2021-01-14 13:44:46.0
+MÃ MH	TÊN MÔN HỌC	TÍN CHỈ	TC HỌC PHÍ	NHÓM-TỔ	THỨ	TIẾT	GIỜ HỌC	PHÒNG	CƠ SỞ	TUẦN HỌC
+MI1003	Giáo dục quốc phòng	--	1	L02	--	---	- - -	------	BK	--|--|--|--|--|--|45|46|47|48|
+PH1003	Vật lý 1	4	4	L24	2	8-10	13:00 - 15:50	HANGOUT_TUONGTAC	BK-LTK	--|--|--|--|--|--|--|40|41|42|43|44|45|46|47|48|49|50|51|
+	`;
+	const timetable = parseStudent(src);
+	resolve(timetable);
+
+	await t.step("format gapi", async (t) => {
+		const gapi = formatGapi(timetable);
+		await assertSnapshot(t, gapi);
+	});
+
+	await t.step("format ical", async (t) => {
+		const gapi = formatGapi(timetable);
+		await assertSnapshot(t, gapi);
+	});
+});

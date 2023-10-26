@@ -539,3 +539,51 @@ nhóm tổ: L01",
   },
 ]
 `;
+
+snapshot[`dash for empty time > format gapi 1`] = `
+[
+  {
+    description: "mã môn học: PH1003
+tín chỉ: 4
+tín chỉ học phí: 4
+nhóm tổ: L24",
+    end: {
+      dateTime: "2020-09-28T08:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "HANGOUT_TUONGTAC",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20201214T060000Z",
+    ],
+    start: {
+      dateTime: "2020-09-28T06:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Vật lý 1",
+  },
+]
+`;
+
+snapshot[`dash for empty time > format ical 1`] = `
+[
+  {
+    description: "mã môn học: PH1003
+tín chỉ: 4
+tín chỉ học phí: 4
+nhóm tổ: L24",
+    end: {
+      dateTime: "2020-09-28T08:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "HANGOUT_TUONGTAC",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20201214T060000Z",
+    ],
+    start: {
+      dateTime: "2020-09-28T06:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Vật lý 1",
+  },
+]
+`;

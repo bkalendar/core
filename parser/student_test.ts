@@ -38,3 +38,14 @@ MI1003	Giáo dục quốc phòng	--	1	L02	--	0-0	0:00 - 0:00	------	BK	--|--|--|
 	const timetable = parseStudent(src);
 	assertEquals(timetable.rows.length, 1);
 });
+
+Deno.test("dashed time", () => {
+	const src = `
+Học kỳ 1 Năm học 2020 - 2021
+Ngày cập nhật:2021-01-14 13:44:46.0
+MÃ MH	TÊN MÔN HỌC	TÍN CHỈ	TC HỌC PHÍ	NHÓM-TỔ	THỨ	TIẾT	GIỜ HỌC	PHÒNG	CƠ SỞ	TUẦN HỌC
+MI1003	Giáo dục quốc phòng	--	1	L02	--	---	- - -	------	BK	--|--|--|--|--|--|45|46|47|48|
+	`;
+	const timetable = parseStudent(src);
+	assertEquals(timetable.rows.length, 1);
+});
