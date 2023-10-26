@@ -6,7 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 adheres to [Calendar Versioning](https://calver.org/), using the scheme `YY.MINOR.PATCH`. The `YY`
 part should correspond to the current academic year of HCMUT-VNU.
 
-## [Unreleased]
+## Unreleased
+
+## [23.1.2] - 2023-10-26
+
+### Fixed
+
+- Handle `-` in place of empty time (instead of `00:00`).
 
 ## [23.1.1] - 2023-09-05
 
