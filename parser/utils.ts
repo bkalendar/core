@@ -1,6 +1,9 @@
 import { ParseError } from "@/parser/errors.ts";
 
 export function parseTime(src: string): [number, number] {
+	if (src == "-") {
+		return [0, 0];
+	}
 	const nums = src.split(":");
 	if (nums.length != 2) {
 		throw new ParseError(src, `Time component is not separated by ":"`);
