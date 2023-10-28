@@ -8,7 +8,13 @@ part should correspond to the current academic year of HCMUT-VNU.
 
 ## Unreleased
 
-## [23.1.2] - 2023-10-26
+## [23.1.3] - 2023-10-28
+
+### Fixed
+
+- Fix wrong 23.1.2 deployment.
+
+## [23.1.2] - 2023-10-26 [YANKED]
 
 ### Fixed
 
