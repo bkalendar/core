@@ -8,6 +8,10 @@ part should correspond to the current academic year of HCMUT-VNU.
 
 ## Unreleased
 
+### Fixed
+
+- Fix case-sensitive issue when finding table header.
+
 ## [23.1.3] - 2023-10-28
 
 ### Fixed
