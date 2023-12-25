@@ -8,14 +8,14 @@ import { Timerow, Timetable } from "@/timetable.ts";
 import { parseTime } from "@/parser/utils.ts";
 
 const HEADER =
-	"MÃ MH\tTÊN MÔN HỌC\tTÍN CHỈ\tTC HỌC PHÍ\tNHÓM-TỔ\tTHỨ\tTIẾT\tGIỜ HỌC\tPHÒNG\tCƠ SỞ\tTUẦN HỌC";
+	"mã mh\ttên môn học\ttín chỉ\ttc học phí\tnhóm-tổ\tthứ\ttiết\tgiờ học\tphòng\tcơ sở\ttuần học";
 const COLS = HEADER.split("\t").length;
 
 export function parseStudent(src: string): Timetable {
 	src = src.trim();
 	const lines = src.split("\n");
 	for (let i = 0; i < lines.length; i++) {
-		if (lines[i] == HEADER) {
+		if (lines[i].toLowerCase() == HEADER) {
 			return parseFromHeader(lines, i);
 		}
 	}

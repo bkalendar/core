@@ -8,13 +8,13 @@ import { hmFrom } from "@/parser/utils.ts";
 import { ParseError } from "@/mod.ts";
 
 const HEADER =
-	"Cán bộ giảng dạy\tMôn học\tLớp/DS lớp\tThứ\tTiết bắt đầu\tTiết kết thúc\tPhòng\tTuần\tGhi chú";
+	"cán bộ giảng dạy\tmôn học\tlớp/ds lớp\tthứ\ttiết bắt đầu\ttiết kết thúc\tphòng\ttuần\tghi chú";
 const COLS = HEADER.split("\t").length;
 
 export function parsePostgrad(src: string): Timetable {
 	const lines = src.split("\n");
 	for (let i = 0; i < lines.length; i++) {
-		if (lines[i] == HEADER) {
+		if (lines[i].toLowerCase() == HEADER) {
 			return parseFromHeader(lines, i);
 		}
 	}

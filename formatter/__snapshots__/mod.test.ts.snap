@@ -587,3 +587,53 @@ nhóm tổ: L24",
   },
 ]
 `;
+
+snapshot[`case-insensitive header > format gapi 1`] = `
+[
+  {
+    description: "mã môn học: IM1021
+tín chỉ: 3
+tín chỉ học phí: 3
+nhóm tổ: L07",
+    end: {
+      dateTime: "2023-08-28T08:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H6-214",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20231211T070000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20230904T140000,20231016T140000",
+    ],
+    start: {
+      dateTime: "2023-08-28T07:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Khởi nghiệp",
+  },
+]
+`;
+
+snapshot[`case-insensitive header > format ical 1`] = `
+[
+  {
+    description: "mã môn học: IM1021
+tín chỉ: 3
+tín chỉ học phí: 3
+nhóm tổ: L07",
+    end: {
+      dateTime: "2023-08-28T08:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H6-214",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20231211T070000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20230904T140000,20231016T140000",
+    ],
+    start: {
+      dateTime: "2023-08-28T07:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Khởi nghiệp",
+  },
+]
+`;

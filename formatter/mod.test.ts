@@ -131,3 +131,27 @@ PH1003	Vật lý 1	4	4	L24	2	8-10	13:00 - 15:50	HANGOUT_TUONGTAC	BK-LTK	--|--|--
 		await assertSnapshot(t, gapi);
 	});
 });
+
+Deno.test("case-insensitive header", async (t) => {
+	const src = `
+Học kỳ 1 Năm học 2023 - 2024
+Ngày cập nhật:2023-12-22 09:41:14.0
+Mã MH	Tên môn học	Tín chỉ	Tc học phí	Nhóm-Tổ	Thứ	Tiết	Giờ học	Phòng	Cơ sở	Tuần học
+SA0002	Sinh hoạt Sinh viên	--	--	L290	--	---	- - -	CS-DiAn	BK-DAn	--|--|--|38|39|40|41|--|43|44|45|46|47|48|49|50|
+CO4029	Đồ án Chuyên ngành	2	2	TN03	--	---	- - -	CS-DiAn	BK-DAn	35|36|37|38|39|40|41|--|43|44|45|46|47|48|49|50|
+IM1021	Khởi nghiệp	3	3	L07	2	9-10	14:00 - 15:50	H6-214	BK-DAn	35|--|37|38|39|40|41|--|43|44|45|46|47|48|49|50|
+Tổng số tín chỉ đăng ký: 11
+	`;
+	const timetable = parseStudent(src);
+	resolve(timetable);
+
+	await t.step("format gapi", async (t) => {
+		const gapi = formatGapi(timetable);
+		await assertSnapshot(t, gapi);
+	});
+
+	await t.step("format ical", async (t) => {
+		const gapi = formatGapi(timetable);
+		await assertSnapshot(t, gapi);
+	});
+});

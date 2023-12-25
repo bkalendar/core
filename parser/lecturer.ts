@@ -7,7 +7,7 @@ import {
 import { Timerow, Timetable } from "@/timetable.ts";
 import { parseTime } from "@/parser/utils.ts";
 
-const HEADER = "Lớp\tTên MH\tPhòng\tDãy\tThứ\tSố tiết\tTiết\tGiờ\tTuần học\t% ND";
+const HEADER = "lớp\ttên mh\tphòng\tdãy\tthứ\tsố tiết\ttiết\tgiờ\ttuần học\t% nd";
 const COLS = HEADER.split("\t").length;
 
 export function parseLecturer(src: string): Timetable {
@@ -27,7 +27,7 @@ export function parseLecturer(src: string): Timetable {
 
 	const lines = src.split("\n");
 	for (let i = 0; i < lines.length; i++) {
-		if (lines[i] == HEADER) {
+		if (lines[i].toLowerCase() == HEADER) {
 			return {
 				semester,
 				rows: parseFromHeader(lines, i),
