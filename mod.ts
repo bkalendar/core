@@ -1,5 +1,6 @@
 export type { Timerow, Timetable } from "@/timetable.ts";
 export { parseStudent } from "@/parser/student.ts";
+export { parseStudent2024 } from "@/parser/student_2024.ts";
 export { parseLecturer } from "@/parser/lecturer.ts";
 export { parsePostgrad } from "@/parser/postgrad.ts";
 export { MixedSemesterError, resolve, UnresolvedError } from "@/resolver.ts";

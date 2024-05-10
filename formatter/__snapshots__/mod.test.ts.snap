@@ -637,3 +637,331 @@ nhóm tổ: L07",
   },
 ]
 `;
+
+snapshot[`snapshot student 2024 > format gapi 1`] = `
+[
+  {
+    description: "mã môn học: PE1033
+tín chỉ: 0
+tín chỉ học phí: 0
+nhóm tổ: L10",
+    end: {
+      dateTime: "2024-01-08T10:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "TT THE DUC THE THAO",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20240603T080000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240205T150000,20240212T150000,20240311T150000,20240318T150000,20240325T150000,20240401T150000,20240408T150000,20240429T150000",
+    ],
+    start: {
+      dateTime: "2024-01-08T08:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Bóng đá (Học phần 2)",
+  },
+  {
+    description: "mã môn học: CI1034
+tín chỉ: 0
+tín chỉ học phí: 0
+nhóm tổ: L04",
+    end: {
+      dateTime: "2024-04-15T04:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H6-708",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20240527T000000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240422T070000,20240429T070000,20240506T070000,20240520T070000",
+    ],
+    start: {
+      dateTime: "2024-04-15T00:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Vẽ kỹ thuật Xây dựng (ThL,TN)",
+  },
+  {
+    description: "mã môn học: CH1004
+tín chỉ: 0
+tín chỉ học phí: 0
+nhóm tổ: L33",
+    end: {
+      dateTime: "2024-05-15T10:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H1-501",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20240605T060000Z",
+    ],
+    start: {
+      dateTime: "2024-05-15T06:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Hóa đại cương (TN)",
+  },
+  {
+    description: "mã môn học: CI1033
+tín chỉ: 3
+tín chỉ học phí: 3
+nhóm tổ: L02",
+    end: {
+      dateTime: "2024-01-24T03:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H6-114",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20240417T020000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240131T090000,20240207T090000,20240214T090000,20240228T090000,20240313T090000,20240320T090000,20240327T090000,20240403T090000,20240410T090000",
+    ],
+    start: {
+      dateTime: "2024-01-24T02:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Vẽ kỹ thuật Xây dựng",
+  },
+  {
+    description: "mã môn học: CI1069
+tín chỉ: 4
+tín chỉ học phí: 4
+nhóm tổ: L04",
+    end: {
+      dateTime: "2024-01-11T07:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H6-308",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20240606T050000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240208T120000,20240215T120000,20240314T120000,20240321T120000,20240328T120000,20240404T120000,20240411T120000,20240418T120000",
+    ],
+    start: {
+      dateTime: "2024-01-11T05:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Khoa học Trái đất",
+  },
+  {
+    description: "mã môn học: CI1033
+tín chỉ: 3
+tín chỉ học phí: 3
+nhóm tổ: L02",
+    end: {
+      dateTime: "2024-01-11T04:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H6-413",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20240606T030000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240208T100000,20240215T100000,20240314T100000,20240321T100000,20240328T100000,20240404T100000,20240411T100000,20240418T100000",
+    ],
+    start: {
+      dateTime: "2024-01-11T03:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Vẽ kỹ thuật Xây dựng",
+  },
+  {
+    description: "mã môn học: CH1003
+tín chỉ: 3
+tín chỉ học phí: 3
+nhóm tổ: L11",
+    end: {
+      dateTime: "2024-01-12T09:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H1-802",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20240607T080000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240209T150000,20240216T150000,20240315T150000,20240322T150000,20240329T150000,20240405T150000,20240412T150000",
+    ],
+    start: {
+      dateTime: "2024-01-12T08:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Hóa đại cương",
+  },
+  {
+    description: "mã môn học: MT1005
+tín chỉ: 4
+tín chỉ học phí: 4
+nhóm tổ: L18",
+    end: {
+      dateTime: "2024-01-12T07:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H3-301",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20240607T050000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240209T120000,20240216T120000,20240315T120000,20240322T120000,20240329T120000,20240405T120000,20240412T120000",
+    ],
+    start: {
+      dateTime: "2024-01-12T05:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Giải tích 2",
+  },
+]
+`;
+
+snapshot[`snapshot student 2024 > format ical 1`] = `
+[
+  {
+    description: "mã môn học: PE1033
+tín chỉ: 0
+tín chỉ học phí: 0
+nhóm tổ: L10",
+    end: {
+      dateTime: "2024-01-08T10:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "TT THE DUC THE THAO",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20240603T080000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240205T150000,20240212T150000,20240311T150000,20240318T150000,20240325T150000,20240401T150000,20240408T150000,20240429T150000",
+    ],
+    start: {
+      dateTime: "2024-01-08T08:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Bóng đá (Học phần 2)",
+  },
+  {
+    description: "mã môn học: CI1034
+tín chỉ: 0
+tín chỉ học phí: 0
+nhóm tổ: L04",
+    end: {
+      dateTime: "2024-04-15T04:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H6-708",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20240527T000000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240422T070000,20240429T070000,20240506T070000,20240520T070000",
+    ],
+    start: {
+      dateTime: "2024-04-15T00:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Vẽ kỹ thuật Xây dựng (ThL,TN)",
+  },
+  {
+    description: "mã môn học: CH1004
+tín chỉ: 0
+tín chỉ học phí: 0
+nhóm tổ: L33",
+    end: {
+      dateTime: "2024-05-15T10:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H1-501",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20240605T060000Z",
+    ],
+    start: {
+      dateTime: "2024-05-15T06:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Hóa đại cương (TN)",
+  },
+  {
+    description: "mã môn học: CI1033
+tín chỉ: 3
+tín chỉ học phí: 3
+nhóm tổ: L02",
+    end: {
+      dateTime: "2024-01-24T03:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H6-114",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20240417T020000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240131T090000,20240207T090000,20240214T090000,20240228T090000,20240313T090000,20240320T090000,20240327T090000,20240403T090000,20240410T090000",
+    ],
+    start: {
+      dateTime: "2024-01-24T02:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Vẽ kỹ thuật Xây dựng",
+  },
+  {
+    description: "mã môn học: CI1069
+tín chỉ: 4
+tín chỉ học phí: 4
+nhóm tổ: L04",
+    end: {
+      dateTime: "2024-01-11T07:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H6-308",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20240606T050000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240208T120000,20240215T120000,20240314T120000,20240321T120000,20240328T120000,20240404T120000,20240411T120000,20240418T120000",
+    ],
+    start: {
+      dateTime: "2024-01-11T05:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Khoa học Trái đất",
+  },
+  {
+    description: "mã môn học: CI1033
+tín chỉ: 3
+tín chỉ học phí: 3
+nhóm tổ: L02",
+    end: {
+      dateTime: "2024-01-11T04:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H6-413",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20240606T030000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240208T100000,20240215T100000,20240314T100000,20240321T100000,20240328T100000,20240404T100000,20240411T100000,20240418T100000",
+    ],
+    start: {
+      dateTime: "2024-01-11T03:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Vẽ kỹ thuật Xây dựng",
+  },
+  {
+    description: "mã môn học: CH1003
+tín chỉ: 3
+tín chỉ học phí: 3
+nhóm tổ: L11",
+    end: {
+      dateTime: "2024-01-12T09:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H1-802",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20240607T080000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240209T150000,20240216T150000,20240315T150000,20240322T150000,20240329T150000,20240405T150000,20240412T150000",
+    ],
+    start: {
+      dateTime: "2024-01-12T08:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Hóa đại cương",
+  },
+  {
+    description: "mã môn học: MT1005
+tín chỉ: 4
+tín chỉ học phí: 4
+nhóm tổ: L18",
+    end: {
+      dateTime: "2024-01-12T07:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H3-301",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20240607T050000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240209T120000,20240216T120000,20240315T120000,20240322T120000,20240329T120000,20240405T120000,20240412T120000",
+    ],
+    start: {
+      dateTime: "2024-01-12T05:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Giải tích 2",
+  },
+]
+`;
