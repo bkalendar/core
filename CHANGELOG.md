@@ -8,6 +8,10 @@ part should correspond to the current academic year and semester of HCMUT-VNU.
 
 ## Unreleased
 
+### Added
+
+- Parse 2024 style timetable.
+
 ## [23.2.0] - 2023-12-25
 
 ### Fixed
