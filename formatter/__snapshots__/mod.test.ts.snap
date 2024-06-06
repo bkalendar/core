@@ -965,3 +965,93 @@ nhóm tổ: L18",
   },
 ]
 `;
+
+snapshot[`snapshot MK > format gapi 1`] = `
+[
+  {
+    description: "mã môn học: SP1007
+tín chỉ: 2
+tín chỉ học phí: 2
+nhóm tổ: DL04",
+    end: {
+      dateTime: "2024-06-18T08:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H6-212",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20240730T070000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240716T140000",
+    ],
+    start: {
+      dateTime: "2024-06-18T07:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Pháp luật Việt Nam Đại cương",
+  },
+  {
+    description: "mã môn học: SP1031
+tín chỉ: 3
+tín chỉ học phí: 3
+nhóm tổ: DL07",
+    end: {
+      dateTime: "2024-06-18T06:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H6-212",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20240813T050000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240716T120000",
+    ],
+    start: {
+      dateTime: "2024-06-18T05:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Triết học Mác - Lênin",
+  },
+]
+`;
+
+snapshot[`snapshot MK > format ical 1`] = `
+[
+  {
+    description: "mã môn học: SP1007
+tín chỉ: 2
+tín chỉ học phí: 2
+nhóm tổ: DL04",
+    end: {
+      dateTime: "2024-06-18T08:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H6-212",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20240730T070000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240716T140000",
+    ],
+    start: {
+      dateTime: "2024-06-18T07:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Pháp luật Việt Nam Đại cương",
+  },
+  {
+    description: "mã môn học: SP1031
+tín chỉ: 3
+tín chỉ học phí: 3
+nhóm tổ: DL07",
+    end: {
+      dateTime: "2024-06-18T06:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "H6-212",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20240813T050000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240716T120000",
+    ],
+    start: {
+      dateTime: "2024-06-18T05:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Triết học Mác - Lênin",
+  },
+]
+`;

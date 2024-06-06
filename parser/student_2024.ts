@@ -25,9 +25,12 @@ export function parseStudent2024(src: string): Timetable {
 
 function parseFromHeader(lines: string[], i: number): Timetable {
 	// from the header, go back 6 lines and extract the semester
-	const matches = lines[i - 6]?.match(/Học kỳ ([123]) Năm học (\d+) - (\d+)/);
+	let matches;
+	for (let j = 6; j >= 0 && !matches; j--) {
+		matches = lines[i - j]?.match(/Học kỳ ([123]) Năm học (\d+) - (\d+)/);
+	}
 	if (!matches) {
-		throw new SemesterNotFoundError(lines[i - 2]);
+		throw new SemesterNotFoundError(lines[i - 6]);
 	}
 	// "Học kỳ 2 năm học 2023 - ..." should yield semester=232
 	const semester = (Number(matches[2]) % 100) * 10 + Number(matches[1]);

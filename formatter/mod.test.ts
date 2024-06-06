@@ -196,3 +196,26 @@ Dạ okee`;
 		await assertSnapshot(t, gapi);
 	});
 });
+
+Deno.test("snapshot MK", async (t) => {
+	const src = `20233 - Học kỳ 3 Năm học 2023 - 2024
+Ngày cập nhật gần nhất của HK này: 31/05/2024 14:28:54
+Trình bày  dòng/trang
+Tìm kiếm:
+HỌC KỲ	MÃ MH	TÊN MÔN HỌC	TÍN CHỈ	TC HỌC PHÍ	NHÓM - TỔ	THỨ	TIẾT	GIỜ HỌC	PHÒNG	CƠ SỞ	TUẦN HỌC
+20233	SP1007	Pháp luật Việt Nam Đại cương	2	2	DL04	3	9 - 11	14:00 - 15:50	H6-212	BK-DAn	25|26|27|28|--|30|31|
+20233	SP1031	Triết học Mác - Lênin	3	3	DL07	3	7 - 9	12:00 - 13:50	H6-212	BK-DAn	25|26|27|28|--|30|31|32|33|`;
+
+	const timetable = parseStudent2024(src);
+	resolve(timetable);
+
+	await t.step("format gapi", async (t) => {
+		const gapi = formatGapi(timetable);
+		await assertSnapshot(t, gapi);
+	});
+
+	await t.step("format ical", async (t) => {
+		const gapi = formatGapi(timetable);
+		await assertSnapshot(t, gapi);
+	});
+});
