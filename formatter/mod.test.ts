@@ -7,6 +7,19 @@ import { parsePostgrad } from "@/parser/postgrad.ts";
 import { parseStudent2024 } from "@/parser/student_2024.ts";
 import { formatIcal } from "@/formatter/ical.ts";
 
+function icalSerializer(actual: string) {
+	const lines = actual.split("\r\n");
+	for (const i in lines) {
+		if (lines[i].startsWith("UID")) {
+			lines[i] = "UID:";
+		}
+		if (lines[i].startsWith("DTSTAMP")) {
+			lines[i] = "DTSTAMP:";
+		}
+	}
+	return lines.join("\\r\n");
+}
+
 Deno.test("snapshot student", async (t) => {
 	const src = `
 Học kỳ 1 Năm học 2020 - 2021
@@ -30,7 +43,7 @@ Tổng số tín chỉ đăng ký: 8
 
 	await t.step("format ical", async (t) => {
 		const ical = formatIcal(timetable);
-		await assertSnapshot(t, ical);
+		await assertSnapshot(t, ical, { serializer: icalSerializer });
 	});
 });
 
@@ -58,7 +71,7 @@ Lớp	Tên MH	Phòng	Dãy	Thứ	Số tiết	Tiết	Giờ	Tuần học	% ND
 
 	await t.step("format ical", async (t) => {
 		const ical = formatIcal(timetable);
-		await assertSnapshot(t, ical);
+		await assertSnapshot(t, ical, { serializer: icalSerializer });
 	});
 });
 
@@ -84,7 +97,7 @@ Tối
 
 	await t.step("format ical", async (t) => {
 		const ical = formatIcal(timetable);
-		await assertSnapshot(t, ical);
+		await assertSnapshot(t, ical, { serializer: icalSerializer });
 	});
 });
 
@@ -108,7 +121,7 @@ Tổng số tín chỉ đăng ký: 17
 
 	await t.step("format ical", async (t) => {
 		const ical = formatIcal(timetable);
-		await assertSnapshot(t, ical);
+		await assertSnapshot(t, ical, { serializer: icalSerializer });
 	});
 });
 
@@ -130,7 +143,7 @@ PH1003	Vật lý 1	4	4	L24	2	8-10	13:00 - 15:50	HANGOUT_TUONGTAC	BK-LTK	--|--|--
 
 	await t.step("format ical", async (t) => {
 		const ical = formatIcal(timetable);
-		await assertSnapshot(t, ical);
+		await assertSnapshot(t, ical, { serializer: icalSerializer });
 	});
 });
 
@@ -154,7 +167,7 @@ Tổng số tín chỉ đăng ký: 11
 
 	await t.step("format ical", async (t) => {
 		const ical = formatIcal(timetable);
-		await assertSnapshot(t, ical);
+		await assertSnapshot(t, ical, { serializer: icalSerializer });
 	});
 });
 
@@ -194,7 +207,7 @@ Dạ okee`;
 
 	await t.step("format ical", async (t) => {
 		const ical = formatIcal(timetable);
-		await assertSnapshot(t, ical);
+		await assertSnapshot(t, ical, { serializer: icalSerializer });
 	});
 });
 
@@ -217,7 +230,7 @@ HỌC KỲ	MÃ MH	TÊN MÔN HỌC	TÍN CHỈ	TC HỌC PHÍ	NHÓM - TỔ	THỨ	TI
 
 	await t.step("format ical", async (t) => {
 		const ical = formatIcal(timetable);
-		await assertSnapshot(t, ical);
+		await assertSnapshot(t, ical, { serializer: icalSerializer });
 	});
 });
 
@@ -241,6 +254,6 @@ HỌC KỲ	MÃ MH	TÊN MÔN HỌC	TÍN CHỈ	TC HỌC PHÍ	NHÓM - TỔ	THỨ	TI
 
 	await t.step("format ical", async (t) => {
 		const ical = formatIcal(timetable);
-		await assertSnapshot(t, ical);
+		await assertSnapshot(t, ical, { serializer: icalSerializer });
 	});
 });
