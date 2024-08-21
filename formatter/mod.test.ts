@@ -5,6 +5,7 @@ import { assertSnapshot } from "@std/testing/snapshot";
 import { parseLecturer } from "@/parser/lecturer.ts";
 import { parsePostgrad } from "@/parser/postgrad.ts";
 import { parseStudent2024 } from "@/parser/student_2024.ts";
+import { formatIcal } from "@/formatter/ical.ts";
 
 Deno.test("snapshot student", async (t) => {
 	const src = `
@@ -28,8 +29,8 @@ Tổng số tín chỉ đăng ký: 8
 	});
 
 	await t.step("format ical", async (t) => {
-		const gapi = formatGapi(timetable);
-		await assertSnapshot(t, gapi);
+		const ical = formatIcal(timetable);
+		await assertSnapshot(t, ical);
 	});
 });
 
@@ -56,8 +57,8 @@ Lớp	Tên MH	Phòng	Dãy	Thứ	Số tiết	Tiết	Giờ	Tuần học	% ND
 	});
 
 	await t.step("format ical", async (t) => {
-		const gapi = formatGapi(timetable);
-		await assertSnapshot(t, gapi);
+		const ical = formatIcal(timetable);
+		await assertSnapshot(t, ical);
 	});
 });
 
@@ -82,8 +83,8 @@ Tối
 	});
 
 	await t.step("format ical", async (t) => {
-		const gapi = formatGapi(timetable);
-		await assertSnapshot(t, gapi);
+		const ical = formatIcal(timetable);
+		await assertSnapshot(t, ical);
 	});
 });
 
@@ -106,8 +107,8 @@ Tổng số tín chỉ đăng ký: 17
 	});
 
 	await t.step("format ical", async (t) => {
-		const gapi = formatGapi(timetable);
-		await assertSnapshot(t, gapi);
+		const ical = formatIcal(timetable);
+		await assertSnapshot(t, ical);
 	});
 });
 
@@ -128,8 +129,8 @@ PH1003	Vật lý 1	4	4	L24	2	8-10	13:00 - 15:50	HANGOUT_TUONGTAC	BK-LTK	--|--|--
 	});
 
 	await t.step("format ical", async (t) => {
-		const gapi = formatGapi(timetable);
-		await assertSnapshot(t, gapi);
+		const ical = formatIcal(timetable);
+		await assertSnapshot(t, ical);
 	});
 });
 
@@ -152,8 +153,8 @@ Tổng số tín chỉ đăng ký: 11
 	});
 
 	await t.step("format ical", async (t) => {
-		const gapi = formatGapi(timetable);
-		await assertSnapshot(t, gapi);
+		const ical = formatIcal(timetable);
+		await assertSnapshot(t, ical);
 	});
 });
 
@@ -192,8 +193,8 @@ Dạ okee`;
 	});
 
 	await t.step("format ical", async (t) => {
-		const gapi = formatGapi(timetable);
-		await assertSnapshot(t, gapi);
+		const ical = formatIcal(timetable);
+		await assertSnapshot(t, ical);
 	});
 });
 
@@ -215,8 +216,8 @@ HỌC KỲ	MÃ MH	TÊN MÔN HỌC	TÍN CHỈ	TC HỌC PHÍ	NHÓM - TỔ	THỨ	TI
 	});
 
 	await t.step("format ical", async (t) => {
-		const gapi = formatGapi(timetable);
-		await assertSnapshot(t, gapi);
+		const ical = formatIcal(timetable);
+		await assertSnapshot(t, ical);
 	});
 });
 
@@ -239,7 +240,7 @@ HỌC KỲ	MÃ MH	TÊN MÔN HỌC	TÍN CHỈ	TC HỌC PHÍ	NHÓM - TỔ	THỨ	TI
 	});
 
 	await t.step("format ical", async (t) => {
-		const gapi = formatGapi(timetable);
-		await assertSnapshot(t, gapi);
+		const ical = formatIcal(timetable);
+		await assertSnapshot(t, ical);
 	});
 });

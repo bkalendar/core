@@ -106,108 +106,117 @@ nhóm tổ: L262",
 `;
 
 snapshot[`snapshot student > format ical 1`] = `
-[
-  {
-    description: "mã môn học: PE1023
+"BEGIN:VCALENDAR\\r
+PRODID:-//bkalendar//BKalendar//VI\\r
+VERSION:2.0\\r
+BEGIN:VTIMEZONE\\r
+TZID:Asia/Ho_Chi_Minh\\r
+TZURL:http://tzurl.org/zoneinfo-outlook/Asia/Ho_Chi_Minh\\r
+X-LIC-LOCATION:Asia/Ho_Chi_Minh\\r
+BEGIN:STANDARD\\r
+TZOFFSETFROM:+0700\\r
+TZOFFSETTO:+0700\\r
+TZNAME:+07\\r
+DTSTART:19700101T000000\\r
+END:STANDARD\\r
+END:VTIMEZONE\\r
+BEGIN:VEVENT\\r
+UID:17c08f3e-f894-42d9-8fc7-3857fb2734be@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:Võ (Vovinam, Karate, Taewondo) (học phần 1)\\r
+DESCRIPTION:mã môn học: PE1023
 tín chỉ: --
 tín chỉ học phí: 1.5
-nhóm tổ: L262",
-    end: {
-      dateTime: "2020-10-12T10:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "CS2-NHATHIDAU-SAN1",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20210118T080000Z",
-      "EXDATE;TZID=Asia/Ho_Chi_Minh:20201102T150000,20201109T150000,20201116T150000,20201123T150000,20201214T150000",
-    ],
-    start: {
-      dateTime: "2020-10-12T08:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "Võ (Vovinam, Karate, Taewondo) (học phần 1)",
-  },
-  {
-    description: "mã môn học: MT1003
+nhóm tổ: L262\\r
+LOCATION:CS2-NHATHIDAU-SAN1\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20201012T150000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20201012T175000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20210118T080000Z\\r
+EXDATE;TZID=Asia/Ho_Chi_Minh\\r
+ :20201102T150000\\r
+ ,20201109T150000\\r
+ ,20201116T150000\\r
+ ,20201123T150000\\r
+ ,20201214T150000\\r
+END:VEVENT\\r
+BEGIN:VEVENT\\r
+UID:a18c89f1-9874-404e-b9ec-d487e2d840f8@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:Giải tích 1\\r
+DESCRIPTION:mã môn học: MT1003
 tín chỉ: 4
 tín chỉ học phí: 4
-nhóm tổ: L25",
-    end: {
-      dateTime: "2020-10-13T02:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "H1-304",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20210119T000000Z",
-      "EXDATE;TZID=Asia/Ho_Chi_Minh:20201103T070000,20201110T070000,20201117T070000,20201124T070000,20201215T070000",
-    ],
-    start: {
-      dateTime: "2020-10-13T00:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "Giải tích 1",
-  },
-  {
-    description: "mã môn học: PH1003
+nhóm tổ: L25\\r
+LOCATION:H1-304\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20201013T070000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20201013T095000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20210119T000000Z\\r
+EXDATE;TZID=Asia/Ho_Chi_Minh\\r
+ :20201103T070000\\r
+ ,20201110T070000\\r
+ ,20201117T070000\\r
+ ,20201124T070000\\r
+ ,20201215T070000\\r
+END:VEVENT\\r
+BEGIN:VEVENT\\r
+UID:cfc5a4a8-0694-4cde-bcd8-39630a5c11f6@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:Vật lý 1\\r
+DESCRIPTION:mã môn học: PH1003
 tín chỉ: 4
 tín chỉ học phí: 4
-nhóm tổ: L24",
-    end: {
-      dateTime: "2020-10-14T08:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "H1-301",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20210120T060000Z",
-      "EXDATE;TZID=Asia/Ho_Chi_Minh:20201104T130000,20201111T130000,20201118T130000,20201125T130000,20201216T130000",
-    ],
-    start: {
-      dateTime: "2020-10-14T06:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "Vật lý 1",
-  },
-  {
-    description: "mã môn học: MT1004
+nhóm tổ: L24\\r
+LOCATION:H1-301\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20201014T130000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20201014T155000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20210120T060000Z\\r
+EXDATE;TZID=Asia/Ho_Chi_Minh\\r
+ :20201104T130000\\r
+ ,20201111T130000\\r
+ ,20201118T130000\\r
+ ,20201125T130000\\r
+ ,20201216T130000\\r
+END:VEVENT\\r
+BEGIN:VEVENT\\r
+UID:fb389e09-2e44-4e6c-8af8-c4e982b1317d@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:GIAI TICH 1 (BT)\\r
+DESCRIPTION:mã môn học: MT1004
 tín chỉ: --
 tín chỉ học phí: --
-nhóm tổ: L44",
-    end: {
-      dateTime: "2020-10-15T09:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "H1-103",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20210121T080000Z",
-      "EXDATE;TZID=Asia/Ho_Chi_Minh:20201105T150000,20201112T150000,20201119T150000,20201126T150000,20201217T150000",
-    ],
-    start: {
-      dateTime: "2020-10-15T08:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "GIAI TICH 1 (BT)",
-  },
-  {
-    description: "mã môn học: PE1023
+nhóm tổ: L44\\r
+LOCATION:H1-103\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20201015T150000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20201015T165000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20210121T080000Z\\r
+EXDATE;TZID=Asia/Ho_Chi_Minh\\r
+ :20201105T150000\\r
+ ,20201112T150000\\r
+ ,20201119T150000\\r
+ ,20201126T150000\\r
+ ,20201217T150000\\r
+END:VEVENT\\r
+BEGIN:VEVENT\\r
+UID:eb606559-9699-49e8-a943-568f0d0fd077@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:Võ (Vovinam, Karate, Taewondo) (học phần 1)\\r
+DESCRIPTION:mã môn học: PE1023
 tín chỉ: --
 tín chỉ học phí: 1.5
-nhóm tổ: L262",
-    end: {
-      dateTime: "2020-10-16T10:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "CS2-NHATHIDAU-SAN1",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20210122T080000Z",
-      "EXDATE;TZID=Asia/Ho_Chi_Minh:20201106T150000,20201113T150000,20201120T150000,20201127T150000,20201218T150000,20210101T150000",
-    ],
-    start: {
-      dateTime: "2020-10-16T08:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "Võ (Vovinam, Karate, Taewondo) (học phần 1)",
-  },
-]
+nhóm tổ: L262\\r
+LOCATION:CS2-NHATHIDAU-SAN1\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20201016T150000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20201016T175000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20210122T080000Z\\r
+EXDATE;TZID=Asia/Ho_Chi_Minh\\r
+ :20201106T150000\\r
+ ,20201113T150000\\r
+ ,20201120T150000\\r
+ ,20201127T150000\\r
+ ,20201218T150000\\r
+ ,20210101T150000\\r
+END:VEVENT\\r
+END:VCALENDAR"
 `;
 
 snapshot[`snapshot lecturer > format gapi 1`] = `
@@ -293,85 +302,75 @@ snapshot[`snapshot lecturer > format gapi 1`] = `
 `;
 
 snapshot[`snapshot lecturer > format ical 1`] = `
-[
-  {
-    description: "lớp: 20221_CO1006_L11",
-    end: {
-      dateTime: "2022-10-27T09:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "H6-707",
-    recurrence: [],
-    start: {
-      dateTime: "2022-10-27T05:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "NHAP MON DIEN TOAN (TH)",
-  },
-  {
-    description: "lớp: 20221_CO1006_L11",
-    end: {
-      dateTime: "2022-11-17T09:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "HANGOUT_TUONGTAC",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20221124T050000Z",
-    ],
-    start: {
-      dateTime: "2022-11-17T05:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "NHAP MON DIEN TOAN (TH)",
-  },
-  {
-    description: "lớp: 20221_CO1006_L23",
-    end: {
-      dateTime: "2022-11-10T09:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "H6-707",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20221222T050000Z",
-      "EXDATE;TZID=Asia/Ho_Chi_Minh:20221117T120000,20221124T120000,20221201T120000,20221208T120000,20221215T120000",
-    ],
-    start: {
-      dateTime: "2022-11-10T05:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "NHAP MON DIEN TOAN (TH)",
-  },
-  {
-    description: "lớp: 20221_CO1006_L23",
-    end: {
-      dateTime: "2022-11-17T09:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "HANGOUT_TUONGTAC",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20221124T050000Z",
-    ],
-    start: {
-      dateTime: "2022-11-17T05:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "NHAP MON DIEN TOAN (TH)",
-  },
-  {
-    description: "lớp: 20221_CO1006_L11",
-    end: {
-      dateTime: "2022-12-08T09:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "HANGOUT_TUONGTAC",
-    recurrence: [],
-    start: {
-      dateTime: "2022-12-08T05:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "NHAP MON DIEN TOAN (TH)",
-  },
-]
+"BEGIN:VCALENDAR\\r
+PRODID:-//bkalendar//BKalendar//VI\\r
+VERSION:2.0\\r
+BEGIN:VTIMEZONE\\r
+TZID:Asia/Ho_Chi_Minh\\r
+TZURL:http://tzurl.org/zoneinfo-outlook/Asia/Ho_Chi_Minh\\r
+X-LIC-LOCATION:Asia/Ho_Chi_Minh\\r
+BEGIN:STANDARD\\r
+TZOFFSETFROM:+0700\\r
+TZOFFSETTO:+0700\\r
+TZNAME:+07\\r
+DTSTART:19700101T000000\\r
+END:STANDARD\\r
+END:VTIMEZONE\\r
+BEGIN:VEVENT\\r
+UID:f38cacc7-d9ce-4487-839f-4f607539c27d@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:NHAP MON DIEN TOAN (TH)\\r
+DESCRIPTION:lớp: 20221_CO1006_L11\\r
+LOCATION:H6-707\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20221027T120000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20221027T165000\\r
+END:VEVENT\\r
+BEGIN:VEVENT\\r
+UID:1ebcf1d4-8d09-4523-bab7-5c7ed5f3a869@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:NHAP MON DIEN TOAN (TH)\\r
+DESCRIPTION:lớp: 20221_CO1006_L11\\r
+LOCATION:HANGOUT_TUONGTAC\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20221117T120000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20221117T165000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20221124T050000Z\\r
+END:VEVENT\\r
+BEGIN:VEVENT\\r
+UID:81360196-9016-4cb8-82b4-ace767d3a465@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:NHAP MON DIEN TOAN (TH)\\r
+DESCRIPTION:lớp: 20221_CO1006_L23\\r
+LOCATION:H6-707\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20221110T120000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20221110T165000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20221222T050000Z\\r
+EXDATE;TZID=Asia/Ho_Chi_Minh\\r
+ :20221117T120000\\r
+ ,20221124T120000\\r
+ ,20221201T120000\\r
+ ,20221208T120000\\r
+ ,20221215T120000\\r
+END:VEVENT\\r
+BEGIN:VEVENT\\r
+UID:6c764dac-91b3-44f7-a602-94d633626a86@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:NHAP MON DIEN TOAN (TH)\\r
+DESCRIPTION:lớp: 20221_CO1006_L23\\r
+LOCATION:HANGOUT_TUONGTAC\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20221117T120000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20221117T165000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20221124T050000Z\\r
+END:VEVENT\\r
+BEGIN:VEVENT\\r
+UID:0b51b37d-b6e2-4ee1-9807-c6c0531dcf3a@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:NHAP MON DIEN TOAN (TH)\\r
+DESCRIPTION:lớp: 20221_CO1006_L11\\r
+LOCATION:HANGOUT_TUONGTAC\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20221208T120000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20221208T165000\\r
+END:VEVENT\\r
+END:VCALENDAR"
 `;
 
 snapshot[`snapshot postgrad > format gapi 1`] = `
@@ -434,62 +433,57 @@ ghi chú: ",
 `;
 
 snapshot[`snapshot postgrad > format ical 1`] = `
-[
-  {
-    description: "cán bộ giảng dạy: GS.TS Phan Thị Tươi
+"BEGIN:VCALENDAR\\r
+PRODID:-//bkalendar//BKalendar//VI\\r
+VERSION:2.0\\r
+BEGIN:VTIMEZONE\\r
+TZID:Asia/Ho_Chi_Minh\\r
+TZURL:http://tzurl.org/zoneinfo-outlook/Asia/Ho_Chi_Minh\\r
+X-LIC-LOCATION:Asia/Ho_Chi_Minh\\r
+BEGIN:STANDARD\\r
+TZOFFSETFROM:+0700\\r
+TZOFFSETTO:+0700\\r
+TZNAME:+07\\r
+DTSTART:19700101T000000\\r
+END:STANDARD\\r
+END:VTIMEZONE\\r
+BEGIN:VEVENT\\r
+UID:29b8bb20-e709-4063-a2fe-1fa0caec0bad@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:(CO5143) - Xử lý ngôn ngữ tự nhiên\\r
+DESCRIPTION:cán bộ giảng dạy: GS.TS Phan Thị Tươi
 lớp: 1 / 
-ghi chú: ",
-    end: {
-      dateTime: "2023-09-10T04:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "Trực tuyến",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20231008T020000Z",
-    ],
-    start: {
-      dateTime: "2023-09-10T02:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "(CO5143) - Xử lý ngôn ngữ tự nhiên",
-  },
-  {
-    description: "cán bộ giảng dạy: GS.TS Phan Thị Tươi
+ghi chú: \\r
+LOCATION:Trực tuyến\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20230910T090000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20230910T115000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20231008T020000Z\\r
+END:VEVENT\\r
+BEGIN:VEVENT\\r
+UID:65178c5b-dcb8-4a87-b30a-7d3637673bc4@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:(CO5143) - Xử lý ngôn ngữ tự nhiên\\r
+DESCRIPTION:cán bộ giảng dạy: GS.TS Phan Thị Tươi
 lớp: 1 / 
-ghi chú: ",
-    end: {
-      dateTime: "2023-10-15T04:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "601B4",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20231112T020000Z",
-    ],
-    start: {
-      dateTime: "2023-10-15T02:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "(CO5143) - Xử lý ngôn ngữ tự nhiên",
-  },
-  {
-    description: "cán bộ giảng dạy: TS. Phan Trọng Nhân
+ghi chú: \\r
+LOCATION:601B4\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20231015T090000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20231015T115000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20231112T020000Z\\r
+END:VEVENT\\r
+BEGIN:VEVENT\\r
+UID:61846f3d-a784-462f-958c-726f043a319f@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:(CO5240) - Kỹ thuật dữ liệu\\r
+DESCRIPTION:cán bộ giảng dạy: TS. Phan Trọng Nhân
 lớp: 1 / 
-ghi chú: ",
-    end: {
-      dateTime: "2023-09-08T13:30:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "305B4",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20231201T110000Z",
-    ],
-    start: {
-      dateTime: "2023-09-08T11:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "(CO5240) - Kỹ thuật dữ liệu",
-  },
-]
+ghi chú: \\r
+LOCATION:305B4\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20230908T180000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20230908T203000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20231201T110000Z\\r
+END:VEVENT\\r
+END:VCALENDAR"
 `;
 
 snapshot[`timetable with no weeks > format gapi 1`] = `
@@ -517,27 +511,34 @@ nhóm tổ: L01",
 `;
 
 snapshot[`timetable with no weeks > format ical 1`] = `
-[
-  {
-    description: "mã môn học: ME3009
+"BEGIN:VCALENDAR\\r
+PRODID:-//bkalendar//BKalendar//VI\\r
+VERSION:2.0\\r
+BEGIN:VTIMEZONE\\r
+TZID:Asia/Ho_Chi_Minh\\r
+TZURL:http://tzurl.org/zoneinfo-outlook/Asia/Ho_Chi_Minh\\r
+X-LIC-LOCATION:Asia/Ho_Chi_Minh\\r
+BEGIN:STANDARD\\r
+TZOFFSETFROM:+0700\\r
+TZOFFSETTO:+0700\\r
+TZNAME:+07\\r
+DTSTART:19700101T000000\\r
+END:STANDARD\\r
+END:VTIMEZONE\\r
+BEGIN:VEVENT\\r
+UID:0a1f0be6-876a-4e1e-a35e-efd3f5ce7771@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:Các quá trình chế tạo\\r
+DESCRIPTION:mã môn học: ME3009
 tín chỉ: 3
 tín chỉ học phí: 3
-nhóm tổ: L01",
-    end: {
-      dateTime: "2023-11-17T01:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "H1-102",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20231215T000000Z",
-    ],
-    start: {
-      dateTime: "2023-11-17T00:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "Các quá trình chế tạo",
-  },
-]
+nhóm tổ: L01\\r
+LOCATION:H1-102\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20231117T070000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20231117T085000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20231215T000000Z\\r
+END:VEVENT\\r
+END:VCALENDAR"
 `;
 
 snapshot[`dash for empty time > format gapi 1`] = `
@@ -565,27 +566,34 @@ nhóm tổ: L24",
 `;
 
 snapshot[`dash for empty time > format ical 1`] = `
-[
-  {
-    description: "mã môn học: PH1003
+"BEGIN:VCALENDAR\\r
+PRODID:-//bkalendar//BKalendar//VI\\r
+VERSION:2.0\\r
+BEGIN:VTIMEZONE\\r
+TZID:Asia/Ho_Chi_Minh\\r
+TZURL:http://tzurl.org/zoneinfo-outlook/Asia/Ho_Chi_Minh\\r
+X-LIC-LOCATION:Asia/Ho_Chi_Minh\\r
+BEGIN:STANDARD\\r
+TZOFFSETFROM:+0700\\r
+TZOFFSETTO:+0700\\r
+TZNAME:+07\\r
+DTSTART:19700101T000000\\r
+END:STANDARD\\r
+END:VTIMEZONE\\r
+BEGIN:VEVENT\\r
+UID:419ab2a2-84c5-4bb8-b44e-6e016bcef797@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:Vật lý 1\\r
+DESCRIPTION:mã môn học: PH1003
 tín chỉ: 4
 tín chỉ học phí: 4
-nhóm tổ: L24",
-    end: {
-      dateTime: "2020-09-28T08:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "HANGOUT_TUONGTAC",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20201214T060000Z",
-    ],
-    start: {
-      dateTime: "2020-09-28T06:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "Vật lý 1",
-  },
-]
+nhóm tổ: L24\\r
+LOCATION:HANGOUT_TUONGTAC\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20200928T130000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20200928T155000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20201214T060000Z\\r
+END:VEVENT\\r
+END:VCALENDAR"
 `;
 
 snapshot[`case-insensitive header > format gapi 1`] = `
@@ -614,28 +622,37 @@ nhóm tổ: L07",
 `;
 
 snapshot[`case-insensitive header > format ical 1`] = `
-[
-  {
-    description: "mã môn học: IM1021
+"BEGIN:VCALENDAR\\r
+PRODID:-//bkalendar//BKalendar//VI\\r
+VERSION:2.0\\r
+BEGIN:VTIMEZONE\\r
+TZID:Asia/Ho_Chi_Minh\\r
+TZURL:http://tzurl.org/zoneinfo-outlook/Asia/Ho_Chi_Minh\\r
+X-LIC-LOCATION:Asia/Ho_Chi_Minh\\r
+BEGIN:STANDARD\\r
+TZOFFSETFROM:+0700\\r
+TZOFFSETTO:+0700\\r
+TZNAME:+07\\r
+DTSTART:19700101T000000\\r
+END:STANDARD\\r
+END:VTIMEZONE\\r
+BEGIN:VEVENT\\r
+UID:ddc34c0a-8d28-4caa-9cf8-c0f92a8d7d7f@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:Khởi nghiệp\\r
+DESCRIPTION:mã môn học: IM1021
 tín chỉ: 3
 tín chỉ học phí: 3
-nhóm tổ: L07",
-    end: {
-      dateTime: "2023-08-28T08:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "H6-214",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20231211T070000Z",
-      "EXDATE;TZID=Asia/Ho_Chi_Minh:20230904T140000,20231016T140000",
-    ],
-    start: {
-      dateTime: "2023-08-28T07:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "Khởi nghiệp",
-  },
-]
+nhóm tổ: L07\\r
+LOCATION:H6-214\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20230828T140000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20230828T155000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20231211T070000Z\\r
+EXDATE;TZID=Asia/Ho_Chi_Minh\\r
+ :20230904T140000\\r
+ ,20231016T140000\\r
+END:VEVENT\\r
+END:VCALENDAR"
 `;
 
 snapshot[`snapshot student 2024 > format gapi 1`] = `
@@ -803,167 +820,183 @@ nhóm tổ: L18",
 `;
 
 snapshot[`snapshot student 2024 > format ical 1`] = `
-[
-  {
-    description: "mã môn học: PE1033
+"BEGIN:VCALENDAR\\r
+PRODID:-//bkalendar//BKalendar//VI\\r
+VERSION:2.0\\r
+BEGIN:VTIMEZONE\\r
+TZID:Asia/Ho_Chi_Minh\\r
+TZURL:http://tzurl.org/zoneinfo-outlook/Asia/Ho_Chi_Minh\\r
+X-LIC-LOCATION:Asia/Ho_Chi_Minh\\r
+BEGIN:STANDARD\\r
+TZOFFSETFROM:+0700\\r
+TZOFFSETTO:+0700\\r
+TZNAME:+07\\r
+DTSTART:19700101T000000\\r
+END:STANDARD\\r
+END:VTIMEZONE\\r
+BEGIN:VEVENT\\r
+UID:b9f636bb-8c2e-46e1-86a7-5b547e6d8828@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:Bóng đá (Học phần 2)\\r
+DESCRIPTION:mã môn học: PE1033
 tín chỉ: 0
 tín chỉ học phí: 0
-nhóm tổ: L10",
-    end: {
-      dateTime: "2024-01-08T10:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "TT THE DUC THE THAO",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20240603T080000Z",
-      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240205T150000,20240212T150000,20240311T150000,20240318T150000,20240325T150000,20240401T150000,20240408T150000,20240429T150000",
-    ],
-    start: {
-      dateTime: "2024-01-08T08:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "Bóng đá (Học phần 2)",
-  },
-  {
-    description: "mã môn học: CI1034
+nhóm tổ: L10\\r
+LOCATION:TT THE DUC THE THAO\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20240108T150000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20240108T175000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20240603T080000Z\\r
+EXDATE;TZID=Asia/Ho_Chi_Minh\\r
+ :20240205T150000\\r
+ ,20240212T150000\\r
+ ,20240311T150000\\r
+ ,20240318T150000\\r
+ ,20240325T150000\\r
+ ,20240401T150000\\r
+ ,20240408T150000\\r
+ ,20240429T150000\\r
+END:VEVENT\\r
+BEGIN:VEVENT\\r
+UID:0e3493d0-ec23-4662-8138-75014a20829b@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:Vẽ kỹ thuật Xây dựng (ThL,TN)\\r
+DESCRIPTION:mã môn học: CI1034
 tín chỉ: 0
 tín chỉ học phí: 0
-nhóm tổ: L04",
-    end: {
-      dateTime: "2024-04-15T04:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "H6-708",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20240527T000000Z",
-      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240422T070000,20240429T070000,20240506T070000,20240520T070000",
-    ],
-    start: {
-      dateTime: "2024-04-15T00:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "Vẽ kỹ thuật Xây dựng (ThL,TN)",
-  },
-  {
-    description: "mã môn học: CH1004
+nhóm tổ: L04\\r
+LOCATION:H6-708\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20240415T070000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20240415T115000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20240527T000000Z\\r
+EXDATE;TZID=Asia/Ho_Chi_Minh\\r
+ :20240422T070000\\r
+ ,20240429T070000\\r
+ ,20240506T070000\\r
+ ,20240520T070000\\r
+END:VEVENT\\r
+BEGIN:VEVENT\\r
+UID:c374d16a-1a9f-4453-a28f-3edd5a324d51@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:Hóa đại cương (TN)\\r
+DESCRIPTION:mã môn học: CH1004
 tín chỉ: 0
 tín chỉ học phí: 0
-nhóm tổ: L33",
-    end: {
-      dateTime: "2024-05-15T10:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "H1-501",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20240605T060000Z",
-    ],
-    start: {
-      dateTime: "2024-05-15T06:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "Hóa đại cương (TN)",
-  },
-  {
-    description: "mã môn học: CI1033
+nhóm tổ: L33\\r
+LOCATION:H1-501\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20240515T130000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20240515T175000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20240605T060000Z\\r
+END:VEVENT\\r
+BEGIN:VEVENT\\r
+UID:bd159603-a73e-4474-ad91-c5d9b2c6f2fc@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:Vẽ kỹ thuật Xây dựng\\r
+DESCRIPTION:mã môn học: CI1033
 tín chỉ: 3
 tín chỉ học phí: 3
-nhóm tổ: L02",
-    end: {
-      dateTime: "2024-01-24T03:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "H6-114",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20240417T020000Z",
-      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240131T090000,20240207T090000,20240214T090000,20240228T090000,20240313T090000,20240320T090000,20240327T090000,20240403T090000,20240410T090000",
-    ],
-    start: {
-      dateTime: "2024-01-24T02:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "Vẽ kỹ thuật Xây dựng",
-  },
-  {
-    description: "mã môn học: CI1069
+nhóm tổ: L02\\r
+LOCATION:H6-114\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20240124T090000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20240124T105000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20240417T020000Z\\r
+EXDATE;TZID=Asia/Ho_Chi_Minh\\r
+ :20240131T090000\\r
+ ,20240207T090000\\r
+ ,20240214T090000\\r
+ ,20240228T090000\\r
+ ,20240313T090000\\r
+ ,20240320T090000\\r
+ ,20240327T090000\\r
+ ,20240403T090000\\r
+ ,20240410T090000\\r
+END:VEVENT\\r
+BEGIN:VEVENT\\r
+UID:f33468fb-269b-40d3-8e46-fb24a04cb447@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:Khoa học Trái đất\\r
+DESCRIPTION:mã môn học: CI1069
 tín chỉ: 4
 tín chỉ học phí: 4
-nhóm tổ: L04",
-    end: {
-      dateTime: "2024-01-11T07:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "H6-308",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20240606T050000Z",
-      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240208T120000,20240215T120000,20240314T120000,20240321T120000,20240328T120000,20240404T120000,20240411T120000,20240418T120000",
-    ],
-    start: {
-      dateTime: "2024-01-11T05:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "Khoa học Trái đất",
-  },
-  {
-    description: "mã môn học: CI1033
+nhóm tổ: L04\\r
+LOCATION:H6-308\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20240111T120000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20240111T145000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20240606T050000Z\\r
+EXDATE;TZID=Asia/Ho_Chi_Minh\\r
+ :20240208T120000\\r
+ ,20240215T120000\\r
+ ,20240314T120000\\r
+ ,20240321T120000\\r
+ ,20240328T120000\\r
+ ,20240404T120000\\r
+ ,20240411T120000\\r
+ ,20240418T120000\\r
+END:VEVENT\\r
+BEGIN:VEVENT\\r
+UID:fcde6e55-1c5b-489b-af2e-f558c69da462@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:Vẽ kỹ thuật Xây dựng\\r
+DESCRIPTION:mã môn học: CI1033
 tín chỉ: 3
 tín chỉ học phí: 3
-nhóm tổ: L02",
-    end: {
-      dateTime: "2024-01-11T04:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "H6-413",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20240606T030000Z",
-      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240208T100000,20240215T100000,20240314T100000,20240321T100000,20240328T100000,20240404T100000,20240411T100000,20240418T100000",
-    ],
-    start: {
-      dateTime: "2024-01-11T03:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "Vẽ kỹ thuật Xây dựng",
-  },
-  {
-    description: "mã môn học: CH1003
+nhóm tổ: L02\\r
+LOCATION:H6-413\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20240111T100000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20240111T115000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20240606T030000Z\\r
+EXDATE;TZID=Asia/Ho_Chi_Minh\\r
+ :20240208T100000\\r
+ ,20240215T100000\\r
+ ,20240314T100000\\r
+ ,20240321T100000\\r
+ ,20240328T100000\\r
+ ,20240404T100000\\r
+ ,20240411T100000\\r
+ ,20240418T100000\\r
+END:VEVENT\\r
+BEGIN:VEVENT\\r
+UID:5da5f1d6-f65b-4d71-a07d-3d4eb7207679@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:Hóa đại cương\\r
+DESCRIPTION:mã môn học: CH1003
 tín chỉ: 3
 tín chỉ học phí: 3
-nhóm tổ: L11",
-    end: {
-      dateTime: "2024-01-12T09:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "H1-802",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20240607T080000Z",
-      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240209T150000,20240216T150000,20240315T150000,20240322T150000,20240329T150000,20240405T150000,20240412T150000",
-    ],
-    start: {
-      dateTime: "2024-01-12T08:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "Hóa đại cương",
-  },
-  {
-    description: "mã môn học: MT1005
+nhóm tổ: L11\\r
+LOCATION:H1-802\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20240112T150000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20240112T165000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20240607T080000Z\\r
+EXDATE;TZID=Asia/Ho_Chi_Minh\\r
+ :20240209T150000\\r
+ ,20240216T150000\\r
+ ,20240315T150000\\r
+ ,20240322T150000\\r
+ ,20240329T150000\\r
+ ,20240405T150000\\r
+ ,20240412T150000\\r
+END:VEVENT\\r
+BEGIN:VEVENT\\r
+UID:a8099841-1ee1-4048-927f-f3f64d913f98@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:Giải tích 2\\r
+DESCRIPTION:mã môn học: MT1005
 tín chỉ: 4
 tín chỉ học phí: 4
-nhóm tổ: L18",
-    end: {
-      dateTime: "2024-01-12T07:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "H3-301",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20240607T050000Z",
-      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240209T120000,20240216T120000,20240315T120000,20240322T120000,20240329T120000,20240405T120000,20240412T120000",
-    ],
-    start: {
-      dateTime: "2024-01-12T05:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "Giải tích 2",
-  },
-]
+nhóm tổ: L18\\r
+LOCATION:H3-301\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20240112T120000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20240112T145000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20240607T050000Z\\r
+EXDATE;TZID=Asia/Ho_Chi_Minh\\r
+ :20240209T120000\\r
+ ,20240216T120000\\r
+ ,20240315T120000\\r
+ ,20240322T120000\\r
+ ,20240329T120000\\r
+ ,20240405T120000\\r
+ ,20240412T120000\\r
+END:VEVENT\\r
+END:VCALENDAR"
 `;
 
 snapshot[`snapshot MK > format gapi 1`] = `
@@ -1012,48 +1045,51 @@ nhóm tổ: DL07",
 `;
 
 snapshot[`snapshot MK > format ical 1`] = `
-[
-  {
-    description: "mã môn học: SP1007
+"BEGIN:VCALENDAR\\r
+PRODID:-//bkalendar//BKalendar//VI\\r
+VERSION:2.0\\r
+BEGIN:VTIMEZONE\\r
+TZID:Asia/Ho_Chi_Minh\\r
+TZURL:http://tzurl.org/zoneinfo-outlook/Asia/Ho_Chi_Minh\\r
+X-LIC-LOCATION:Asia/Ho_Chi_Minh\\r
+BEGIN:STANDARD\\r
+TZOFFSETFROM:+0700\\r
+TZOFFSETTO:+0700\\r
+TZNAME:+07\\r
+DTSTART:19700101T000000\\r
+END:STANDARD\\r
+END:VTIMEZONE\\r
+BEGIN:VEVENT\\r
+UID:8c8decd7-c426-4d3b-8d24-37c634244340@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:Pháp luật Việt Nam Đại cương\\r
+DESCRIPTION:mã môn học: SP1007
 tín chỉ: 2
 tín chỉ học phí: 2
-nhóm tổ: DL04",
-    end: {
-      dateTime: "2024-06-18T08:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "H6-212",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20240730T070000Z",
-      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240716T140000",
-    ],
-    start: {
-      dateTime: "2024-06-18T07:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "Pháp luật Việt Nam Đại cương",
-  },
-  {
-    description: "mã môn học: SP1031
+nhóm tổ: DL04\\r
+LOCATION:H6-212\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20240618T140000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20240618T155000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20240730T070000Z\\r
+EXDATE;TZID=Asia/Ho_Chi_Minh\\r
+ :20240716T140000\\r
+END:VEVENT\\r
+BEGIN:VEVENT\\r
+UID:c32d659b-1c6b-4c80-9be2-93871f11403b@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:Triết học Mác - Lênin\\r
+DESCRIPTION:mã môn học: SP1031
 tín chỉ: 3
 tín chỉ học phí: 3
-nhóm tổ: DL07",
-    end: {
-      dateTime: "2024-06-18T06:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "H6-212",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20240813T050000Z",
-      "EXDATE;TZID=Asia/Ho_Chi_Minh:20240716T120000",
-    ],
-    start: {
-      dateTime: "2024-06-18T05:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "Triết học Mác - Lênin",
-  },
-]
+nhóm tổ: DL07\\r
+LOCATION:H6-212\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20240618T120000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20240618T135000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20240813T050000Z\\r
+EXDATE;TZID=Asia/Ho_Chi_Minh\\r
+ :20240716T120000\\r
+END:VEVENT\\r
+END:VCALENDAR"
 `;
 
 snapshot[`handle Sunday as 'CN' > format gapi 1`] = `
@@ -1082,26 +1118,34 @@ nhóm tổ: DT01",
 `;
 
 snapshot[`handle Sunday as 'CN' > format ical 1`] = `
-[
-  {
-    description: "mã môn học: SP1039
+"BEGIN:VCALENDAR\\r
+PRODID:-//bkalendar//BKalendar//VI\\r
+VERSION:2.0\\r
+BEGIN:VTIMEZONE\\r
+TZID:Asia/Ho_Chi_Minh\\r
+TZURL:http://tzurl.org/zoneinfo-outlook/Asia/Ho_Chi_Minh\\r
+X-LIC-LOCATION:Asia/Ho_Chi_Minh\\r
+BEGIN:STANDARD\\r
+TZOFFSETFROM:+0700\\r
+TZOFFSETTO:+0700\\r
+TZNAME:+07\\r
+DTSTART:19700101T000000\\r
+END:STANDARD\\r
+END:VTIMEZONE\\r
+BEGIN:VEVENT\\r
+UID:46b8f478-7d3c-4d89-a4ec-e12dbbfe6000@bkalendar\\r
+DTSTAMP:20240821T093541Z\\r
+SUMMARY:Lịch sử Đảng Cộng sản Việt Nam\\r
+DESCRIPTION:mã môn học: SP1039
 tín chỉ: 2
 tín chỉ học phí: 2
-nhóm tổ: DT01",
-    end: {
-      dateTime: "2024-09-01T02:50:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    location: "B1-212",
-    recurrence: [
-      "RRULE:FREQ=WEEKLY;UNTIL=20241215T010000Z",
-      "EXDATE;TZID=Asia/Ho_Chi_Minh:20241020T080000",
-    ],
-    start: {
-      dateTime: "2024-09-01T01:00:00.000Z",
-      timeZone: "Asia/Ho_Chi_Minh",
-    },
-    summary: "Lịch sử Đảng Cộng sản Việt Nam",
-  },
-]
+nhóm tổ: DT01\\r
+LOCATION:B1-212\\r
+DTSTART;TZID=Asia/Ho_Chi_Minh:20240901T080000\\r
+DTEND;TZID=Asia/Ho_Chi_Minh:20240901T095000\\r
+RRULE:FREQ=WEEKLY;UNTIL=20241215T010000Z\\r
+EXDATE;TZID=Asia/Ho_Chi_Minh\\r
+ :20241020T080000\\r
+END:VEVENT\\r
+END:VCALENDAR"
 `;
