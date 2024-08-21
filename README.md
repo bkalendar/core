@@ -1,3 +1,5 @@
+[![JSR](https://jsr.io/badges/@bkalendar/core)](https://jsr.io/@bkalendar/core)
+
 # @bkalendar/core
 
 In an effort to transform HCMUT-VNU timetables to other formats, I made this package.
