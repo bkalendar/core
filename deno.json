@@ -1,16 +1,23 @@
 {
+	"name": "@bkalendar/core",
+	"version": "24.1.0",
+	"exports": "./mod.ts",
 	"$schema": "https://deno.land/x/deno@v1.36.3/cli/schemas/config-file.v1.json",
 	"tasks": {
 		"test": "deno test -A ./tests"
 	},
 	"imports": {
 		"@/": "./",
-		"std/": "https://deno.land/std@0.200.0/"
+		"@std/assert": "jsr:@std/assert@^1.0.2",
+		"@std/datetime": "jsr:@std/datetime@^0.225.0",
+		"@std/testing": "jsr:@std/testing@^1.0.0"
 	},
 	"fmt": {
 		"useTabs": true,
 		"lineWidth": 100,
 		"proseWrap": "always"
 	},
-	"exclude": ["npm"]
+	"publish": {
+		"exclude": ["**/__snapshots__", "**/*_test.ts", ".*"]
+	}
 }

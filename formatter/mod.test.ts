@@ -1,7 +1,7 @@
 import { parseStudent } from "@/parser/student.ts";
 import { resolve } from "@/resolver.ts";
 import { formatGapi } from "@/formatter/gapi.ts";
-import { assertSnapshot } from "std/testing/snapshot.ts";
+import { assertSnapshot } from "@std/testing/snapshot";
 import { parseLecturer } from "@/parser/lecturer.ts";
 import { parsePostgrad } from "@/parser/postgrad.ts";
 import { parseStudent2024 } from "@/parser/student_2024.ts";

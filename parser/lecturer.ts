@@ -4,7 +4,7 @@ import {
 	SemesterNotFoundError,
 	TableNotFoundError,
 } from "@/parser/errors.ts";
-import { Timerow, Timetable } from "@/timetable.ts";
+import type { Timerow, Timetable } from "@/timetable.ts";
 import { parseTime } from "@/parser/utils.ts";
 
 const HEADER = "lớp\ttên mh\tphòng\tdãy\tthứ\tsố tiết\ttiết\tgiờ\ttuần học\t% nd";

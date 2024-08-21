@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 adheres to [Calendar Versioning](https://calver.org/), using the scheme `YY.S.PATCH`. The `YY.S`
 part should correspond to the current academic year and semester of HCMUT-VNU.
 
+## Unreleased
+
+### Added
+
+- Switch to `jsr.io` package registry.
+
 ## [23.3.1] - 2024-06-06
 
 ### Fixed

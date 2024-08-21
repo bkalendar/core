@@ -1,6 +1,5 @@
 import { parsePostgrad } from "@/parser/postgrad.ts";
-import { assertThrows } from "std/assert/assert_throws.ts";
-import { assertEquals } from "std/assert/assert_equals.ts";
+import { assertEquals, assertThrows } from "@std/assert";
 import { SemesterNotFoundError } from "@/parser/errors.ts";
 
 Deno.test("smoke", () => {

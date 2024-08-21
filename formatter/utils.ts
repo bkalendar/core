@@ -1,4 +1,4 @@
-import { DAY, HOUR, MINUTE, WEEK } from "std/datetime/constants.ts";
+import { DAY, HOUR, MINUTE, WEEK } from "@std/datetime";
 
 export const ASIA_HO_CHI_MINH = "Asia/Ho_Chi_Minh";
 

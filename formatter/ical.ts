@@ -1,6 +1,6 @@
-import { Timerow } from "@/timetable.ts";
+import type { Timerow } from "@/timetable.ts";
 import { ASIA_HO_CHI_MINH, dateOfIndex, formatHCM, formatUTC } from "@/formatter/utils.ts";
-import { Timetable } from "@/timetable.ts";
+import type { Timetable } from "@/timetable.ts";
 import { isUnresolvable } from "@/resolver.ts";
 
 const TIME_ZONE = "Asia/Ho_Chi_Minh";

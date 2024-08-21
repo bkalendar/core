@@ -1,6 +1,5 @@
 import { parseStudent2024 } from "@/parser/student_2024.ts";
-import { SemesterNotFoundError } from "@/parser/errors.ts";
-import { assertEquals, assertThrows } from "std/assert/mod.ts";
+import { assertEquals } from "@std/assert";
 
 Deno.test("smoke", () => {
 	const src = `

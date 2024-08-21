@@ -3,7 +3,7 @@ import {
 	SemesterNotFoundError,
 	TableNotFoundError,
 } from "@/parser/errors.ts";
-import { Timerow, Timetable } from "@/timetable.ts";
+import type { Timerow, Timetable } from "@/timetable.ts";
 import { hmFrom } from "@/parser/utils.ts";
 import { ParseError } from "@/mod.ts";
 

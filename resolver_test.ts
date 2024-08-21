@@ -1,6 +1,6 @@
 import { parseStudent } from "@/parser/student.ts";
 import { MixedSemesterError, resolve } from "@/resolver.ts";
-import { assertThrows } from "std/assert/assert_throws.ts";
+import { assertThrows } from "@std/assert";
 
 Deno.test("smoke", () => {
 	const src = `

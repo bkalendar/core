@@ -1,5 +1,5 @@
-import { Timerow, Timetable } from "@/timetable.ts";
-import { DAY, WEEK } from "std/datetime/constants.ts";
+import type { Timerow, Timetable } from "@/timetable.ts";
+import { DAY, WEEK } from "@std/datetime";
 
 export function resolve(timetable: Timetable): asserts timetable is Required<Timetable> {
 	// already resolved
