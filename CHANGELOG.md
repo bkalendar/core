@@ -12,6 +12,10 @@ part should correspond to the current academic year and semester of HCMUT-VNU.
 
 - Switch to `jsr.io` package registry.
 
+### Fixed
+
+- Handle Sunday as "CN" string.
+
 ## [23.3.1] - 2024-06-06
 
 ### Fixed

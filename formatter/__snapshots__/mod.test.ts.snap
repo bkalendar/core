@@ -1055,3 +1055,53 @@ nhóm tổ: DL07",
   },
 ]
 `;
+
+snapshot[`handle Sunday as 'CN' > format gapi 1`] = `
+[
+  {
+    description: "mã môn học: SP1039
+tín chỉ: 2
+tín chỉ học phí: 2
+nhóm tổ: DT01",
+    end: {
+      dateTime: "2024-09-01T02:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "B1-212",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20241215T010000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20241020T080000",
+    ],
+    start: {
+      dateTime: "2024-09-01T01:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Lịch sử Đảng Cộng sản Việt Nam",
+  },
+]
+`;
+
+snapshot[`handle Sunday as 'CN' > format ical 1`] = `
+[
+  {
+    description: "mã môn học: SP1039
+tín chỉ: 2
+tín chỉ học phí: 2
+nhóm tổ: DT01",
+    end: {
+      dateTime: "2024-09-01T02:50:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    location: "B1-212",
+    recurrence: [
+      "RRULE:FREQ=WEEKLY;UNTIL=20241215T010000Z",
+      "EXDATE;TZID=Asia/Ho_Chi_Minh:20241020T080000",
+    ],
+    start: {
+      dateTime: "2024-09-01T01:00:00.000Z",
+      timeZone: "Asia/Ho_Chi_Minh",
+    },
+    summary: "Lịch sử Đảng Cộng sản Việt Nam",
+  },
+]
+`;

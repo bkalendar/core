@@ -219,3 +219,27 @@ HỌC KỲ	MÃ MH	TÊN MÔN HỌC	TÍN CHỈ	TC HỌC PHÍ	NHÓM - TỔ	THỨ	TI
 		await assertSnapshot(t, gapi);
 	});
 });
+
+Deno.test("handle Sunday as 'CN'", async (t) => {
+	const src = `20241 - Học kỳ 1 Năm học 2024 - 2025
+Ngày cập nhật gần nhất của HK này: 21/08/2024 11:44:24
+Trình bày 
+100
+ dòng/trang
+Tìm kiếm:
+HỌC KỲ	MÃ MH	TÊN MÔN HỌC	TÍN CHỈ	TC HỌC PHÍ	NHÓM - TỔ	THỨ	TIẾT	GIỜ HỌC	PHÒNG	CƠ SỞ	TUẦN HỌC
+20241	SP1039	Lịch sử Đảng Cộng sản Việt Nam	2	2	DT01	CN	3 - 5	8:00 - 9:50	B1-212	BK-LTK	35|36|37|38|39|40|41|--|43|44|45|46|47|48|49|50|`;
+
+	const timetable = parseStudent2024(src);
+	resolve(timetable);
+
+	await t.step("format gapi", async (t) => {
+		const gapi = formatGapi(timetable);
+		await assertSnapshot(t, gapi);
+	});
+
+	await t.step("format ical", async (t) => {
+		const gapi = formatGapi(timetable);
+		await assertSnapshot(t, gapi);
+	});
+});

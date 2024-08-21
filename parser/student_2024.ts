@@ -47,7 +47,12 @@ function parseFromHeader(lines: string[], i: number): Timetable {
 		if (cols.length != COLS) {
 			throw new NumOfColumnMismatchError(lines[i], COLS, cols.length);
 		}
-		const weekday = Number(cols[6]);
+		let weekday: number;
+		if (cols[6] == "CN") {
+			weekday = 8;
+		} else {
+			weekday = Number(cols[6]);
+		}
 		if (cols[8] === "--") {
 			continue;
 		}
